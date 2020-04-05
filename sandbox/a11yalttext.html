@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+  <meta charset="utf-8"/>
+  <meta name="author" content="CorporateTool.Net"/>
+  <meta name="Keywords" content="accessibility html aria WCAG"/>
+  <meta name="Description" content="A test web page for forms accessibility implementations"/>
+  <meta name="robots" content="all"/>
+  <meta name="docref" content="a11y form test - a11yalttext.html"/>
+  <title aria-label="Accessibility Alt Text Test Page">Accessibility Alt Text Test Page</title>
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="resources/images/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="icon" href="resources/images/favicon.ico"/>
+  <link type="text/css" rel="stylesheet" href="resources/css/main.css"/>
+
+  <!--	<link type="text/css" rel="stylesheet" href="resources/css/secondary.css" /> -->
+  <!--[if IE]>
+  <![endif]-->
+  <!--	<link type="text/css" rel="stylesheet" href="resources/css/ie.css" media="screen" /> -->
+
+  <!--
+    <script type="text/javascript" src="resources/js/jquery/jquery.js"></script>
+  -->
+
+  <script>
+    // Menu Set
+    /*
+        $(document).ready(function() {
+          $("#headernav img").hover(
+            function() { $(this).attr("src", $(this).attr("src").replace("0", "1")); },
+            function() { $(this).attr("src", $(this).attr("src").replace("1", "0")); }
+          );
+        });
+    */
+  </script>
+  <style>
+    .table-reset {
+    }
+
+    .table-reset td {
+      min-width: 200px;
+      padding: 5px;
+      border: 1px solid black;
+      vertical-align: top;
+    }
+
+    .teaser-wrap {
+      float: left;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <header id="header">
+    <br class="clear"/>
+  </header>
+  <div id="chewycenter">
+    <h1>Accessibility Alt Text Test Page</h1>
+    <a href="http://localdev.corporatetool.net/devtools/sandbox/a11y/a11ylinks.html" id="topAnchor">Top Anchor</a>
+    <h2>Links</h2>
+
+    <ol>
+      <li>Different title and anchor text: <a href="#" title="Download PDF T">Annual Report Visible</a></li>
+      <li>Identical title and anchor text: <a href="#" title="Annual Report Visible">Annual Report Visible</a></li>
+      <li>Aria-label present besides anchor text: <a href="#" aria-label="Download PDF A L">Annual Report Visible</a>
+      </li>
+      <li>Both Aria-label and title present besides anchor text:
+        <a href="#" aria-label="Download PDF A L" title="Annual Report T">Annual Report Visible</a><br></li>
+    </ol>
+
+
+
+
+
+
+    Notes:
+    <ul>
+      <li>OSX Voice Over has two stages of reading an element. Stage 1 = S1 and Stage 2 = S2</li>
+    </ul>
+
+    <table class="table-reset">
+      <thead>
+      <th>Link</th>
+      <th>NVDA 2019.3.1</th>
+      <th>VO on OSX Mojave (10.14.6)</th>
+<!--      <th>VO on iOS (iPad)</th>-->
+<!--      <th>JAWS 15</th>-->
+      </thead>
+      <tbody>
+      <tr>
+        <td>1. Different title and anchor text:<br>
+          <code>&lt;a href=&quot;#&quot; title=&quot;Download PDF T&quot;&gt;Annual Report Visible&lt;/a&gt;</code>
+        </td>
+        <td>Anchor text + title
+          <ul>
+            <li>"Annual Report Visible  link    Download PDF T"</li>
+          </ul>
+        </td>
+        <td>Anchor text + title
+          <ul>
+            <li>S1: "link, Annual Report Visible"</li>
+            <li>S2: "Download PDF T, You are currently on a link, inside of web content. To click on this link, press
+              Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow."
+            </li>
+          </ul>
+        </td>
+<!--        <td>Anchor text + title</td>-->
+<!--        <td>Anchor text + title</td>-->
+      </tr>
+      <tr>
+        <td>2. Identical title and anchor text:<br>
+          <code>&lt;a href=&quot;#&quot; title=&quot;Annual Report Visible&quot;&gt;Annual Report Visible&lt;/a&gt;</code></td>
+        <td>Anchor text + title
+          <ul>
+            <li>"Annual Report Visible  link    Annual Report Visible"</li>
+          </ul>
+        </td>
+        <td>Anchor text
+          <ul>
+            <li>S1: "link, Annual Report Visible"</li>
+            <li>S2: "You are currently on a link, inside of web content. To click on this link, press
+              Control-Option-Space. To
+              exit this web area, press Control-Option-Shift-Up Arrow."
+            </li>
+          </ul>
+        </td>
+<!--        <td>Anchor text + title</td>-->
+<!--        <td>Only anchor text</td>-->
+      </tr>
+      <tr>
+        <td>3. Aria-label present besides anchor text:<br>
+          <code>&lt;a href=&quot;#&quot; aria-label=&quot;Download PDF A L&quot;&gt;Annual Report Visible&lt;/a&gt;</code></td>
+        <td>Aria-label
+          <ul>
+            <li>"Download PDF A L  link"</li>
+          </ul>
+        </td>
+        <td>Aria-label
+          <ul>
+            <li>S1: "link, Download PDF A L"</li>
+            <li>S2: "You are currently on a link, inside of web content. To click on this link, press
+              Control-Option-Space. To
+              exit this web area, press Control-Option-Shift-Up Arrow."
+            </li>
+          </ul>
+        </td>
+<!--        <td>Aria-label</td>-->
+<!--        <td>Aria-label</td>-->
+      </tr>
+      <tr>
+        <td>4. Both Aria-label and title present besides anschor text:<br>
+          <code>&lt;a href=&quot;#&quot; aria-label=&quot;Download PDF A L&quot; title=&quot;Annual Report T&quot;&gt;Annual Report Visible&lt;/a&gt;</code></td>
+        <td>Aria-label + title
+          <ul>
+            <li>"Download PDF A L  link    Annual Report T"</li>
+          </ul>
+        </td>
+        <td>Aria-label + title
+          <ul>
+            <li>S1: "link, Download PDF A L"</li>
+            <li>S2: "Annual Report T, You are currently on a link, inside of web content. To click on this link, press
+              Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow."
+            </li>
+          </ul>
+        </td>
+<!--        <td>Aria-label + title</td>-->
+<!--        <td>Aria-label + title</td>-->
+      </tr>
+
+
+      </tbody>
+    </table>
+
+    <h2>Cards</h2>
+
+    <div class="teaser-wrap">
+      <a href="#" aria-label="View the teaser video." aria-describedby="teaser1"><img id="teaser1" src="teaser-01.png"
+                                                                                      height="138" width="245"
+                                                                                      alt="Great drinks with gin!"/></a><br/>
+      <a href="#">Product video teaser text</a>
+    </div>
+    <div class="teaser-wrap">
+      <img src="teaser-02.png" height="138" width="245" alt="Orange martini."/><br/>
+      <a href="#">Article Teaser Text</a>
+    </div>
+    <div class="teaser-wrap">
+      <img src="teaser-03.png" height="138" width="245"/><br/>
+      <a href="#">Another Article Teaser Text</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+  <meta charset="utf-8"/>
+  <meta name="author" content="CorporateTool.Net"/>
+  <meta name="Keywords" content="accessibility html aria WCAG"/>
+  <meta name="Description" content="A test web page for forms accessibility implementations"/>
+  <meta name="robots" content="all"/>
+  <meta name="docref" content="a11y form test - a11yforms.html"/>
+  <title aria-label="Accessibility Forms Test Page - CorporateTool dot Net">Accessibility Forms Test Page -
+    CorporateTool.Net</title>
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="resources/images/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="icon" href="resources/images/favicon.ico"/>
+  <link type="text/css" rel="stylesheet" href="resources/css/main.css"/>
+
+  <!--	<link type="text/css" rel="stylesheet" href="resources/css/secondary.css" /> -->
+  <!--[if IE]>
+  <![endif]-->
+  <!--	<link type="text/css" rel="stylesheet" href="resources/css/ie.css" media="screen" /> -->
+
+  <!--
+    <script type="text/javascript" src="resources/js/jquery/jquery.js"></script>
+  -->
+
+  <script>
+    // Menu Set
+    /*
+        $(document).ready(function() {
+          $("#headernav img").hover(
+            function() { $(this).attr("src", $(this).attr("src").replace("0", "1")); },
+            function() { $(this).attr("src", $(this).attr("src").replace("1", "0")); }
+          );
+        });
+    */
+  </script>
+</head>
+<body>
+<div id="container">
+  <header id="header">
+    <br class="clear"/>
+  </header>
+
+
+  <div class="product-qty-selector pricing-cases">
+    <fieldset aria-label="Cases" aria-describedby="pcqp-1">
+      <label class="product-card-qty-label" aria-label="Cases">Cases</label>
+      <div class="product-card-qty">
+        <div class="qty">
+          <button type="button" class="qty-button qty-minus" aria-label="decrease quantity of cases">
+                <span class="qty-button-icon" aria-hidden="true">
+                    <svg aria-hidden="true" data-prefix="far" data-icon="minus" class="svg-inline--fa fa-minus fa-w-12"
+                         role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <path fill="currentColor"
+                              d="M368 224H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h352c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z">
+                        </path>
+                    </svg>
+                </span>
+          </button>
+          <input type="number" name="cases" pattern="[0-9]*" value="0" class="qty-input qty-input-cases"
+                 aria-label="quantity of cases">
+          <button type="button" class="qty-button qty-plus" aria-label="increase quantity of cases">
+                <span class="qty-button-icon" aria-hidden="true"> <svg aria-hidden="true" data-prefix="fal"
+                                                                       data-icon="plus"
+                                                                       class="svg-inline--fa fa-plus fa-w-12" role="img"
+                                                                       xmlns="http://www.w3.org/2000/svg"
+                                                                       viewBox="0 0 384 512">
+                        <path fill="currentColor"
+                              d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z">
+                        </path>
+                    </svg>
+                </span>
+          </button>
+        </div>
+      </div>
+      
+      <span id="pcqp-1">
+        <span class="product-card-qty-price" aria-label="$211.20">$211.20</span>
+        <span class="product-card-qty-price-label">Price</span>
+      </span>
+    </fieldset>
+  </div>
+
+  <div id="chewycenter">
+    <h1>CT.Net Accessibility Form Test Page</h1>
+    <form>
+      <h2>Single line text fields</h2>
+      <p>
+        <label for="comment1">Add a comment here:</label>
+        <input type="text" id="comment1" name="comment1" value="I'm a text field">
+      </p>
+      <p>
+        <label for="placeholder">Add a comment here (with placeholder):</label>
+        <input type="text" id="placeholder" name="placeholder" placeholder="I'm placeholder text">
+      </p>
+      <p>
+        <label for="textfieldDisabled">Add a comment here (with disabled attribute):</label>
+        <input type="text" id="textfieldDisabled" name="textfieldDisabled" disabled value="I'm a disabled text field">
+      </p>
+      <p>
+        <label for="textFieldReadOnly">Add a comment here (with readonly attribute):</label>
+        <input type="text" id="textFieldReadOnly" name="textFieldReadOnly" readonly value="I'm a read only text field">
+      </p>
+      <p>
+        <label for="email">Enter your email address:</label>
+        <input type="email" id="email" name="email" multiple>
+      </p>
+      <p>
+        <label for="pwd">Enter your password:</label>
+        <input type="password" id="pwd" name="pwd">
+      </p>
+      <p>
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="search">
+      </p>
+      <p>
+        <label for="tel">Enter your phone number:</label>
+        <input type="tel" id="tel" name="tel">
+      </p>
+      <p>
+        <label for="url">Web address:</label>
+        <input type="url" id="url" name="url">
+      </p>
+      <h2>Multiple line text field example</h2>
+      <p>
+        <label for="comment2">Add a comment here:</label>
+        <textarea id="comment2" name="comment2" cols="30" rows="10">
+This is my default content.
+          </textarea>
+      </p>
+      <p>
+        <label for="textAreaPlaceholder">Add a comment here (with placeholder):</label>
+        <textarea id="textAreaPlaceholder" name="textAreaPlaceholder"
+                  placeholder="I'm placeholder text for the text area" cols="30" rows="10"></textarea>
+      </p>
+      <p>
+        <label for="textareaDisabled">Add a comment here (with disabled attribute):</label>
+        <textarea id="textareaDisabled" name="textareaDisabled" disabled cols="30" rows="10">
+I'm a disabled text area.
+          </textarea>
+      </p>
+      <p>
+        <label for="textAreaReadOnly">Add a comment here (with readonly attribute):</label>
+        <textarea id="textAreaReadOnly" name="textAreaReadOnly" readonly cols="30" rows="10">
+I'm a read only text area
+          </textarea>
+      </p>
+      <h2>Drop down content examples</h2>
+      <p>
+        <label for="simple">A simple select box:</label>
+        <select id="simple" name="simple">
+          <option>Banana</option>
+          <option>Cherry</option>
+          <option>Lemon</option>
+        </select>
+      </p>
+      <p>
+        <label for="selectDisabled">A simple disabled select box:</label>
+        <select id="selectDisabled" name="selectDisabled" disabled>
+          <option>Banana</option>
+          <option>Cherry</option>
+          <option>Lemon</option>
+        </select>
+      </p>
+      <p>
+        <label for="groups">Select box with option groups:</label>
+        <select id="groups" name="groups">
+          <optgroup label="fruits">
+            <option>Banana</option>
+            <option selected>Cherry</option>
+            <option>Lemon</option>
+          </optgroup>
+          <optgroup label="vegetables">
+            <option>Carrot</option>
+            <option>Eggplant</option>
+            <option>Potato</option>
+          </optgroup>
+        </select>
+      </p>
+      <p>
+        <label for="multi">Select box allowing multiple selections:</label>
+        <select multiple id="multi" name="multi">
+          <option>Banana</option>
+          <option>Cherry</option>
+          <option>Lemon</option>
+        </select>
+      </p>
+      <p>
+        <label for="myFruit1">What's your favorite fruit?</label>
+        <input type="text" name="myFruit1" id="myFruit1" list="mySuggestion">
+        <datalist id="mySuggestion">
+          <option>Apple</option>
+          <option>Banana</option>
+          <option>Blackberry</option>
+          <option>Blueberry</option>
+          <option>Lemon</option>
+          <option>Lychee</option>
+          <option>Peach</option>
+          <option>Pear</option>
+        </datalist>
+      </p>
+      <p>
+        <label for="myFruit2">What is your favorite fruit? (With fallback)</label>
+        <input type="text" id="myFruit2" name="myFruit2" list="fruitList">
+        <datalist id="fruitList">
+          <label for="suggestion">or pick a fruit</label>
+          <select id="suggestion" name="altFruit">
+            <option>Apple</option>
+            <option>Banana</option>
+            <option>Blackberry</option>
+            <option>Blueberry</option>
+            <option>Lemon</option>
+            <option>Lychee</option>
+            <option>Peach</option>
+            <option>Pear</option>
+          </select>
+        </datalist>
+      </p>
+      <h2>Checkable items examples</h2>
+      <fieldset>
+        <legend>Choose all the vegetables you like to eat</legend>
+        <ul>
+          <li>
+            <label for="carrots">Carrots</label>
+            <input type="checkbox" checked id="carrots" name="carrots" value="carrots">
+          </li>
+          <li>
+            <label for="peas">Peas</label>
+            <input type="checkbox" id="peas" name="peas" value="peas">
+          </li>
+          <li>
+            <label for="cabbage">Cabbage</label>
+            <input type="checkbox" id="cabbage" name="cabbage" value="cabbage">
+          </li>
+          <li>
+            <label for="cauli">Cauliflower</label>
+            <input type="checkbox" id="cauli" name="cauli" value="cauli">
+          </li>
+          <li>
+            <label for="broc">Broccoli</label>
+            <input type="checkbox" id="broc" name="broc" value="broc">
+          </li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>What is your favorite meal?</legend>
+        <ul>
+          <li>
+            <label for="soup">Soup</label>
+            <input type="radio" checked id="soup" name="meal" value="soup">
+          </li>
+          <li>
+            <label for="curry">Curry</label>
+            <input type="radio" id="curry" name="meal" value="curry">
+          </li>
+          <li>
+            <label for="pizza">Pizza</label>
+            <input type="radio" id="pizza" name="meal" value="pizza">
+          </li>
+          <li>
+            <label for="tacos">Tacos</label>
+            <input type="radio" id="tacos" name="meal" value="tacos">
+          </li>
+          <li>
+            <label for="bolognaise">Bolognaise</label>
+            <input type="radio" id="bolognaise" name="meal" value="bolognaise">
+          </li>
+        </ul>
+      </fieldset>
+      <hr>
+      <p>
+        <button type="submit">Submit me!</button>
+      </p>
+    </form>
+    <div class="leftcontent left">
+    </div>
+    <div id="rightaction" class="right">
+    </div>
+    <br class="clear"/>
+  </div>
+  <footer id="footer">
+    <a href="index.html">Back to main index</a>
+    <div class="footercenter">&copy; 2019 CorporateTool.Net All Rights Reserved.</div>
+  </footer>
+
+  You can use a fieldset tag to wrap the form elements, and a legand tag to describe them, and have the legend be
+  vissibly hidden. E.g.
+
+  <form id="customerRegisterForm" action="/us/en/login/register" method="post" novalidate="novalidate"><h3>New to
+    Schick?</h3>
+    <fieldset>
+      <legend class="" visibly-hidden
+      "">New to Schick? Let's get you all set up. Creating an account with us will allow you to check out faster, track
+      orders and more.</legend>"
+      [mark up for lebel and form elements etc]
+    </fieldset>
+  </form>
+
+  <div class="visible-xs">
+    <button type="submit" data-toggle="collapse" class="btn-custom secondary-btn black sign-up-btn"
+            data-target="#signUpContainer">SIGN UP
+    </button>
+  </div>
+  <div id="signUpContainer" class="hide-mobile collapse">
+    <p class="eyebrow-desktop">Let's get you all set up.</p>
+    <p class="signup-msg">Creating an account with us will allow you to check out faster, track orders and more.</p>
+
+    </fieldset>
+    </form>
+
+
+  </div>
+</body>
+</html>

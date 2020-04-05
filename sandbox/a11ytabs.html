@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+  <meta charset="utf-8"/>
+  <meta name="author" content="CorporateTool.Net"/>
+  <meta name="Keywords" content="accessibility html aria WCAG"/>
+  <meta name="Description" content="A test web page for forms accessibility implementations"/>
+  <meta name="robots" content="all"/>
+  <meta name="docref" content="a11y form test - a11yalttext.html"/>
+  <title aria-label="Accessibility Tabs Test Page">Accessibility Tabs Test Page</title>
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="resources/images/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="icon" href="resources/images/favicon.ico"/>
+  <link type="text/css" rel="stylesheet" href="resources/css/main.css"/>
+
+  <!--	<link type="text/css" rel="stylesheet" href="resources/css/secondary.css" /> -->
+  <!--[if IE]>
+  <![endif]-->
+  <!--	<link type="text/css" rel="stylesheet" href="resources/css/ie.css" media="screen" /> -->
+
+  <!--
+    <script type="text/javascript" src="resources/js/jquery/jquery.js"></script>
+  -->
+
+  <script>
+    // Menu Set
+    /*
+        $(document).ready(function() {
+          $("#headernav img").hover(
+            function() { $(this).attr("src", $(this).attr("src").replace("0", "1")); },
+            function() { $(this).attr("src", $(this).attr("src").replace("1", "0")); }
+          );
+        });
+    */
+  </script>
+  <style>
+    .table-reset {
+    }
+
+    .table-reset td {
+      min-width: 200px;
+      padding: 5px;
+      border: 1px solid black;
+      vertical-align: top;
+    }
+
+    .teaser-wrap {
+      float: left;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <div id="chewycenter">
+    <h1>Accessibility Tabs Test Page</h1>
+    <a href="#" id="topAnchor">Top Anchor</a>
+    <h2>Tabs</h2>
+    <div class="tabs">
+      <div role="tablist" aria-label="Sample Tabs">
+        <button role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1" tabindex="0">
+          First Tab
+        </button>
+        <button role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" tabindex="-1">
+          Second Tab
+        </button>
+        <button role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3" tabindex="-1">
+          Third Tab
+        </button>
+      </div>
+      <div id="panel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
+        <p>Content for the first panel</p>
+      </div>
+      <div id="panel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2" hidden>
+        <p>Content for the second panel</p>
+      </div>
+      <div id="panel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3" hidden>
+        <p>Content for the third panel</p>
+      </div>
+    </div>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const tabs = document.querySelectorAll('[role="tab"]');
+        const tabList = document.querySelector('[role="tablist"]');
+
+        // Add a click event handler to each tab
+        tabs.forEach(tab => {
+          tab.addEventListener("click", changeTabs);
+        });
+
+        // Enable arrow navigation between tabs in the tab list
+        let tabFocus = 0;
+
+        tabList.addEventListener("keydown", e => {
+          // Move right
+          if (e.keyCode === 39 || e.keyCode === 37) {
+            tabs[tabFocus].setAttribute("tabindex", -1);
+            if (e.keyCode === 39) {
+              tabFocus++;
+              // If we're at the end, go to the start
+              if (tabFocus >= tabs.length) {
+                tabFocus = 0;
+              }
+              // Move left
+            } else if (e.keyCode === 37) {
+              tabFocus--;
+              // If we're at the start, move to the end
+              if (tabFocus < 0) {
+                tabFocus = tabs.length - 1;
+              }
+            }
+
+            tabs[tabFocus].setAttribute("tabindex", 0);
+            tabs[tabFocus].focus();
+          }
+        });
+      });
+
+      function changeTabs(e) {
+        const target = e.target;
+        const parent = target.parentNode;
+        const grandparent = parent.parentNode;
+
+        // Remove all current selected tabs
+        parent
+          .querySelectorAll('[aria-selected="true"]')
+          .forEach(t => t.setAttribute("aria-selected", false));
+
+        // Set this tab as selected
+        target.setAttribute("aria-selected", true);
+
+        // Hide all tab panels
+        grandparent
+          .querySelectorAll('[role="tabpanel"]')
+          .forEach(p => p.setAttribute("hidden", true));
+
+        // Show the selected panel
+        grandparent.parentNode
+          .querySelector(`#${target.getAttribute("aria-controls")}`)
+          .removeAttribute("hidden");
+      }
+    </script>
+</body>
+</html>
