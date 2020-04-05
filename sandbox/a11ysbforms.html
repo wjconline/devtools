@@ -10,8 +10,8 @@
   <meta name="docref" content="a11y form test - a11yforms.html"/>
   <title aria-label="Accessibility Forms Test Page - CorporateTool dot Net">Accessibility Forms Test Page -
     CorporateTool.Net</title>
-  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
-  <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="resources/images/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="icon" href="resources/images/favicon.ico"/>
   <!--  <link type="text/css" rel="stylesheet" href="resources/css/main.css"/>-->
   <!--	<link type="text/css" rel="stylesheet" href="resources/css/secondary.css" /> -->
   <!--[if IE]>
@@ -36,6 +36,50 @@
 </head>
 <body>
 <div id="container">
+  <header id="header">
+    <br class="clear"/>
+  </header>
+
+
+  <div class="product-qty-selector pricing-cases">
+    <fieldset aria-label="Cases" aria-describedby="pcqp-1">
+      <label class="product-card-qty-label" aria-label="Cases">Cases</label>
+      <div class="product-card-qty">
+        <div class="qty">
+          <button type="button" class="qty-button qty-minus" aria-label="decrease quantity of cases">
+                <span class="qty-button-icon" aria-hidden="true">
+                    <svg aria-hidden="true" data-prefix="far" data-icon="minus" class="svg-inline--fa fa-minus fa-w-12"
+                         role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <path fill="currentColor"
+                              d="M368 224H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h352c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z">
+                        </path>
+                    </svg>
+                </span>
+          </button>
+          <input type="number" name="cases" pattern="[0-9]*" value="0" class="qty-input qty-input-cases"
+                 aria-label="quantity of cases">
+          <button type="button" class="qty-button qty-plus" aria-label="increase quantity of cases">
+                <span class="qty-button-icon" aria-hidden="true"> <svg aria-hidden="true" data-prefix="fal"
+                                                                       data-icon="plus"
+                                                                       class="svg-inline--fa fa-plus fa-w-12" role="img"
+                                                                       xmlns="http://www.w3.org/2000/svg"
+                                                                       viewBox="0 0 384 512">
+                        <path fill="currentColor"
+                              d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z">
+                        </path>
+                    </svg>
+                </span>
+          </button>
+        </div>
+      </div>
+
+      <span id="pcqp-1">
+        <span class="product-card-qty-price" aria-label="$211.20">$211.20</span>
+        <span class="product-card-qty-price-label">Price</span>
+      </span>
+    </fieldset>
+  </div>
+
   <div id="chewycenter">
     <h1>CT.Net Accessibility Form Test Page</h1>
     <form>
@@ -233,11 +277,36 @@ I'm a read only text area
     </div>
     <br class="clear"/>
   </div>
+  <footer id="footer">
+    <a href="index.html">Back to main index</a>
+    <div class="footercenter">&copy; 2019 CorporateTool.Net All Rights Reserved.</div>
+  </footer>
 
-<!--  <footer id="footer">
-  Footer
-</footer>-->
+  You can use a fieldset tag to wrap the form elements, and a legand tag to describe them, and have the legend be
+  vissibly hidden. E.g.
 
+  <form id="customerRegisterForm" action="/us/en/login/register" method="post" novalidate="novalidate"><h3>New to
+    Schick?</h3>
+    <fieldset>
+      <legend class="visibly-hidden">New to Schick? Let's get you all set up. Creating an account with us will allow you
+        to check out faster, track
+        orders and more.
+      </legend>
+      [mark up for lebel and form elements etc]
+    </fieldset>
+  </form>
+
+  <div class="visible-xs">
+    <button type="submit" data-toggle="collapse" class="btn-custom secondary-btn black sign-up-btn"
+            data-target="#signUpContainer">SIGN UP
+    </button>
+  </div>
+  <div id="signUpContainer" class="hide-mobile collapse">
+    <p class="eyebrow-desktop">Let's get you all set up.</p>
+    <p class="signup-msg">Creating an account with us will allow you to check out faster, track orders and more.</p>
+    <!--    </fieldset>-->
+    <!--    </form>-->
+  </div>
 </div>
 </body>
 </html>
