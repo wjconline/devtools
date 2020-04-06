@@ -27,14 +27,31 @@
       margin: 0 .25em;
       content: ">";
     }
+    .breadcrumb [aria-current=page], .breadcrumb a[aria-current=page] {
+      color: #333;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
 <div id="container">
   <div id="chewycenter">
     <h1>Accessibility Breadcrumbs Test Page</h1>
-    <a href="#" id="topAnchor">Top Anchor</a>
+    <a href="a11yindex.html" id="topAnchor">Back to A11y Index</a>
+
     <h2>Breadcrumbs</h2>
+
+    <h3>With tabindex=0 li only:</h3>
+
+    <nav class="breadcrumbs" aria-label="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Category One</a></li>
+        <li tabindex="0">Sub Category One</li>
+      </ol>
+    </nav>
+
+    <h3>With tabindex=0 li only and aria-label:</h3>
 
     <nav class="breadcrumbs" aria-label="breadcrumbs">
       <ol>
@@ -43,6 +60,71 @@
         <li tabindex="0" aria-label="Sub Category One - current page">Sub Category One</li>
       </ol>
     </nav>
+
+    <h3>With tabindex=0 li only and aria-current=page:</h3>
+
+    <nav class="breadcrumbs" aria-label="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Category One</a></li>
+        <li tabindex="0" aria-current="page">Sub Category One</li>
+      </ol>
+    </nav>
+
+    <h3>With tabindex=0 li only, aria-label and aria-current=page:</h3>
+
+    <nav class="breadcrumbs" aria-label="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Category One</a></li>
+        <li tabindex="0" aria-current="page" aria-label="Sub Category One - current page">Sub Category One</li>
+      </ol>
+    </nav>
+
+    <hr>
+
+    <h3>With link to #</h3>
+
+    <nav class="breadcrumbs" aria-label="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Category One</a></li>
+        <li><a href="#">Sub Category One</a></li>
+      </ol>
+    </nav>
+
+    <h3>With link to #, aria-label:</h3>
+
+    <nav class="breadcrumbs" aria-label="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Category One</a></li>
+        <li><a href="#" aria-label="Sub Category One - current page">Sub Category One</a></li>
+      </ol>
+    </nav>
+
+    <h3>With link to #, aria-current=page:</h3>
+
+    <nav class="breadcrumbs" aria-label="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Category One</a></li>
+        <li><a href="#" aria-current="page">Sub Category One</a></li>
+      </ol>
+    </nav>
+
+    <h3>With link to #, aria-label and aria-current=page:</h3>
+
+    <nav class="breadcrumbs" aria-label="breadcrumbs">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="#">Category One</a></li>
+        <li><a href="#" aria-current="page" aria-label="Sub Category One - current page">Sub Category One</a></li>
+      </ol>
+    </nav>
+
+
+
 
 
   </div>
