@@ -7,46 +7,13 @@
   <meta name="Keywords" content="accessibility html aria WCAG"/>
   <meta name="Description" content="A test web page for tabs accessibility implementations"/>
   <meta name="robots" content="all"/>
-  <meta name="docref" content="a11y tab test - a11ysbtabs.html"/>
-  <title aria-label="Accessibility Tabs Sandbox Test Page">Accessibility Tabs Sandbox Test Page</title>
-  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="resources/images/favicon.ico"/>
-  <link type="image/vnd.microsoft.icon" rel="icon" href="resources/images/favicon.ico"/>
-  <link type="text/css" rel="stylesheet" href="resources/css/main.css"/>
-
-  <!--	<link type="text/css" rel="stylesheet" href="resources/css/secondary.css" /> -->
-  <!--[if IE]>
-  <![endif]-->
-  <!--	<link type="text/css" rel="stylesheet" href="resources/css/ie.css" media="screen" /> -->
-
-  <!--
-    <script type="text/javascript" src="resources/js/jquery/jquery.js"></script>
-  -->
-
+  <meta name="docref" content="a11y tab test - a11ytabs.html"/>
+  <title aria-label="Accessibility Tabs Test Page">Accessibility Tabs Test Page</title>
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
   <script>
-    // Menu Set
-    /*
-        $(document).ready(function() {
-          $("#headernav img").hover(
-            function() { $(this).attr("src", $(this).attr("src").replace("0", "1")); },
-            function() { $(this).attr("src", $(this).attr("src").replace("1", "0")); }
-          );
-        });
-    */
   </script>
   <style>
-    .table-reset {
-    }
-
-    .table-reset td {
-      min-width: 200px;
-      padding: 5px;
-      border: 1px solid black;
-      vertical-align: top;
-    }
-
-    .teaser-wrap {
-      float: left;
-    }
   </style>
 </head>
 <body>
@@ -55,6 +22,16 @@
     <h1>Accessibility Tabs Test Page</h1>
     <a href="#" id="topAnchor">Top Anchor</a>
     <h2>Tabs</h2>
+
+    <h3>Old School Implementation 1</h3>
+    Use the keyboard to tab through all the tabs:
+
+    <h3>Old School Implementation 2</h3>
+    Use the keyboard to tab through all the tabs; selection moves focus to first item in the tab's revealed content area:
+
+
+    <h3>MDN Implementation</h3>
+    With keyboard navigation between tabs:
     <div class="tabs">
       <div role="tablist" aria-label="Sample Tabs">
         <button role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1" tabindex="0">
@@ -139,5 +116,7 @@
           .removeAttribute("hidden");
       }
     </script>
+  </div>
+</div>
 </body>
 </html>
