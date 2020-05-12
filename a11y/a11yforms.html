@@ -174,28 +174,48 @@ I'm a read only text area
         </datalist>
       </p>
       <h2>Checkable items examples</h2>
+      <label for="carrots-id">Carrots</label>
+      <input type="checkbox" id="carrots-id" name="carrots-name" value="carrots-value"><br>
+      <label for="peas-id">Peas</label>
+      <input type="checkbox" id="peas-id" name="peas-name" value="peas-value" checked>
+      <label for="cabbage-id">Cabbage</label>
+      <input type="checkbox" id="cabbage-id" name="cabbage" value="cabbage" aria-disabled="true">
+
       <fieldset>
         <legend>Choose all the vegetables you like to eat</legend>
         <ul>
           <li>
             <label for="carrots">Carrots</label>
-            <input type="checkbox" checked id="carrots" name="carrots" value="carrots">
+            <input type="checkbox" id="carrots" name="carrots" value="carrots">
           </li>
           <li>
+            checked
             <label for="peas">Peas</label>
-            <input type="checkbox" id="peas" name="peas" value="peas">
+            <input type="checkbox" id="peas" name="peas" value="peas" checked>
           </li>
           <li>
+            aria-disabled
             <label for="cabbage">Cabbage</label>
-            <input type="checkbox" id="cabbage" name="cabbage" value="cabbage">
+            <input type="checkbox" id="cabbage" name="cabbage" value="cabbage" aria-disabled="true">
           </li>
           <li>
+            disable
             <label for="cauli">Cauliflower</label>
-            <input type="checkbox" id="cauli" name="cauli" value="cauli">
+            <input type="checkbox" id="cauli" name="cauli" value="cauli" disabled>
           </li>
           <li>
-            <label for="broc">Broccoli</label>
-            <input type="checkbox" id="broc" name="broc" value="broc">
+            within label
+            <label>Broccoli
+              <input type="checkbox" id="broc" name="broc" value="broc">
+            </label>
+          </li>
+          <li>
+            aria-checked
+            <label for="beans">Beans</label>
+            <button role="checkbox" id="beans" name="beans" value="beans" aria-checked="true">X</button><br>
+          </li>
+          <li>
+            <span role="checkbox" aria-checked="false" tabindex="0" aria-labelledby="chk1-label">O</span> <label id="chk1-label">Beats</label>
           </li>
         </ul>
       </fieldset>

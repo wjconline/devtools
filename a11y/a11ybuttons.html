@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+  <meta charset="utf-8"/>
+  <meta name="author" content="CorporateTool.Net"/>
+  <meta name="Keywords" content="accessibility html aria WCAG"/>
+  <meta name="Description" content="A test web page for tabs accessibility implementations"/>
+  <meta name="robots" content="all"/>
+  <meta name="docref" content="a11y tab test - a11ybuttons.html"/>
+  <title aria-label="Accessibility Buttons Test Page">Accessibility Buttons Test Page</title>
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
+  <script></script>
+  <style>
+    /* I really need to find a disabled style that fits :) */
+    .disabled {
+      color: rgba(16, 16, 16, 0.3);
+      background-color: #FFF; /* rgba(19, 1, 1, 0.3);  rgba(239, 239, 239, 0.3); */
+      /* border-color: rgba(118, 118, 118, 0.3); */
+
+      align-items: flex-start;
+      text-align: center;
+      cursor: default;
+      padding-top: 2px;
+      padding-right: 6px;
+      padding-bottom: 3px;
+      padding-left: 6px;
+      border-top-width: 2px;
+      border-right-width: 2px;
+      border-bottom-width: 2px;
+      border-left-width: 2px;
+      border-top-style: outset;
+      border-right-style: outset;
+      border-bottom-style: outset;
+      border-left-style: outset;
+      border-top-color: buttonface;
+      border-right-color: buttonface;
+      border-bottom-color: buttonface;
+      border-left-color: buttonface;
+      border-image-source: initial;
+      border-image-slice: initial;
+      border-image-width: initial;
+      border-image-outset: initial;
+      border-image-repeat: initial;
+      /*background-color: buttonface;*/
+      box-sizing: border-box;
+
+      -webkit-appearance: button;
+      -webkit-writing-mode: horizontal-tb !important;
+      text-rendering: auto;
+      letter-spacing: normal;
+      word-spacing: normal;
+      text-transform: none;
+      text-indent: 0px;
+      text-shadow: none;
+      display: inline-block;
+      text-align: center;
+      align-items: flex-start;
+      cursor: default;
+      /*background-color: buttonface;*/
+      box-sizing: border-box;
+      margin: 0em;
+      font: 400 11px system-ui;
+      padding: 1px 7px 2px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(216, 216, 216) rgb(209, 209, 209) rgb(186, 186, 186);
+      border-image: initial;
+
+    }
+
+    .example-label {
+      display: inline-block;
+      width: 260px;
+      margin-bottom:5px;
+      font-weight: bold;
+    }
+    .table-reset {
+    }
+
+    .table-reset td {
+      min-width: 200px;
+      padding: 5px;
+      border: 1px solid black;
+      vertical-align: top;
+    }
+
+  </style>
+</head>
+<body>
+<div id="container">
+  <div id="chewycenter">
+    <h1>Accessibility Buttons Test Page</h1>
+    <a href="#" id="topAnchor">Top Anchor</a>
+    <h2>Buttons</h2>
+
+    <!-- <h3>Buttons</h3> -->
+    <span class="example-label">Plain Button: </span>
+    <button>Wine</button><br>
+
+    <span class="example-label">With aria-label: </span>
+    <button aria-label="See all the Spirits products we have available!">Spirits</button><br>
+
+    <span class="example-label">With aria-labelledby: </span>
+    <button aria-labelledby="beer-description">Beer & Other</button>
+    <span id="beer-description">See all the Beer products we have available!</span><br>
+
+    <span class="example-label">With aria-describedby: </span>
+    <button aria-describedby="recipes-description">Recipes</button>
+    <span id="recipes-description">Learn many new recipes from our top mixoligists</span><br>
+
+    <span class="example-label">with aria-disabled="true": </span>
+    <button aria-disabled="true" class="disabled">More</button><br>
+
+    <span class="example-label">aria-disabled="true" and aria-label: </span>
+    <button aria-disabled="true" aria-label="There is no information for Deals at this time" class="disabled">Deals</button><br>
+
+    <span class="example-label">with disabled: </span>
+    <button disabled>Even More</button><br>
+
+    <span class="example-label">With label: </span>
+    <label for="preorder">Advanced Orders</label>
+    <button id="preorder">Preorder</button><br>
+
+    <span class="example-label">Wrapped with label: </span>
+    <label for="deliver-now">Get delivery now!
+      <button id="deliver-now">Delivery</button>
+    </label><br>
+
+    <span class="example-label">Link with a role="button": </span>
+    <a href="#" role="button" onclick="alert('here');">Print Invoice</a><br>
+
+    <span class="example-label">Button with aria-expanded="true": </span>
+    <button type="button" aria-expanded="true">Colors +</button><br>
+
+    <span class="example-label">Button with aria-expanded="false: </span>
+    <button type="button" aria-expanded="false">Size -</button><br>
+
+    <br><br>
+    Notes:
+    <ul>
+      <li>OSX Voice Over has two stages of reading an element. Stage 1 = S1 and Stage 2 = S2</li>
+    </ul>
+
+    <table class="table-reset">
+      <thead>
+      <th>Buttons</th>
+      <th>NVDA 2019.3.1</th>
+      <th>VO on OSX Mojave (10.14.6)</th>
+      <!--      <th>VO on iOS (iPad)</th>-->
+      <!--      <th>JAWS 15</th>-->
+      </thead>
+      <tbody>
+      <tr>
+        <td>1. Plain Button:<br>
+          <code>&lt;button&gt;Wine&lt;/button&gt;</code>
+        </td>
+        <td>reads: button text + element type
+          <ul>
+            <li>"Wine  button"</li>
+          </ul>
+        </td>
+        <td>reads: button text + element type
+          <ul>
+            <li>S1: "Wine, button"</li>
+            <li>S2: "You are currently on a button, inside of web content. To click on this button, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow."</li>
+          </ul>
+        </td>
+        <!--        <td>Anchor text + title</td>-->
+        <!--        <td>Anchor text + title</td>-->
+      </tr>
+      <tr>
+        <td>2. With aria-label:<br>
+          <code>&lt;button aria-label="See all the Spirits products we have available!"&gt;Spirits&lt;/button&gt;</code>
+        </td>
+        <td>reads: aria-label + element type
+          <ul>
+            <li>"See all the Spirits products we have available!  button"</li>
+          </ul>
+        </td>
+        <td>reads: aria-label + element type
+          <ul>
+            <li>S1: "See all the Spirit products we have available!, button"</li>
+            <li>S2: "You are currently on a button, inside of web content. To click on this button, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow."</li>
+          </ul>
+        </td>
+        <!--        <td>Anchor text + title</td>-->
+        <!--        <td>Only anchor text</td>-->
+      </tr>
+      <tr>
+        <td>3. With aria-labelledby:<br>
+          <code>&lt;button aria-labelledby="beer-description"&gt;Beer & Other&lt;/button&gt;
+            &lt;span id="beer-description"&gt;See all the Beer products we have available!&lt;/span&gt;</code>
+        </td>
+        <td>reads: aria-labelledby + element type
+          <ul>
+            <li>"See all the Beer products we have available!  button"</li>
+          </ul>
+        </td>
+        <td>reads: aria-labelledby + element type
+          <ul>
+            <li>S1: "See all the Beer products we have available!, button"</li>
+            <li>S2: "You are currently on a button, inside of web content. To click on this button, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow."</li>
+          </ul>
+        </td>
+        <!--        <td>Aria-label</td>-->
+        <!--        <td>Aria-label</td>-->
+      </tr>
+      <tr>
+        <td>4.  With aria-describedby:<br>
+          <code>&lt;button aria-describedby="recipes-description"&gt;Recipes&lt;/button&gt;
+            &lt;span id="recipes-description"&gt;Learn many new recipes from our top mixoligists&lt;/span&gt;</code>
+        </td>
+        <td>reads: button text + element type + aria-describedby
+          <ul>
+            <li>"Recipes  button    Learn many new recipes from our top mixoligists"</li>
+          </ul>
+        </td>
+        <td>reads: button text + element type; aria-describedby in Stage 2
+          <ul>
+            <li>S1: "Recipes, button"</li>
+            <li>S2: "Learn many new recipes from our top mixoligists, You are currently on a button, inside of web content. To click on this button, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow."</li>
+          </ul>
+        </td>
+        <!--        <td>Aria-label + title</td>-->
+        <!--        <td>Aria-label + title</td>-->
+      </tr>
+
+      <tr>
+        <td>5. With aria-disabled="true":<br>
+          <code>&lt;button aria-disabled="true" class="disabled"&gt;More&lt;/button&gt;</code>
+        </td>
+        <td>reads: button text + element type + "unavailable"
+          <ul>
+            <li>"More  button  unavailable"</li>
+          </ul>
+        </td>
+        <td>reads: button text + "dimmed" + element type; "This item is dimmed." instead of an available click action in Stage 2
+          <ul>
+            <li>S1: "More, dimmed, button"</li>
+            <li>S2: "You are currently on a button, inside of web content. This item is dimmed. To exit this web area, press Control-Option-Shift-Up Arrow."</li>
+          </ul>
+        </td>
+        <!--        <td>Anchor text + title</td>-->
+        <!--        <td>Anchor text + title</td>-->
+      </tr>
+      <tr>
+        <td>6. With aria-disabled="true" and aria-label:<br>
+          <code>&lt;button aria-disabled="true" aria-label="There is no information for Deals at this time" class="disabled"&gt;Deals&lt;/button&gt;</code>
+        </td>
+        <td>reads: aria-label + element type + "unavailable"
+          <ul>
+            <li>"There is no information for Deals at this time  button  unavailable"</li>
+          </ul>
+        </td>
+        <td>reads: aria-label + "dimmed" + element type; "This item is dimmed." instead of an available click action in Stage 2
+          <ul>
+            <li>S1: "There is no information for Deals at this time,dimmed, button"</li>
+            <li>S2: "You are currently on a button, inside of web content. This item is dimmed. To exit this web area, press Control-Option-Shift-Up Arrow."</li>
+          </ul>
+        </td>
+        <!--        <td>Anchor text + title</td>-->
+        <!--        <td>Only anchor text</td>-->
+      </tr>
+      <tr>
+        <td>7. With disabled:<br>
+          <code>&lt;button disabled&gt;Even More&lt;/button&gt;</code>
+        </td>
+        <td>Note: Even More is skipped as it is disabled</td>
+        <td>Note: Even More is skipped as it is disabled</td>
+        <!--        <td>Aria-label</td>-->
+        <!--        <td>Aria-label</td>-->
+      </tr>
+      <tr>
+        <td>8. With label:<br>
+          <code>&lt;label for="preorder"&gt;Advanced Orders&lt;/label&gt;
+            &lt;button id="preorder"&gt;Preorder&lt;/button&gt;</code>
+        </td>
+        <td>reads: label + element type (Does not read button element text)
+          <ul>
+            <li>"Advanced Orders  button"</li>
+          </ul>
+        </td>
+        <td>reads: label + element type (Does not read button element text)
+          <ul>
+            <li>S1: "Advanced Orders, button"</li>
+            <li>S2: "You are currently on a button, inside of web content. To click on this button, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow."</li>
+          </ul>
+          <strong>Note: Safari reads this differently for Stage 1</strong><br>
+          reads: element text + label + element type
+          <ul>
+            <li>S1: "Preorder Advanced Orders, button"</li>
+          </ul>
+        </td>
+        <!--        <td>Aria-label + title</td>-->
+        <!--        <td>Aria-label + title</td>-->
+      </tr>
+      <tr>
+        <td>9. Wrapped with label:<br>
+          <code>&lt;label for="deliver-now"&gt;Get delivery now!
+            &lt;button id="deliver-now"&gt;Delivery&lt;/button&gt;
+            &lt;/label&gt;</code>
+        </td>
+        <td>reads: label + element type (Does not read button element text)
+          <ul>
+            <li>"Get delivery now!  button"</li>
+          </ul>
+          <strong>Note: FF reads this differently</strong><br>
+          reads: "clickable" + label + element text + element type
+          <ul>
+            <li>"clickable  Get delivery now! Delivery  button "</li>
+          </ul>
+        </td>
+        <td>reads: label + element type
+          <ul>
+            <li>S1: "Get delivery now!, button"</li>
+            <li>S2: "You are currently on a button, inside of web content. To click on this button, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow."</li>
+          </ul>
+
+          <strong>Note: Safari reads this differently for Stage 1</strong><br>
+          reads: element text + label + element type
+          <ul>
+            <li>S1: "Delivery Get delivery now!, button"</li>
+          </ul>
+
+          <strong>Note: FF reads this differently for Stage 1</strong><br>
+          reads: label + element text + element type
+          <ul>
+            <li>S1: "Get delivery now! Delivery, button"</li>
+          </ul>
+
+        </td>
+        <!--        <td>Aria-label + title</td>-->
+        <!--        <td>Aria-label + title</td>-->
+      </tr>
+      <tr>
+        <td>10. Link with a role="button":<br>
+          <code>&lt;a href="#" role="button" onclick="alert('here');"&gt;Print Invoice&lt;/a&gt;</code>
+        </td>
+        <td>reads: element text + "button" element type
+          <ul>
+            <li>"Print Invoice  button"</li>
+          </ul>
+        </td>
+        <td>reads: element text + "button" element type
+          <ul>
+            <li>S1: "Print Invoice, button"</li>
+            <li>S2: "You are currently on a button, inside of web content. To click on this button, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow."</li>
+          </ul>
+        </td>
+        <!--        <td>Aria-label + title</td>-->
+        <!--        <td>Aria-label + title</td>-->
+      </tr>
+      <tr>
+        <td>11. Button with aria-expanded="true":<br>
+          <code>&lt;button aria-expanded="true"&gt;Colors&lt;/button&gt;</code>
+        </td>
+        <td>reads: element text + "expanded" + element type
+          <ul>
+            <li>"Colors  button  expanded"</li>
+          </ul>
+        </td>
+        <td>reads: element text + "expanded" + element type
+          <ul>
+            <li>S1: "Colors, expanded, button"</li>
+            <li>S2: "You are currently on a button, inside of web content. To click on this button, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow."</li>
+          </ul>
+        </td>
+        <!--        <td>Aria-label + title</td>-->
+        <!--        <td>Aria-label + title</td>-->
+      </tr>
+      <tr>
+        <td>12. Button with aria-expanded="false":<br>
+          <code>&lt;button aria-expanded="false"&gt;Size&lt;/button&gt;</code>
+        </td>
+        <td>reads: element text + "collapsed" + element type
+          <ul>
+            <li>"Size  button  collapsed"</li>
+          </ul>
+        </td>
+        <td>reads: element text + "collapsed" + element type
+          <ul>
+            <li>S1: "Colors, collapsed, button"</li>
+            <li>S2: "You are currently on a button, inside of web content. To click on this button, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow."</li>
+          </ul>
+        </td>
+        <!--        <td>Aria-label + title</td>-->
+        <!--        <td>Aria-label + title</td>-->
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+
+  document.addEventListener('focusin', function() {
+    console.log('focusin - focused: ', document.activeElement);
+  }, true);
+
+  document.addEventListener('focus', function() {
+    console.log('focus - focused: ', document.activeElement);
+  }, true);
+
+  document.addEventListener('click', function(event) {
+    console.log('click - focused: ', document.activeElement, event);
+  }, true);
+
+
+</script>
+</body>
+</html>
