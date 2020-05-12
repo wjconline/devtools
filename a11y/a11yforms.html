@@ -41,6 +41,62 @@
     <a href="a11yindex.html" id="topAnchor">Back to A11y Index</a>
 
     <form>
+
+      <h2>Radio buttons</h2>
+      <fieldset>
+        <legend>What is your favorite meal?</legend>
+        <ul>
+          <li>
+            <label for="soup">Soup</label>
+            <input type="radio" checked id="soup" name="meal" value="soup">
+          </li>
+          <li>
+            <label for="curry">Curry</label>
+            <input type="radio" id="curry" name="meal" value="curry">
+          </li>
+          <li>
+            <label for="pizza">Pizza</label>
+            <input type="radio" id="pizza" name="meal" value="pizza">
+          </li>
+          <li>
+            <label for="tacos">Tacos</label>
+            <input type="radio" id="tacos" name="meal" aria-disabled="true" value="tacos">
+          </li>
+          <li>
+            <label for="bolognaise">Bolognaise</label>
+            <input type="radio" id="bolognaise" name="meal" disabled value="bolognaise">
+          </li>
+        </ul>
+      </fieldset>
+
+      <fieldset>
+        <legend>What is your favorite meal?</legend>
+            <label for="soup2">Soup</label>
+            <input type="radio" checked id="soup2" name="meal2" value="soup">
+          <br>
+          
+            <label for="curry2">Curry</label>
+            <input type="radio" id="curry2" name="meal2" value="curry">
+          <br>
+          
+            <label for="pizza2">Pizza</label>
+            <input type="radio" id="pizza2" name="meal2" value="pizza">
+          <br>
+          
+            <label for="tacos2">Tacos</label>
+            <input type="radio" id="tacos2" name="meal2" aria-disabled="true" value="tacos">
+          <br>
+          
+            <label for="bolognaise2">Bolognaise</label>
+            <input type="radio" id="bolognaise2" name="meal2" disabled value="bolognaise">
+<br>
+            <label for="beans2">Beans</label>
+            <button role="radio" id="beans2" name="meal2" value="beans" aria-checked="false">0</button><br>
+
+          <br>
+        </ul>
+      </fieldset>
+      
       <h2>Single line text fields</h2>
       <p>
         <label for="comment1">Add a comment here:</label>
@@ -219,31 +275,7 @@ I'm a read only text area
           </li>
         </ul>
       </fieldset>
-      <fieldset>
-        <legend>What is your favorite meal?</legend>
-        <ul>
-          <li>
-            <label for="soup">Soup</label>
-            <input type="radio" checked id="soup" name="meal" value="soup">
-          </li>
-          <li>
-            <label for="curry">Curry</label>
-            <input type="radio" id="curry" name="meal" value="curry">
-          </li>
-          <li>
-            <label for="pizza">Pizza</label>
-            <input type="radio" id="pizza" name="meal" value="pizza">
-          </li>
-          <li>
-            <label for="tacos">Tacos</label>
-            <input type="radio" id="tacos" name="meal" value="tacos">
-          </li>
-          <li>
-            <label for="bolognaise">Bolognaise</label>
-            <input type="radio" id="bolognaise" name="meal" value="bolognaise">
-          </li>
-        </ul>
-      </fieldset>
+
       <hr>
       <p>
         <button type="submit">Submit me!</button>
