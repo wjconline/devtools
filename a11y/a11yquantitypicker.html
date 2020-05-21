@@ -34,6 +34,10 @@
       clip: rect(1px, 1px, 1px, 1px);
     }
 
+    fieldset {
+      display: inline-block;
+    }
+
   </style>
 </head>
 <body>
@@ -60,86 +64,156 @@
     <!-- <label for="quantity">Qty:</label> -->
 
 
-
-    <br />
-    <br />
+    <br/>
+    <br/>
 
     <div class="product-qty-selector pricing-cases">
-      <label class="product-card-qty-label">Cases
-            <button type="button" aria-label="decrease quantity of cases">
-                <span aria-hidden="true">-</span>
-            </button>
-            <input type="number" name="cases" pattern="[0-9]*" value="0" class="qty-input qty-input-cases"
-                   aria-label="quantity of cases">
-            <button type="button" aria-label="increase quantity of cases">
-                <span class="qty-button-icon" aria-hidden="true">+</span>
-            </button>
-        <span class="product-card-qty-price">$123.85</span>
-        <span class="product-card-qty-price-label">Price</span>
-      </label>
+      <!--      <label class="product-card-qty-label">Cases</label>-->
+
+      <fieldset class="quantity-picker">
+        <legend aria-label="Cases $123.85 List Price">Cases</legend><!--   -->
+        <button type="button" class="qp-decrease-quantity" aria-label="decrease quantity of cases">
+          -
+          <!--<span aria-hidden="true">-</span>-->
+        </button>
+        <input type="number" class="qp-quantity" name="cases" pattern="[0-9]*" value="0" aria-label="quantity of cases">
+        <span aria-live="assertive" aria-atomic="true" class="element-invisible qp-quantity-aria">
+          Quantity is now <span>5</span>
+        </span>
+        <button type="button" class="qp-increase-quantity" aria-label="increase quantity of cases">
+          +
+<!--          <span class="qty-button-icon" aria-hidden="true">+</span>-->
+        </button>
+        <br/>
+        <span id="pricingInfo">
+          <span class="product-card-qty-price">$123.85</span>
+          <span class="product-card-qty-price-label">Price</span>
+        </span>
+      </fieldset>
     </div>
+    <br/>
+    <fieldset class="quantity-picker" aria-describedby="breakageDisclaimer">
+      <legend aria-label="Units $24.00 List Price">Units *</legend><!--   -->
+      <button type="button" class="qp-decrease-quantity" aria-label="decrease quantity of cases">
+        -
+        <!--<span aria-hidden="true">-</span>-->
+      </button>
+      <input type="number" class="qp-quantity" name="cases" pattern="[0-9]*" value="0" aria-label="quantity of cases">
+      <span aria-live="assertive" aria-atomic="true" class="element-invisible qp-quantity-aria">
+          Quantity is now <span>5</span>
+        </span>
+      <button type="button" class="qp-increase-quantity" aria-label="increase quantity of cases">
+        +
+        <!--          <span class="qty-button-icon" aria-hidden="true">+</span>-->
+      </button>
+      <br/>
+      <span id="pricingInfo">
+          <span class="product-card-qty-price">$24.00</span>
+          <span class="product-card-qty-price-label">Price</span>
+        </span>
+    </fieldset>
+    <br/>
+    <div id="breakageDisclaimer">* Breakage Fee is not included in the unit list price</div>
+    <br/>
+    <button>test</button>
+    <!--
+        <div class="product-qty-selector pricing-cases">
+          <label class="product-card-qty-label" aria-label="$123.85 List Price">Cases
+          <div class="product-card-qty">
+            <div class="qty">
+              <button type="button" class="qty-button qty-minus" aria-label="decrease quantity of cases">
+                    <span class="qty-button-icon" aria-hidden="true">
+                      <svg aria-hidden="true" data-prefix="far" data-icon="minus" class="svg-inline--fa fa-minus fa-w-12"
+                           role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <path fill="currentColor"
+                              d="M368 224H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h352c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z">
+                        </path>
+                      </svg>
+                    </span>
+              </button>
+              <input type="number" name="cases" pattern="[0-9]*" value="0" class="qty-input qty-input-cases"
+                     aria-label="quantity of cases">
+              <button type="button" class="qty-button qty-plus" aria-label="increase quantity of cases">
+                    <span class="qty-button-icon" aria-hidden="true">
+                      <svg aria-hidden="true" data-prefix="fal" data-icon="plus" class="svg-inline--fa fa-plus fa-w-12"
+                           role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                        <path fill="currentColor"
+                              d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z">
+                        </path>
+                      </svg>
+                    </span>
+              </button>
+            </div>
+          </div>
+          </label>
+          <span class="product-card-qty-price">$123.85</span>
 
-    <br />
-    <br />
-
-    <div class="product-qty-selector pricing-cases">
-      <label class="product-card-qty-label" aria-label="$123.85 List Price">Cases
-      <div class="product-card-qty">
-        <div class="qty">
-          <button type="button" class="qty-button qty-minus" aria-label="decrease quantity of cases">
-                <span class="qty-button-icon" aria-hidden="true">
-                  <svg aria-hidden="true" data-prefix="far" data-icon="minus" class="svg-inline--fa fa-minus fa-w-12"
-                       role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                    <path fill="currentColor"
-                          d="M368 224H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h352c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z">
-                    </path>
-                  </svg>
-                </span>
-          </button>
-          <input type="number" name="cases" pattern="[0-9]*" value="0" class="qty-input qty-input-cases"
-                 aria-label="quantity of cases">
-          <button type="button" class="qty-button qty-plus" aria-label="increase quantity of cases">
-                <span class="qty-button-icon" aria-hidden="true">
-                  <svg aria-hidden="true" data-prefix="fal" data-icon="plus" class="svg-inline--fa fa-plus fa-w-12"
-                       role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                    <path fill="currentColor"
-                          d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z">
-                    </path>
-                  </svg>
-                </span>
-          </button>
+          <span class="product-card-qty-price-label">Price</span>
         </div>
-      </div>
-      </label>
-      <span class="product-card-qty-price">$123.85</span>
 
-      <span class="product-card-qty-price-label">Price</span>
-    </div>
+        <br/><br/>
 
-    <br/><br/>
-
-    <label>
-      Cases
-      <button class="btn" type="button" aria-describedby="quantity">
-        <span class="sr-only">Decrease quantity</span>
-        <svg class="icon icon--ruler">
-          <use xlink:href="../sprite.svg#remove"></use>
-        </svg>
-      </button>
-      <input type="text" aria-label="quantity" value="1" class="quantity-comp__text" name="quantity"
-             id="quantity" data-js="quantity">
-           <span aria-live="assertive" aria-atomic="true" class="element-invisible quantity-comp__aria">Quantity is now
-                <span>5</span></span>
-      <button class="quantity-comp__increase btn btn--black-inverted btn--icon" type="button">
-        <span class="sr-only">Increase quantity</span>
-        <svg class="icon icon--ruler">
-          <use xlink:href="../sprite.svg#add"></use>
-        </svg>
-      </button>
-    </label>
-
+        <label>
+          Cases
+          <button class="btn" type="button" aria-describedby="quantity">
+            <span class="sr-only">Decrease quantity</span>
+            <svg class="icon icon--ruler">
+              <use xlink:href="../sprite.svg#remove"></use>
+            </svg>
+          </button>
+          <input type="text" aria-label="quantity" value="1" class="quantity-comp__text" name="quantity"
+                 id="quantity" data-js="quantity">
+               <span aria-live="assertive" aria-atomic="true" class="element-invisible quantity-comp__aria">Quantity is now
+                    <span>5</span></span>
+          <button class="quantity-comp__increase btn btn--black-inverted btn--icon" type="button">
+            <span class="sr-only">Increase quantity</span>
+            <svg class="icon icon--ruler">
+              <use xlink:href="../sprite.svg#add"></use>
+            </svg>
+          </button>
+        </label>
+    -->
 
   </div>
 </div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const quantityPickers = document.querySelectorAll('[class="quantity-picker"]');
+
+    function toInt(x) {
+      const parsed = parseInt(x, 10);
+      if (isNaN(parsed)) { return 0; }
+      return parsed;
+    }
+
+    function decreaseQuantity(event) {
+      const parent = event.target.parentNode;
+      const quantityElement = parent.querySelector(".qp-quantity");
+      const ariaWrapper = parent.querySelector(".qp-quantity-aria span");
+      const quantity  = toInt(quantityElement.value) - 1;
+      console.log('decreaseQuantity', quantityElement, ariaWrapper, quantity);
+      ariaWrapper.innerText = quantity;
+      quantityElement.value = quantity;
+    }
+
+    function increaseQuantity(event) {
+      const parent = event.target.parentNode;
+      const quantityElement = parent.querySelector(".qp-quantity");
+      const ariaWrapper = parent.querySelector(".qp-quantity-aria span");
+      const quantity  = toInt(quantityElement.value) + 1;
+      console.log('increaseQuantity', quantityElement, ariaWrapper, quantity);
+      ariaWrapper.innerText = quantity;
+      quantityElement.value = quantity;
+    }
+
+    // Add a click event handler to each quantity picker
+    quantityPickers.forEach(quantityPicker => {
+      quantityPicker.querySelector(".qp-decrease-quantity").addEventListener("click", decreaseQuantity);
+      quantityPicker.querySelector(".qp-increase-quantity").addEventListener("click", increaseQuantity);
+    });
+  });
+
+
+</script>
 </body>
 </html>
