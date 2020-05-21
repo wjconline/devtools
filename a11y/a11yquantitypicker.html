@@ -1,76 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
-    <meta charset="utf-8"/>
-    <meta name="author" content="CorporateTool.Net"/>
-    <meta name="Keywords" content="accessibility html aria WCAG"/>
-    <meta name="Description" content="A test web page for breadcrumbs accessibility implementations"/>
-    <meta name="robots" content="all"/>
-    <meta name="docref" content="a11y tab test - a11ybreadcrumbs.html"/>
-    <title aria-label="Accessibility Tabs Test Page">Accessibility Quantity Picker Test Page</title>
-    <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
-    <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
-    <script>
-    </script>
-    <style>
-        .breadcrumbs ol {
-            margin: 0;
-            padding-left: 0;
-            list-style: none;
-        }
+  <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+  <meta charset="utf-8"/>
+  <meta name="author" content="CorporateTool.Net"/>
+  <meta name="Keywords" content="accessibility html aria WCAG"/>
+  <meta name="Description" content="A test web page for breadcrumbs accessibility implementations"/>
+  <meta name="robots" content="all"/>
+  <meta name="docref" content="a11y tab test - a11ybreadcrumbs.html"/>
+  <title aria-label="Accessibility Tabs Test Page">Accessibility Quantity Picker Test Page</title>
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
+  <script>
+  </script>
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
 
-        .breadcrumbs li {
-            display: inline;
-        }
+    .element-invisible {
+      position: absolute !important;
+      height: 1px;
+      width: 1px;
+      overflow: hidden;
+      clip: rect(1px 1px 1px 1px);
+      clip: rect(1px, 1px, 1px, 1px);
+    }
 
-        .breadcrumbs li + li:before {
-            display: inline-block;
-            margin: 0 .25em;
-            content: ">";
-        }
-
-        .breadcrumb [aria-current=page], .breadcrumb a[aria-current=page] {
-            color: #333;
-            text-decoration: none;
-        }
-    </style>
+  </style>
 </head>
 <body>
 <div id="container">
-    <div id="chewycenter">
-        <h1>Accessibility Breadcrumbs Test Page</h1>
-        <a href="a11yindex.html" id="topAnchor">Back to A11y Index</a>
+  <div id="chewycenter">
+    <h1>Accessibility Breadcrumbs Test Page</h1>
+    <a href="a11yindex.html" id="topAnchor">Back to A11y Index</a>
 
-        <h2>Quantity Picker</h2>
+    <h2>Quantity Picker</h2>
 
-        <h3>???:</h3>
+    <h3>More Context</h3>
 
-        <label>
 
-      <span class="quantity-comp">
-            <button class="quantity-comp__decrease btn btn--black-inverted btn--icon" type="button" aria-describedby="quantity">
-                <span class="sr-only">Decrease quantity</span>
-                <svg class="icon icon--ruler">
-                    <use xlink:href="../sprite.svg#remove"></use>
-                </svg>
+    <span aria-live="assertive" aria-atomic="true" class="element-invisible mini-cart__aria">You have 0 items in your cart.</span>
+    <br>
+    <span class="product-description__price-now">
+				<span class="price__label" aria-hidden="true">Price</span>
+				<span class="price__dollar" aria-hidden="true">$24.99</span>
+				<span class="element-invisible">current price $24.99</span>
+			</span>
+
+    <br>
+
+    <!-- <label for="quantity">Qty:</label> -->
+
+
+
+    <br />
+    <br />
+
+    <div class="product-qty-selector pricing-cases">
+      <label class="product-card-qty-label">Cases
+            <button type="button" aria-label="decrease quantity of cases">
+                <span aria-hidden="true">-</span>
             </button>
-<!-- <label for="quantity">Qty:</label> -->
-            <input type="text" aria-label="quantity" value="1" class="quantity-comp__text" name="quantity"
-                   id="quantity" data-js="quantity">
-            <span aria-live="assertive" aria-atomic="true" class="element-invisible quantity-comp__aria">Quantity is now
-                <span>5</span></span>
-            <button class="quantity-comp__increase btn btn--black-inverted btn--icon" type="button">
-                <span class="sr-only">Increase quantity</span>
-                <svg class="icon icon--ruler">
-                    <use xlink:href="../sprite.svg#add"></use>
-                </svg>
+            <input type="number" name="cases" pattern="[0-9]*" value="0" class="qty-input qty-input-cases"
+                   aria-label="quantity of cases">
+            <button type="button" aria-label="increase quantity of cases">
+                <span class="qty-button-icon" aria-hidden="true">+</span>
             </button>
-        </span>
-        </label>
-
-
+        <span class="product-card-qty-price">$123.85</span>
+        <span class="product-card-qty-price-label">Price</span>
+      </label>
     </div>
+
+    <br />
+    <br />
+
+    <div class="product-qty-selector pricing-cases">
+      <label class="product-card-qty-label" aria-label="$123.85 List Price">Cases
+      <div class="product-card-qty">
+        <div class="qty">
+          <button type="button" class="qty-button qty-minus" aria-label="decrease quantity of cases">
+                <span class="qty-button-icon" aria-hidden="true">
+                  <svg aria-hidden="true" data-prefix="far" data-icon="minus" class="svg-inline--fa fa-minus fa-w-12"
+                       role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                    <path fill="currentColor"
+                          d="M368 224H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h352c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z">
+                    </path>
+                  </svg>
+                </span>
+          </button>
+          <input type="number" name="cases" pattern="[0-9]*" value="0" class="qty-input qty-input-cases"
+                 aria-label="quantity of cases">
+          <button type="button" class="qty-button qty-plus" aria-label="increase quantity of cases">
+                <span class="qty-button-icon" aria-hidden="true">
+                  <svg aria-hidden="true" data-prefix="fal" data-icon="plus" class="svg-inline--fa fa-plus fa-w-12"
+                       role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                    <path fill="currentColor"
+                          d="M376 232H216V72c0-4.42-3.58-8-8-8h-32c-4.42 0-8 3.58-8 8v160H8c-4.42 0-8 3.58-8 8v32c0 4.42 3.58 8 8 8h160v160c0 4.42 3.58 8 8 8h32c4.42 0 8-3.58 8-8V280h160c4.42 0 8-3.58 8-8v-32c0-4.42-3.58-8-8-8z">
+                    </path>
+                  </svg>
+                </span>
+          </button>
+        </div>
+      </div>
+      </label>
+      <span class="product-card-qty-price">$123.85</span>
+
+      <span class="product-card-qty-price-label">Price</span>
+    </div>
+
+    <br/><br/>
+
+    <label>
+      Cases
+      <button class="btn" type="button" aria-describedby="quantity">
+        <span class="sr-only">Decrease quantity</span>
+        <svg class="icon icon--ruler">
+          <use xlink:href="../sprite.svg#remove"></use>
+        </svg>
+      </button>
+      <input type="text" aria-label="quantity" value="1" class="quantity-comp__text" name="quantity"
+             id="quantity" data-js="quantity">
+           <span aria-live="assertive" aria-atomic="true" class="element-invisible quantity-comp__aria">Quantity is now
+                <span>5</span></span>
+      <button class="quantity-comp__increase btn btn--black-inverted btn--icon" type="button">
+        <span class="sr-only">Increase quantity</span>
+        <svg class="icon icon--ruler">
+          <use xlink:href="../sprite.svg#add"></use>
+        </svg>
+      </button>
+    </label>
+
+
+  </div>
 </div>
 </body>
 </html>
