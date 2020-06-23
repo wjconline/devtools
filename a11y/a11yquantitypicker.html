@@ -72,13 +72,14 @@
 
       <fieldset class="quantity-picker">
         <legend aria-label="Cases $123.85 List Price">Cases</legend><!--   -->
-        <button type="button" class="qp-decrease-quantity" aria-label="decrease quantity of cases">
+        <button type="button" class="qp-decrease-quantity" aria-describedby="quantity">
+          <span class="sr-only">decrease quantity of cases</span>
           -
           <!--<span aria-hidden="true">-</span>-->
         </button>
         <input type="number" class="qp-quantity" name="cases" pattern="[0-9]*" value="0" aria-label="quantity of cases">
         <span aria-live="assertive" aria-atomic="true" class="element-invisible qp-quantity-aria">
-          Quantity is now <span>5</span>
+          Quantity is now <span>0</span>
         </span>
         <button type="button" class="qp-increase-quantity" aria-label="increase quantity of cases">
           +
@@ -92,8 +93,8 @@
       </fieldset>
     </div>
     <br/>
-    <fieldset class="quantity-picker" aria-describedby="breakageDisclaimer">
-      <legend aria-label="Units $24.00 List Price">Units *</legend><!--   -->
+    <fieldset class="quantity-picker">
+      <legend aria-label="Units $24.00 List Price" aria-describedby="breakageDisclaimer">Units *</legend><!--   -->
       <button type="button" class="qp-decrease-quantity" aria-label="decrease quantity of cases">
         -
         <!--<span aria-hidden="true">-</span>-->
@@ -107,10 +108,8 @@
         <!--          <span class="qty-button-icon" aria-hidden="true">+</span>-->
       </button>
       <br/>
-      <span id="pricingInfo">
-          <span class="product-card-qty-price">$24.00</span>
-          <span class="product-card-qty-price-label">Price</span>
-        </span>
+      <span class="product-card-qty-price">$24.00</span>
+      <span class="product-card-qty-price-label">Price</span>
     </fieldset>
     <br/>
     <div id="breakageDisclaimer">* Breakage Fee is not included in the unit list price</div>

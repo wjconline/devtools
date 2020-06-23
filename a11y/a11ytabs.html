@@ -269,10 +269,15 @@
 </div>
 <script>
 
+//   The focusin event is like focus, but it bubbles, so when any element within document receives focus, focusin bubbles all the way up to document.
   document.addEventListener('focusin', function() {
     console.log('focusin - focused: ', document.activeElement);
   }, true);
 
+// When I posted this on Twitter, Christian Schaefer helpfully pointed out that, although focus does not bubble,
+//  it can be intercepted when the capturing flag (addEventListener’s third argument) is set to true.
+// Phil Walton then added that focus fires also for non-interactive elements and when the window receives focus. Even better!
+// So this is what you could use to log the active element when it changes:
   document.addEventListener('focus', function() {
     console.log('focus - focused: ', document.activeElement);
   }, true);
