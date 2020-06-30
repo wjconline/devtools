@@ -41,7 +41,77 @@
     <a href="a11yindex.html" id="topAnchor">Back to A11y Index</a>
 
     <form>
-
+      <h2>Drop down content examples</h2>
+      <p>
+        <label for="simple">A simple select box:</label>
+        <select id="simple" name="simple">
+          <option>Banana</option>
+          <option>Cherry</option>
+          <option>Lemon</option>
+        </select>
+      </p>
+      <p>
+        <label for="selectDisabled">A simple disabled select box:</label>
+        <select id="selectDisabled" name="selectDisabled" disabled>
+          <option>Banana</option>
+          <option>Cherry</option>
+          <option>Lemon</option>
+        </select>
+      </p>
+      <p>
+        <label for="groups">Select box with option groups:</label>
+        <select id="groups" name="groups">
+          <optgroup label="fruits">
+            <option>Banana</option>
+            <option selected>Cherry</option>
+            <option>Lemon</option>
+          </optgroup>
+          <optgroup label="vegetables">
+            <option>Carrot</option>
+            <option>Eggplant</option>
+            <option>Potato</option>
+          </optgroup>
+        </select>
+      </p>
+      <p>
+        <label for="multi">Select box allowing multiple selections:</label>
+        <select multiple id="multi" name="multi">
+          <option>Banana</option>
+          <option>Cherry</option>
+          <option>Lemon</option>
+        </select>
+      </p>
+      <p>
+        <label for="myFruit1">What's your favorite fruit?</label>
+        <input type="text" name="myFruit1" id="myFruit1" list="mySuggestion">
+        <datalist id="mySuggestion">
+          <option>Apple</option>
+          <option>Banana</option>
+          <option>Blackberry</option>
+          <option>Blueberry</option>
+          <option>Lemon</option>
+          <option>Lychee</option>
+          <option>Peach</option>
+          <option>Pear</option>
+        </datalist>
+      </p>
+      <p>
+        <label for="myFruit2">What is your favorite fruit? (With fallback)</label>
+        <input type="text" id="myFruit2" name="myFruit2" list="fruitList">
+        <datalist id="fruitList">
+          <label for="suggestion">or pick a fruit</label>
+          <select id="suggestion" name="altFruit">
+            <option>Apple</option>
+            <option>Banana</option>
+            <option>Blackberry</option>
+            <option>Blueberry</option>
+            <option>Lemon</option>
+            <option>Lychee</option>
+            <option>Peach</option>
+            <option>Pear</option>
+          </select>
+        </datalist>
+      </p>
       <h2>Radio buttons</h2>
       <fieldset>
         <legend>Beverage Type</legend>
@@ -185,78 +255,7 @@ I'm a disabled text area.
 I'm a read only text area
           </textarea>
       </p>
-      <h2>Drop down content examples</h2>
-      <p>
-        <label for="simple">A simple select box:</label>
-        <select id="simple" name="simple">
-          <option>Banana</option>
-          <option>Cherry</option>
-          <option>Lemon</option>
-        </select>
-      </p>
-      <p>
-        <label for="selectDisabled">A simple disabled select box:</label>
-        <select id="selectDisabled" name="selectDisabled" disabled>
-          <option>Banana</option>
-          <option>Cherry</option>
-          <option>Lemon</option>
-        </select>
-      </p>
-      <p>
-        <label for="groups">Select box with option groups:</label>
-        <select id="groups" name="groups">
-          <optgroup label="fruits">
-            <option>Banana</option>
-            <option selected>Cherry</option>
-            <option>Lemon</option>
-          </optgroup>
-          <optgroup label="vegetables">
-            <option>Carrot</option>
-            <option>Eggplant</option>
-            <option>Potato</option>
-          </optgroup>
-        </select>
-      </p>
-      <p>
-        <label for="multi">Select box allowing multiple selections:</label>
-        <select multiple id="multi" name="multi">
-          <option>Banana</option>
-          <option>Cherry</option>
-          <option>Lemon</option>
-        </select>
-      </p>
-      <p>
-        <label for="myFruit1">What's your favorite fruit?</label>
-        <input type="text" name="myFruit1" id="myFruit1" list="mySuggestion">
-        <datalist id="mySuggestion">
-          <option>Apple</option>
-          <option>Banana</option>
-          <option>Blackberry</option>
-          <option>Blueberry</option>
-          <option>Lemon</option>
-          <option>Lychee</option>
-          <option>Peach</option>
-          <option>Pear</option>
-        </datalist>
-      </p>
-      <p>
-        <label for="myFruit2">What is your favorite fruit? (With fallback)</label>
-        <input type="text" id="myFruit2" name="myFruit2" list="fruitList">
-        <datalist id="fruitList">
-          <label for="suggestion">or pick a fruit</label>
-          <select id="suggestion" name="altFruit">
-            <option>Apple</option>
-            <option>Banana</option>
-            <option>Blackberry</option>
-            <option>Blueberry</option>
-            <option>Lemon</option>
-            <option>Lychee</option>
-            <option>Peach</option>
-            <option>Pear</option>
-          </select>
-        </datalist>
-      </p>
-      <h2>Checkable items examples</h2>
+       <h2>Checkable items examples</h2>
       <label for="carrots-id">Carrots</label>
       <input type="checkbox" id="carrots-id" name="carrots-name" value="carrots-value"><br>
       <label for="peas-id">Peas</label>
