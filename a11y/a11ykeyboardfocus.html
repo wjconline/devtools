@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+  <meta charset="utf-8"/>
+  <meta name="author" content="CorporateTool.Net"/>
+  <meta name="Keywords" content="accessibility html aria WCAG"/>
+  <meta name="Description" content="A test web page for keyboard focus accessibility implementations"/>
+  <meta name="robots" content="all"/>
+  <meta name="docref" content="a11y test index - a11ykeyboardfocus.html"/>
+  <title aria-label="Accessibility Tests Keyboard Focus Page">Accessibility Tests Keyboard Focus Page</title>
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
+  <script>
+  </script>
+  <style>
+  </style>
+</head>
+<body>
+<div id="container">
+  <div id="chewycenter">
+    <h1>Accessibility Tests Keyboard Focus Page</h1>
+    <a href="#" id="topAnchor">Top Anchor</a><br>
+    <a href="#">Link</a><br>
+    <label for="simple">A simple select box:</label>
+    <select id="simple" name="simple">
+      <option>Banana</option>
+      <option>Cherry</option>
+      <option>Lemon</option>
+    </select>
+    <label for="choice1">Choice 1</label> <input type="radio" id="choice1" name="choices" value="choice1"><br>
+    <label for="comment1">Add a comment here:</label> <input type="text" id="comment1" name="comment1" placeholder="I'm a text field"><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div>
+      Cart issues - 6 total <a href="#issue1" aria-label="Cart issues - 6 total, skip to first issue" aria-describedby="issueSummary">See Below</a>
+      <div id="issueSummary">
+        <div>4 Errors need to be resolved before continuing to checkout</div>
+        <div>2 Alerts for you to review</div>
+      </div> s
+    </div>
+    <div>
+      <div id="#issue1">TO50050 Please add a PO# or call customer service <div>1 of 2</div><a href="#issue2" aria-label="Issue 1 of 2, TO50050 Please add a PO# or call customer service, skip to next issue" aria-describedby="orderNotes">next</a></div>
+      <div id="orderNotes">
+        <h3>Order Notes (Optional)</h3>
+        <div>BlahBlahBlah</div>
+      </div>
+    </div>
+    <div>
+      <div id="#issue2">OER1245 Item is sold in cases only <div>2 of 2</div><a href="#issue1" aria-label="issue 2 of 2, OER1245 Item is sold in cases only, skip back to first issue" aria-describedby="productId46599">back to top</a></div>
+      <div>
+        <div id="productId46599">
+          <h3><a href="http://skipthedishes.com">Bacardi Limon</a></h3>
+          <div>1.5 L</div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <label for="cta1">CTA 1</label>
+    <form>
+      <h2>Form Elements</h2>
+      <fieldset>
+        <legend>Radio Buttons</legend>
+        <ul>
+          <li>
+            <label for="soup">Choice 1</label>
+            <input type="radio" checked id="soup" name="meal" value="soup">
+          </li>
+          <li>
+            <label for="curry">Choice 2</label>
+            <input type="radio" id="curry" name="meal" value="curry">
+          </li>
+          <li>
+            <label for="pizza">Choice 3</label>
+            <input type="radio" id="pizza" name="meal" value="pizza">
+          </li>
+          <li>
+            <label for="tacos">Choice 4</label>
+            <input type="radio" id="tacos" name="meal" aria-disabled="true" value="tacos">
+          </li>
+          <li>
+            <label for="bolognaise">Choice 5</label>
+            <input type="radio" id="bolognaise" name="meal" disabled value="bolognaise">
+          </li>
+        </ul>
+      </fieldset>
+  </div>
+</div>
+</body>
+</html>
