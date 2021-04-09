@@ -79,6 +79,55 @@
     <a href="#" id="topAnchor">Top Anchor</a>
     <h2>Tabs</h2>
 
+    <h3>MB Implementation - buttons</h3>
+    <div class="tabs">
+      <div class="roletablist" role="tablist" aria-label="Vehicles available at a nearby dealer">
+        <button class="roletab" role="tab" aria-selected="true" aria-controls="mbpanel-1" id="mbtab-1">
+          New Inventory
+        </button>
+        <button class="roletab" role="tab" aria-selected="false" aria-controls="mbpanel-2" id="mbtab-2">
+          Certified Pre-Owned Vehicles
+        </button>
+ <!--       <button class="roletab" role="tab" aria-selected="false" aria-controls="mbpanel-3" id="mbtab-3">
+          Beer & Other
+        </button>
+        <button class="roletab" role="tab" aria-selected="false" aria-disabled="true" aria-controls="mbpanel-4" id="mbtab-4" class="disabled">
+          More
+        </button>
+        <button class="roletab" role="tab" aria-selected="false" aria-disabled="true" aria-label="Some More, there is no information for this product at this time" aria-controls="mbpanel-5" id="mbtab-5" class="disabled">
+          Some More
+        </button>
+        <button class="roletab" role="tab" aria-selected="false" disabled aria-controls="mbpanel-6" id="mbtab-6">
+          Even More
+        </button> -->
+      </div>
+      <div id="mbpanel-1" class="roletabpanel" role="tabpanel" aria-labelledby="mbtab-1">
+        <p>Content for the first panel</p>
+        <a href="#">Link to somewhere for MB panel one</a>
+      </div>
+      <div id="mbpanel-2" class="roletabpanel" role="tabpanel" aria-labelledby="mbtab-2" hidden>
+        <p>Content for the second panel</p>
+        <a href="#">Link to somewhere for MB panel two</a>
+      </div>
+      <div id="mbpanel-3" class="roletabpanel" role="tabpanel" aria-labelledby="mbtab-3" hidden>
+        <p>Content for the third panel</p>
+        <a href="#">Link to somewhere for MB panel three</a>
+      </div>
+      <div id="mbpanel-4" class="roletabpanel" role="tabpanel" aria-labelledby="mbtab-4" hidden>
+        <p>Content for the fourth panel</p>
+        <a href="#">Link to somewhere for MB panel four</a>
+      </div>
+      <div id="mbpanel-5" class="roletabpanel" role="tabpanel" aria-labelledby="mbtab-5" hidden>
+        <p>Content for the fifth panel</p>
+        <a href="#">Link to somewhere for MB panel five</a>
+      </div>
+      <div id="mbpanel-6" class="roletabpanel" role="tabpanel" aria-labelledby="mbtab-6" hidden>
+        <p>Content for the sixth panel</p>
+        <a href="#">Link to somewhere for MB panel six</a>
+      </div>
+    </div>
+
+<div style="display: none;">
     <h3>SG Implementation - buttons</h3>
 <div class="tabs">
   <div role="tablist" aria-label="Learn more about our products">
@@ -201,6 +250,9 @@
         <a href="#">Link to somewhere for panel three</a>
       </div>
     </div>
+</div>
+    <br><br><br>
+    <a href="#" id="bottomAnchor">Bottom Anchor</a>
     <script>
       window.addEventListener("DOMContentLoaded", () => {
         // const tabs = document.querySelectorAll('[role="tab"]');

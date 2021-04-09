@@ -13,10 +13,89 @@
   <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
   <script>
   </script>
+<!--  <link rel="preload" href="/etc/designs/mb-nafta/fonts/nafta-icons.woff?ldnkr9" as="font" type="font/woff" crossorigin="">-->
+  <link rel="preload" href="https://qa.mbusa.com/etc/designs/mb-nafta/fonts/nafta-icons.woff?ldnkr9" as="font" type="font/woff" crossorigin="">
 
 
   <style>
+      .table-reset {
+      }
 
+      .table-reset td {
+          min-width: 200px;
+          padding: 5px;
+          border: 1px solid black;
+          vertical-align: top;
+      }
+
+      .teaser-wrap {
+          float: left;
+      }
+
+      .offscreen, .skip-navigation {
+          position: absolute;
+          clip: rect(1px 1px 1px 1px);
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 0;
+          border: 0;
+          height: 1px;
+          width: 1px;
+          overflow: hidden;
+      }
+
+      .stay-connected__social-link {
+          font-size: 40px;
+          color: #010101;
+          display: inline-block;
+          margin-left: 40px;
+      }
+
+      .stay-connected__social-note {
+          font-size: 14px;
+          /*color: #010101;*/
+          display: inline-block;
+          margin-left: 30px;
+   /*       margin-right: 10px;*/
+          margin-top:15px;
+          width: 45px;
+      }
+
+      [class^='icon-'], [class*=' icon-'] {
+          font-family: "nafta-icons" !important;
+          font-style: normal;
+          font-weight: normal;
+          font-variant: normal;
+          text-transform: none;
+          line-height: 1;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+      }
+      a {
+          text-decoration: none;
+      }
+      .icon-social-instagram:before {
+          content: "";
+      }
+      .icon-social-facebook:before {
+          content: "";
+      }
+      .icon-social-twitter:before {
+          content: "";
+      }
+      .icon-social-youtube:before {
+          content: "";
+      }
+      h1:before, h1:after, h2:before, h2:after, h3:before, h3:after, h4:before, h4:after, h5:before, h5:after, h6:before, h6:after, a:before, a:after, span:before, span:after {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          text-shadow: 1px 1px 1px rgb(0 0 0 / 0%);
+      }
+
+      *, *::after, *::before {
+          -webkit-box-sizing: inherit;
+          -moz-box-sizing: inherit;
+          box-sizing: inherit;
+      }
   </style>
 </head>
 <body>
@@ -29,9 +108,40 @@
     <a href="#" id="topAnchor">Top Anchor</a>
     <h2>Links</h2>
 
-    <div>
-      <a href="http://www.fillmurray.com/">Test Link 1</a> | <a href="http://www.fillmurray.com/200/300">Test Link 2</a>
-    </div>
+    <a href="https://www.instagram.com/MercedesBenzUSA/" class="icon-mb icon-social-instagram stay-connected__social-link" title="Instagram" target="_blank" rel="noopener" data-analytics-trigger="{'social': 'Instagram'}">
+      <span class="offscreen">
+          Instagram
+      </span>
+    </a>
+
+    <a href="http://www.facebook.com/mercedesbenzusa" class="icon-mb icon-social-facebook stay-connected__social-link" title="Facebook" alt="Facebook" target="_blank" rel="noopener" data-analytics-trigger="{'social': 'Facebook'}">
+      <span class="offscreen">
+          Facebook
+      </span>
+    </a>
+
+    <a href="https://twitter.com/mercedesbenzusa" class="icon-mb icon-social-twitter stay-connected__social-link" target="_blank" rel="noopener" data-analytics-trigger="{'social': 'Twitter'}">
+      <span class="offscreen">
+          Twitter
+      </span>
+    </a>
+
+    <a href="https://www.youtube.com/mbusa" class="icon-mb icon-social-youtube stay-connected__social-link" title="YouTube" target="_blank" rel="noopener" data-analytics-trigger="{'social': 'YouTube'}">
+      <span class="offscreen">
+          YouTube
+      </span>
+    </a>
+
+    <div><span class="stay-connected__social-note">Just Title</span> |
+      <span class="stay-connected__social-note">Title and Alt</span> |
+      <span class="stay-connected__social-note">No Title or Alt</span> |
+      <span class="stay-connected__social-note">Just Alt</span></div>
+    <div style="display:none;">
+
+      <div class="product-listing-count" aria-live="polite" aria-atomic="true">
+        Displaying <span class="product-listing-count-value">1 to 25</span> of <span
+        class="product-listing-count-total">59</span> results
+      </div>
 
       <ol>
         <li>Different title and anchor text: <a href="#" title="Download PDF T">Annual Report Visible</a></li>
