@@ -23,10 +23,11 @@
     <a href="#" id="topAnchor">Top Anchor</a>
     <h2>A11y Test Pages</h2>
 
+    test link with Date.now parameter: <a id="testlink1" href="allylinks.html">link</a> - <span id="testlink1dateNow"></span> - <span id="testlink1Url"></span>
     <nav>
       <ol>
-        <li><a id="testlink1" href="allylinks.html">test link with Date.now parameter</a></li>
-        <!--         <li><a id="testlink2" href="https://proofqa20-sgws.cs60.force.com/service/s/landing?UserID=seamlessheader.tester%40mailinator.com&AccID=00010028918">https://proofqa20-sgws.cs60.force.com/service/s/landing?UserID=seamlessheader.tester%40mailinator.com&AccID=00010028918</a></li>
+        <li><a id="testlink2" href="allylinks.html">test link</a></li>
+        <!--         <li><a id="testlink3" href="https://proofqa20-sgws.cs60.force.com/service/s/landing?UserID=seamlessheader.tester%40mailinator.com&AccID=00010028918">https://proofqa20-sgws.cs60.force.com/service/s/landing?UserID=seamlessheader.tester%40mailinator.com&AccID=00010028918</a></li>
             <li><a href="https://hybris-qa4.sgproof.com/sgws/en/undefined?login=true">https://hybris-qa4.sgproof.com/sgws/en/undefined?login=true</a></li>
        <li><a href="https://stage7.mbusa.com/en/vehicles/deal/Mercedes-Benz-of-Buckhead/17107/S/SDN/S450V4/WDDUG6EB1LA505799">https://stage7.mbusa.com/en/vehicles/deal/Mercedes-Benz-of-Buckhead/17107/S/SDN/S450V4/WDDUG6EB1LA505799</a></li>-->
         <li><a href="#">Link to page</a></li>
@@ -37,12 +38,14 @@
   </div>
 </div>
 </body>
-<script>
-  const url = 'https://ca-stage.mbvans.com/en/innovations';
-  const dateNow = Date.now();
-  const queryString = ''; // include '&'
-  const fullUrl = `${url}?testToken=${dateNow}${queryString}`;
-  document.getElementById('testlink1').href = fullUrl;
-  console.log('test URL - dateNow, fullUrl:', dateNow, fullUrl);
-</script>
 </html>
+<script>
+    const url = 'https://ca-stage.mbvans.com/en/innovations';
+    const dateNow = Date.now();
+    const queryString = ''; // include '&'
+    const fullUrl = `${url}?testToken=${dateNow}${queryString}`;
+    document.getElementById('testlink1').href = fullUrl;
+    document.getElementById('testlink1dateNow').innerHTML = dateNow;
+    document.getElementById('testlink1Url').innerHTML = fullUrl;
+    console.log('test URL - dateNow, fullUrl:', dateNow, fullUrl);
+</script>
