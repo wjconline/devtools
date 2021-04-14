@@ -25,9 +25,10 @@
 
     <nav>
       <ol>
-        <li><a href="https://proofqa20-sgws.cs60.force.com/service/s/landing?UserID=seamlessheader.tester%40mailinator.com&AccID=00010028918">https://proofqa20-sgws.cs60.force.com/service/s/landing?UserID=seamlessheader.tester%40mailinator.com&AccID=00010028918</a></li>
-        <li><a href="https://hybris-qa4.sgproof.com/sgws/en/undefined?login=true">https://hybris-qa4.sgproof.com/sgws/en/undefined?login=true</a></li>
-     <!--   <li><a href="https://stage7.mbusa.com/en/vehicles/deal/Mercedes-Benz-of-Buckhead/17107/S/SDN/S450V4/WDDUG6EB1LA505799">https://stage7.mbusa.com/en/vehicles/deal/Mercedes-Benz-of-Buckhead/17107/S/SDN/S450V4/WDDUG6EB1LA505799</a></li>-->
+        <li><a id="testlink1" href="allylinks.html">test link with Date.now parameter</a></li>
+        <!--         <li><a id="testlink2" href="https://proofqa20-sgws.cs60.force.com/service/s/landing?UserID=seamlessheader.tester%40mailinator.com&AccID=00010028918">https://proofqa20-sgws.cs60.force.com/service/s/landing?UserID=seamlessheader.tester%40mailinator.com&AccID=00010028918</a></li>
+            <li><a href="https://hybris-qa4.sgproof.com/sgws/en/undefined?login=true">https://hybris-qa4.sgproof.com/sgws/en/undefined?login=true</a></li>
+       <li><a href="https://stage7.mbusa.com/en/vehicles/deal/Mercedes-Benz-of-Buckhead/17107/S/SDN/S450V4/WDDUG6EB1LA505799">https://stage7.mbusa.com/en/vehicles/deal/Mercedes-Benz-of-Buckhead/17107/S/SDN/S450V4/WDDUG6EB1LA505799</a></li>-->
         <li><a href="#">Link to page</a></li>
         <li><a href="#">Link to page</a></li>
       </ol>
@@ -36,4 +37,12 @@
   </div>
 </div>
 </body>
+<script>
+  const url = 'https://ca-stage.mbvans.com/en/innovations';
+  const dateNow = Date.now();
+  const queryString = ''; // include '&'
+  const fullUrl = `${url}?testToken=${dateNow}${queryString}`;
+  document.getElementById('testlink1').href = fullUrl;
+  console.log('test URL - dateNow, fullUrl:', dateNow, fullUrl);
+</script>
 </html>
