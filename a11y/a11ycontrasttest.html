@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+    <meta charset="utf-8"/>
+    <meta name="author" content="CorporateTool.Net"/>
+    <meta name="Keywords" content="accessibility html aria WCAG"/>
+    <meta name="Description" content="An Contrast Test page for accessibility implementations"/>
+    <meta name="robots" content="all"/>
+    <meta name="docref" content="a11y Contrast Test - a11ycontrasttest.html"/>
+    <title aria-label="Accessibility Contrast Test Page">Accessibility Contrast Test Page</title>
+    <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
+    <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
+    <script>
+    </script>
+    <style>
+        .imgTextWrapper {
+            position: relative;
+        }
+
+        .floatingText {
+            position: absolute;
+            z-index: 10;
+        }
+
+        .floatingHeroText {
+            top: 20px;
+            left: 40px;
+            padding: 10px;
+            width: 800px;
+            color: #FFFFFF;
+            background-color: rgba(80, 68, 68, 0.4);
+            /*background-color: #4b4b4b;*/
+            /*opacity: 0.4;*/
+        }
+
+        .floatingCardText {
+            top: 0;
+            left: 0;
+            margin: 10px;
+            padding: 5px;
+            width: 270px;
+            color: #FFFFFF;
+            background-color: rgba(80, 68, 68, 0.4);
+        }
+
+        .eyebrow {
+
+        }
+
+        .cardHeading {
+        }
+
+        .cardList {
+            margin-top: 110px;
+        }
+
+        .cardCTA {
+            display: block;
+            margin: 20px auto 10px auto;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="chewycenter">
+        <h1>Accessibility Contrast Test Page</h1>
+        <a href="#" id="topAnchor">Top Anchor</a>
+        <h2>A11y Test Images</h2>
+        <!--    <img src="../resources/images/MicrosoftTeams-image.png" alt="test image." /><br>-->
+        <div class="imgTextWrapper">
+            <img src="http://www.fillmurray.com/1000/330/" alt="Large Fill Murray Test Image."/><br>
+            <div class="floatingText floatingHeroText">
+                <h2>This is The Heading!</h2>
+                <div>
+                    <p>This is the description. Danke pronomeca semajntago ali er, kio en infra ofteco sanskrito. E ali
+                        veka sekvanta, sama kies decimaloj kio ia, avio reen it des. Un' id tiaĵo supersigno
+                        posttagmezo,
+                        sob aj aliel koruso multiplikite. Iam ke brosi dank' kapabl. Unuo malsuprenstreko ind iv,
+                        respondo
+                        renkonten ac sis, kontraŭi rolmontrilo vir uk.</p>
+                    <p>Iom diesa mikrometro ke. Dura antaŭpriskribo bio ar, supersigno pentekosto netransitiva pro at,
+                        brosi postmorgaŭ cii co. Ilion subigi kaŭze ree no, neniu kvanto pra ed, ing nv helpi
+                        komentofrazo. En jam kaŭzo kilogramo kvaronhoro. El tohuo eŭro aŭ. Ac glota volus malantaŭ ina,
+                        oble aliam hieraŭo co pre. Ojd ej kiom komo sezononomo.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="imgTextWrapper">
+            <img src="http://www.fillmurray.com/300/330/" alt="Small Fill Murray Test Image."/>
+            <div class="floatingText floatingCardText">
+                <div class="eyebrow">Eyebrow!!!1!</div>
+                <h2 class="cardHeading">Card Title Heading</h2>
+                <ul class="cardList">
+                    <li>First Exciting List Item!</li>
+                    <li>Second List Item of Awesomeness.</li>
+                    <li>third list item that is on the bottom for a reason...</li>
+                </ul>
+                <button class="cardCTA">CTA is GO!</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>
