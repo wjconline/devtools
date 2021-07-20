@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+  <meta charset="utf-8"/>
+  <meta name="author" content="Wesley Cocks"/>
+  <meta name="Keywords" content="accessibility html aria WCAG"/>
+  <meta name="Description" content="An title test page for accessibility implementations"/>
+  <meta name="robots" content="all"/>
+  <meta name="docref" content="a11y title test - a11ytitletest.html"/>
+  <title>Accessibility Title Test Page</title>
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <div id="chewycenter">
+    <h1>Accessibility Title Test Page</h1>
+    <div id="lateLoadTitle" aria-live="polite" class="sr-only"></div>
+    <a href="#" id="topAnchor">Top Anchor</a>
+    <footer>
+      <a href="a11yindex.html">Accessibility Index Page</a>
+    </footer>
+  </div>
+</div>
+</body>
+<script>
+  window.onload = function() {
+    document.getElementById('lateLoadTitle').innerText = 'Accessibility Tests Index Page Late Load Title';
+  };
+</script>
+</html>

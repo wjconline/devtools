@@ -5,27 +5,37 @@
   <meta charset="utf-8"/>
   <meta name="author" content="CorporateTool.Net"/>
   <meta name="Keywords" content="accessibility html aria WCAG"/>
-  <meta name="Description" content="An index page for accessibility implementations"/>
+  <meta name="Description" content="An title test page for accessibility implementations"/>
   <meta name="robots" content="all"/>
-  <meta name="docref" content="a11y test index - a11yindex.html"/>
-  <title aria-label="Accessibility Tests Index Page">Accessibility Tests Index Page</title>
+  <meta name="docref" content="a11y title test - a11ytitletest.html"/>
+  <title aria-label="Accessibility Tests Index Page">Accessibility Title Test Page</title>
   <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
   <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
   <script>
   </script>
   <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
   </style>
 </head>
 <body>
 <div id="container">
   <div id="chewycenter">
-    <h1>Accessibility Tests Index Page</h1>
+    <h1>Accessibility Title Test Page</h1>
+    <div id="lateLoadTitle" aria-live="polite" class="sr-only"></div>
     <a href="#" id="topAnchor">Top Anchor</a>
-    <h2>A11y Test Pages</h2>
+    <h2>Some Links</h2>
 
     <nav>
       <ol>
-        <li><a href="a11ytitletest.html">Accessibility Title Test Page</a></li>
         <li><a href="a11ybreadcrumbs.html">Accessibility Breadcrumbs Test Page</a></li>
         <li><a href="a11yforms.html">Accessibility Forms Test Page</a></li>
         <li><a href="a11ylinks.html">Accessibility Links Test Page</a></li>
@@ -36,7 +46,17 @@
       </ol>
     </nav>
 
+    <footer>
+      <a href="a11yindex.html">Accessibility Index Page</a>
+    </footer>
   </div>
 </div>
 </body>
+<script>
+  window.onload = function() {
+    // console.log('title', document.title);
+    document.getElementById('lateLoadTitle').innerText = 'Accessibility Tests Index Page Late Load Title';
+  };
+
+</script>
 </html>

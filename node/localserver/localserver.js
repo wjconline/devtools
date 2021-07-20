@@ -8,7 +8,8 @@ http.createServer(function (request, response) {
     // const rootPath = '.';
     // const rootPath = '../..';
     const rootPath = '/data/code/098_devtools_github/devtools';
-    let filePath = rootPath + request.url;
+    let filePath = rootPath + request.url.split('?')[0];
+    // let filePath = rootPath + request.url;
     const siteIndexPath = rootPath + '/index.html';
     if (request.url == '/') {
     // if (filePath == './') {
@@ -16,9 +17,11 @@ http.createServer(function (request, response) {
         // filePath = '/testindex.html';
         filePath = siteIndexPath;
     }
+    // refactor to lok for index.html in each folder if ends in "/" e.g. "...a11y/"
     console.log('filePath ', filePath);
 
     var extname = String(path.extname(filePath)).toLowerCase();
+
     var mimeTypes = {
         '.html': 'text/html',
         '.js': 'text/javascript',
