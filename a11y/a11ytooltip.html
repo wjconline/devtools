@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="CorporateTool.Net"/>
+  <meta name="Keywords" content="accessibility html aria WCAG"/>
+  <meta name="Description" content="An index page for accessibility implementations"/>
+  <meta name="robots" content="all"/>
+  <meta name="docref" content="a11y test index - a11yindex.html"/>
+  <title aria-label="Accessibility Tests Index Page">Accessibility Tooltip Page</title>
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
+  <script>
+  </script>
+  <style>
+  </style>
+</head>
+<body>
+<div id="container">
+  <div id="chewycenter">
+    <h1>Accessibility Tooltip Page</h1>
+    <a href="#" id="topAnchor">Top Anchor</a>
+
+    <div data-tool-tip-icon="" class="tool-tip__icon" aria-label="tooltip (aria-label)" onclick="this.setAttribute('aria-expanded', !(!!(this.getAttribute('aria-expanded')))); console.log('current', this.getAttribute('aria-expanded')); console.log('converted', !(!!(this.getAttribute('aria-expanded'))));" id="westest" aria-expanded="false" type="button" role="button" data-analytics-trigger="cta" tabindex="0">
+      <span class="offscreen">Still Available</span>
+    </div>
+
+
+    <span class="model-line-selector__instructional-heading-tool-tip">
+      <div data-tool-tip="" class="tool-tip tool-tip--default tool-tip--open-down ">
+        <div data-tool-tip-icon="" class="tool-tip__icon" aria-describedby="tool-tip-flyout_kr0qec6kyan0u" type="button" role="button" data-analytics-trigger="cta" tabindex="0">
+          <span class="offscreen">More Info</span>
+        </div>
+        <span class="tool-tip__caret"></span>
+        <div id="tool-tip-flyout_kr0qec6kyan0u" data-tool-tip-flyout="" class="tool-tip__flyout " data-analytics-container="tooltip-flyout">
+          <p>To simplify outfitting your Mercedes-Benz, complementary features are bundled into distinctive, generously appointed "lines." Please select a line to start your build.</p>
+        </div>
+      </div>
+    </span>
+
+
+
+  </div>
+</div>
+</body>
+</html>
