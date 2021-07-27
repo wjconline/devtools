@@ -115,9 +115,11 @@
       // console.log('tooltipKeyDown - element', element);
 
       if (event.key === " " || event.key === "Enter" || event.key === "Spacebar") {
-        // do we want "Escape" in there too? || event.key === "Escape"
         event.preventDefault();
         showTooltip(element, !(element.getAttribute('aria-expanded') === 'true'));
+      } else if (event.key === "Escape") {
+        event.preventDefault();
+        showTooltip(element, false);
       }
       // console.log('tooltipKeyDown - current', element.getAttribute('aria-expanded'));
     }
