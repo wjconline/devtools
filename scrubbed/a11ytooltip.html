@@ -4,7 +4,7 @@
   <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="CorporateTool.Net"/>
+  <meta name="author" content="Wesley Cocks"/>
   <meta name="Keywords" content="accessibility html aria WCAG"/>
   <meta name="Description" content="An index page for accessibility implementations"/>
   <meta name="robots" content="all"/>
@@ -26,109 +26,56 @@
       padding: 5px;
       border: 1px solid #000000;
     }
-
-    .model-line-selector__instructional-heading-tool-tip {
- /*     margin-left: 350px;*/
-
-    }
-    .tool-tip {
-      /*margin-left: 100px;*/
-    }
-
-    /*
-        .offscreen, .skip-navigation {
-          position: absolute;
-          clip: rect(1px 1px 1px 1px);
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 0;
-          border: 0;
-          height: 1px;
-          width: 1px;
-          overflow: hidden;
-        }
-        .model-line-selector__instructional-heading-tool-tip {
-          text-transform: none;
-          margin-left: 5px;
-        }
-        .tool-tip {
-          position: relative;
-          display: inline-block;
-          line-height: 1;
-          vertical-align: middle;
-        }
-        .tool-tip__icon:after {
-          content: "";
-          font-family: nafta-icons;
-          font-weight: normal;
-          font-size: 100%;
-          position: relative;
-          box-sizing: inherit;
-        }
-        .tool-tip__flyout {
-          display: none;
-        }*/
   </style>
+
   <script>
 
     function toggleTooltip(element, displayTooltip) {
-      // const ariaExpanded = (element.getAttribute('aria-expanded') === 'true');
       console.log('toggleTooltip - displayTooltip', displayTooltip);
       element.setAttribute('aria-expanded', displayTooltip);
       if (displayTooltip) {
-        // element.parentElement.setAttribute('role', 'status');
-        // element.parentElement.setAttribute('aria-hidden', 'false');
         element.parentElement.classList.add('tool-tip--active');
       } else {
-        // element.parentElement.setAttribute('role', '');
-        // element.parentElement.setAttribute('aria-hidden', 'true');
         element.parentElement.classList.remove('tool-tip--active');
       }
     }
 
     function tooltipFocus(element) {
       console.log('tooltipFocus');
-      // console.log('tooltipFocus - element', element);
       toggleTooltip(element, true);
-      // console.log('tooltipFocus - current', element.getAttribute('aria-expanded'));
     }
 
     function tooltipBlur(element) {
       console.log('tooltipBlur');
-      // console.log('tooltipBlur - element', element);
       toggleTooltip(element, false);
-      // console.log('tooltipBlur - current', element.getAttribute('aria-expanded'));
     }
 
     function tooltipMouseEnter(element) {
       console.log('tooltipMouseEnter');
-      // console.log('tooltipFocus - element', element);
       toggleTooltip(element, true);
-      // console.log('tooltipFocus - current', element.getAttribute('aria-expanded'));
     }
 
     function tooltipMouseLeave(element) {
       console.log('tooltipMouseLeave');
-      // console.log('tooltipBlur - element', element);
       toggleTooltip(element, false);
-      // console.log('tooltipBlur - current', element.getAttribute('aria-expanded'));
     }
-
 
     function tooltipMouseDown(element) {
       console.log('tooltipMouseDown');
-      // console.log('tooltipMouseDown - element', element);
       toggleTooltip(element, !(element.getAttribute('aria-expanded') === 'true'));
-      // console.log('tooltipMouseDown - current', element.getAttribute('aria-expanded'));
     }
 
     function tooltipKeyDown(event) {
       // console.log('tooltipKeyDown');
-      // console.log('tooltipKeyDown - event', event);
       console.log('tooltipKeyDown - event', event.key);
 
       const element = event.target;
-      // console.log('tooltipKeyDown - element', element);
 
+      // Win10 Chrome sends a MouseDown for the Enter and Space keys,
+      // as does and MacOS Safari and Chrome with the VoiceOver command (Ctrl-Option-Space),
+      // so they get captured by the MouseDown event.
+      // MacOS Safari and Chrome fire KeyDown for Enter and Spacebar
+      // The " " empty space is legacy IE 11
       if (event.key === " " || event.key === "Enter" || event.key === "Spacebar") {
         event.preventDefault();
         toggleTooltip(element, !(element.getAttribute('aria-expanded') === 'true'));
@@ -136,53 +83,7 @@
         event.preventDefault();
         toggleTooltip(element, false);
       }
-      // console.log('tooltipKeyDown - current', element.getAttribute('aria-expanded'));
     }
-
-    /*
-
-    function tooltipFocus(element) {
-      console.log('tooltipFocus - element', element);
-      showTooltip(element, true);
-      console.log('tooltipFocus - current', element.getAttribute('aria-expanded'));
-    }
-
-    function tooltipBlur(element) {
-      console.log('tooltipBlur - element', element);
-      showTooltip(element, false);
-      console.log('tooltipBlur - current', element.getAttribute('aria-expanded'));
-    }
-
-    function tooltipMouseDown(element) {
-      console.log('tooltipMouseDown - element', element);
-
-      showTooltip(element, (element.getAttribute('aria-expanded') === 'true'));
-      console.log('tooltipMouseDown - current', element.getAttribute('aria-expanded'));
-    }
-     */
-
-    // ******
-    function toggleTooltipZZZ(element) {
-      const ariaExpanded = (element.getAttribute('aria-expanded') === 'true');
-      console.log('toggleTooltip - get ariaExpanded', ariaExpanded);
-      element.setAttribute('aria-expanded', !ariaExpanded);
-      element.parentElement.classList.toggle('tool-tip--active');
-    }
-    function tooltipClick(element) {
-      console.log('tooltipClick - element', element);
-      toggleTooltipZZZ(element);
-      console.log('tooltipClick -current', element.getAttribute('aria-expanded'));
-    }
-    function tooltipClickZZZ(element) {
-      // console.log('tooltipClick - element', element);
-      const ariaExpanded = (element.getAttribute('aria-expanded') === 'true');
-      console.log('tooltipClick - get ariaExpanded', ariaExpanded);
-      element.setAttribute('aria-expanded', !ariaExpanded);
-      // document.getElementById('westest-wrapper').classList.toggle('tool-tip--active');
-      element.parentElement.classList.toggle('tool-tip--active');
-      console.log('tooltipClick -current', element.getAttribute('aria-expanded'));
-    }
-
   </script>
 </head>
 <body>
@@ -275,23 +176,6 @@
                data-analytics-container="tooltip-flyout">
             <p>To simplify outfitting your Mercedes-Benz, complementary features are bundled into distinctive, generously appointed "lines." Please select a line to start your build.</p>
           </div>
-        </div>
-      </div>
-    </span>
-    <br><br>
-    <button>Add to Cart</button>
-    <br><br>
-
-    <span class="model-line-selector__instructional-heading-tool-tip">
-      <div data-tool-tip="" class="tool-tip tool-tip--default tool-tip--open-down ">
-        <div data-tool-tip-icon="" class="tool-tip__icon" aria-describedby="tool-tip-flyout_kr0qec6kyan0u" type="button"
-             role="button" data-analytics-trigger="cta" tabindex="0">
-          <span class="offscreen">More Info</span>
-        </div>
-        <span class="tool-tip__caret"></span>
-        <div id="tool-tip-flyout_westestzzz" data-tool-tip-flyout="" class="tool-tip__flyout "
-             data-analytics-container="tooltip-flyout">
-          <p>To simplify outfitting your Mercedes-Benz, complementary features are bundled into distinctive, generously appointed "lines." Please select a line to start your build.</p>
         </div>
       </div>
     </span>
