@@ -12,10 +12,153 @@
   <title aria-label="Accessibility Tests Index Page">Accessibility Tooltip Page</title>
   <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
   <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
-  <script>
-  </script>
+  <link rel="preload"
+        href="https://nafta-service-dev.mbusa.com/assets/now-ui-core/packages/foundation/0.14.0/assets/fonts/nafta-icons.woff"
+        as="font" type="font/woff" crossorigin="">
+  <link rel="stylesheet"
+        href="https://nafta-service-dev.mbusa.com/assets/now-ui-core/packages/foundation/0.14.0/css/globals.css">
+  <link rel="stylesheet" href="https://stage.mbusa.com/etc/designs/mb-nafta/css/main.css">
   <style>
+    body {
+      padding: 20px;
+    }
+    button {
+      padding: 5px;
+      border: 1px solid #000000;
+    }
+    /*
+        .offscreen, .skip-navigation {
+          position: absolute;
+          clip: rect(1px 1px 1px 1px);
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 0;
+          border: 0;
+          height: 1px;
+          width: 1px;
+          overflow: hidden;
+        }
+        .model-line-selector__instructional-heading-tool-tip {
+          text-transform: none;
+          margin-left: 5px;
+        }
+        .tool-tip {
+          position: relative;
+          display: inline-block;
+          line-height: 1;
+          vertical-align: middle;
+        }
+        .tool-tip__icon:after {
+          content: "";
+          font-family: nafta-icons;
+          font-weight: normal;
+          font-size: 100%;
+          position: relative;
+          box-sizing: inherit;
+        }
+        .tool-tip__flyout {
+          display: none;
+        }*/
   </style>
+  <script>
+
+    function showTooltip(element, displayTooltip) {
+      // const ariaExpanded = (element.getAttribute('aria-expanded') === 'true');
+      console.log('toggleTooltip - displayTooltip', displayTooltip);
+      element.setAttribute('aria-expanded', displayTooltip);
+      if (displayTooltip) {
+        // element.parentElement.setAttribute('role', 'status');
+        element.parentElement.setAttribute('aria-hidden', 'false');
+
+        element.parentElement.classList.add('tool-tip--active');
+      } else {
+        // element.parentElement.removeAttribute('role');
+        element.parentElement.setAttribute('aria-hidden', 'true');
+        element.parentElement.classList.remove('tool-tip--active');
+      }
+    }
+
+    function tooltipFocus(element) {
+      console.log('tooltipFocus');
+      // console.log('tooltipFocus - element', element);
+      showTooltip(element, true);
+      console.log('tooltipFocus - current', element.getAttribute('aria-expanded'));
+    }
+
+    function tooltipBlur(element) {
+      console.log('tooltipBlur');
+      // console.log('tooltipBlur - element', element);
+      showTooltip(element, false);
+      console.log('tooltipBlur - current', element.getAttribute('aria-expanded'));
+    }
+
+    function tooltipMouseDown(element) {
+      console.log('tooltipMouseDown');
+      // console.log('tooltipMouseDown - element', element);
+      showTooltip(element, !(element.getAttribute('aria-expanded') === 'true'));
+      console.log('tooltipMouseDown - current', element.getAttribute('aria-expanded'));
+    }
+
+    function tooltipKeyDown(event) {
+      console.log('tooltipKeyDown');
+      console.log('tooltipKeyDown - event', event);
+      console.log('tooltipKeyDown - event', event.key);
+
+      const element = event.target;
+      console.log('tooltipKeyDown - element', element);
+
+      if (event.key === " " || event.key === "Enter" || event.key === "Spacebar") {
+        // do we want "Escape" in there too? || event.key === "Escape"
+        event.preventDefault();
+        showTooltip(element, !(element.getAttribute('aria-expanded') === 'true'));
+      }
+      console.log('tooltipKeyDown - current', element.getAttribute('aria-expanded'));
+    }
+
+    /*
+
+    function tooltipFocus(element) {
+      console.log('tooltipFocus - element', element);
+      showTooltip(element, true);
+      console.log('tooltipFocus - current', element.getAttribute('aria-expanded'));
+    }
+
+    function tooltipBlur(element) {
+      console.log('tooltipBlur - element', element);
+      showTooltip(element, false);
+      console.log('tooltipBlur - current', element.getAttribute('aria-expanded'));
+    }
+
+    function tooltipMouseDown(element) {
+      console.log('tooltipMouseDown - element', element);
+
+      showTooltip(element, (element.getAttribute('aria-expanded') === 'true'));
+      console.log('tooltipMouseDown - current', element.getAttribute('aria-expanded'));
+    }
+     */
+
+    // ******
+    function toggleTooltip(element) {
+      const ariaExpanded = (element.getAttribute('aria-expanded') === 'true');
+      console.log('toggleTooltip - get ariaExpanded', ariaExpanded);
+      element.setAttribute('aria-expanded', !ariaExpanded);
+      element.parentElement.classList.toggle('tool-tip--active');
+    }
+    function tooltipClick(element) {
+      console.log('tooltipClick - element', element);
+      toggleTooltip(element);
+      console.log('tooltipClick -current', element.getAttribute('aria-expanded'));
+    }
+    function tooltipClickZZZ(element) {
+      // console.log('tooltipClick - element', element);
+      const ariaExpanded = (element.getAttribute('aria-expanded') === 'true');
+      console.log('tooltipClick - get ariaExpanded', ariaExpanded);
+      element.setAttribute('aria-expanded', !ariaExpanded);
+      // document.getElementById('westest-wrapper').classList.toggle('tool-tip--active');
+      element.parentElement.classList.toggle('tool-tip--active');
+      console.log('tooltipClick -current', element.getAttribute('aria-expanded'));
+    }
+
+  </script>
 </head>
 <body>
 <div id="container">
@@ -23,26 +166,76 @@
     <h1>Accessibility Tooltip Page</h1>
     <a href="#" id="topAnchor">Top Anchor</a>
 
-    <div data-tool-tip-icon="" class="tool-tip__icon" aria-label="tooltip (aria-label)" onclick="this.setAttribute('aria-expanded', !(!!(this.getAttribute('aria-expanded')))); console.log('current', this.getAttribute('aria-expanded')); console.log('converted', !(!!(this.getAttribute('aria-expanded'))));" id="westest" aria-expanded="false" type="button" role="button" data-analytics-trigger="cta" tabindex="0">
-      <span class="offscreen">Still Available</span>
-    </div>
-
+    <h2>Focus</h2>
 
     <span class="model-line-selector__instructional-heading-tool-tip">
-      <div data-tool-tip="" class="tool-tip tool-tip--default tool-tip--open-down ">
-        <div data-tool-tip-icon="" class="tool-tip__icon" aria-describedby="tool-tip-flyout_kr0qec6kyan0u" type="button" role="button" data-analytics-trigger="cta" tabindex="0">
-          <span class="offscreen">More Info</span>
+      <div id="westest-wrapper" role="status"
+           data-tool-tip="" class="tool-tip tool-tip--default tool-tip--open-down ">
+        <div id="westest" data-tool-tip-icon="" class="tool-tip__icon" data-analytics-trigger="cta"
+             type="button" role="button"
+             tabindex="0"
+             aria-label="tooltip (aria-label)"
+             onfocus="tooltipFocus(this)"
+             onblur="tooltipBlur(this)"
+             onmousedown="tooltipMouseDown(this)"
+             onKeyDown="tooltipKeyDown(event)"
+             aria-expanded="false">
+          <span class="offscreen">Still Available</span>
         </div>
         <span class="tool-tip__caret"></span>
-        <div id="tool-tip-flyout_kr0qec6kyan0u" data-tool-tip-flyout="" class="tool-tip__flyout " data-analytics-container="tooltip-flyout">
+        <div id="tool-tip-flyout_westest" data-tool-tip-flyout="" class="tool-tip__flyout "
+             data-analytics-container="tooltip-flyout">
           <p>To simplify outfitting your Mercedes-Benz, complementary features are bundled into distinctive, generously appointed "lines." Please select a line to start your build.</p>
         </div>
       </div>
     </span>
+    <br><br>
+    <button>Add to Cart</button>
+    <br><br>
+    <h2>Hover and Focus</h2>
 
+    <span class="model-line-selector__instructional-heading-tool-tip">
+      <div data-tool-tip="" class="tool-tip tool-tip--default tool-tip--open-down ">
+        <div data-tool-tip-icon="" class="tool-tip__icon" aria-describedby="tool-tip-flyout_kr0qec6kyan0u" type="button"
+             role="button" data-analytics-trigger="cta" tabindex="0">
+          <span class="offscreen">More Info</span>
+        </div>
+        <span class="tool-tip__caret"></span>
+        <div id="tool-tip-flyout_westest2" data-tool-tip-flyout="" class="tool-tip__flyout "
+             data-analytics-container="tooltip-flyout">
+          <p>To simplify outfitting your Mercedes-Benz, complementary features are bundled into distinctive, generously appointed "lines." Please select a line to start your build.</p>
+        </div>
+      </div>
+    </span>
+    <br><br>
+    <button>Add to Cart</button>
+    <br><br>
+
+    <h2>Click</h2>
+
+    <span class="model-line-selector__instructional-heading-tool-tip">
+      <div id="westest-wrapper3" data-tool-tip="" class="tool-tip tool-tip--default tool-tip--open-down ">
+        <div id="westest3" data-tool-tip-icon="" class="tool-tip__icon" data-analytics-trigger="cta"
+             type="button" role="button"
+             tabindex="0"
+             aria-label="tooltip (aria-label)"
+             onclick="tooltipClick(this)"
+             aria-expanded="false">
+          <span class="offscreen">Still Available</span>
+        </div>
+        <span class="tool-tip__caret"></span>
+        <div id="tool-tip-flyout_westest" data-tool-tip-flyout="" class="tool-tip__flyout "
+             data-analytics-container="tooltip-flyout">
+          <p>To simplify outfitting your Mercedes-Benz, complementary features are bundled into distinctive, generously appointed "lines." Please select a line to start your build.</p>
+        </div>
+      </div>
+    </span>
+    <br><br><br><br>
 
 
   </div>
 </div>
 </body>
+<script>
+</script>
 </html>
