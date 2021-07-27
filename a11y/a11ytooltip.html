@@ -99,6 +99,21 @@
       // console.log('tooltipBlur - current', element.getAttribute('aria-expanded'));
     }
 
+    function tooltipMouseEnter(element) {
+      console.log('tooltipMouseEnter');
+      // console.log('tooltipFocus - element', element);
+      showTooltip(element, true);
+      // console.log('tooltipFocus - current', element.getAttribute('aria-expanded'));
+    }
+
+    function tooltipMouseLeave(element) {
+      console.log('tooltipMouseLeave');
+      // console.log('tooltipBlur - element', element);
+      showTooltip(element, false);
+      // console.log('tooltipBlur - current', element.getAttribute('aria-expanded'));
+    }
+
+
     function tooltipMouseDown(element) {
       console.log('tooltipMouseDown');
       // console.log('tooltipMouseDown - element', element);
@@ -205,7 +220,67 @@
     <br><br>
     <button>Add to Cart</button>
     <br><br>
+
+    <h2>Click</h2>
+
+    <span class="model-line-selector__instructional-heading-tool-tip">
+      <div id="westest-wrapper3"
+           data-tool-tip="" class="tool-tip tool-tip--default tool-tip--open-down ">
+        <div id="westest3" data-tool-tip-icon="" class="tool-tip__icon" data-analytics-trigger="cta"
+             type="button" role="button"
+             tabindex="0"
+             aria-label="More Info Tooltip"
+             onblur="tooltipBlur(this)"
+             onmousedown="tooltipMouseDown(this)"
+             onKeyDown="tooltipKeyDown(event)"
+             aria-expanded="false">
+          <span class="offscreen">Still Available</span>
+        </div>
+        <span class="tool-tip__caret"></span>
+        <div role="status">
+          <div id="tool-tip-flyout_westest3" class="tool-tip__flyout "
+               data-tool-tip-flyout=""
+               data-analytics-container="tooltip-flyout">
+            <p>To simplify outfitting your Mercedes-Benz, complementary features are bundled into distinctive, generously appointed "lines." Please select a line to start your build.</p>
+          </div>
+        </div>
+      </div>
+    </span>
+    <br><br>
+    <button>Add to Cart</button>
+    <br><br>
+
     <h2>Hover and Focus</h2>
+
+    <span class="model-line-selector__instructional-heading-tool-tip">
+      <div id="westest-wrapper2"
+           data-tool-tip="" class="tool-tip tool-tip--default tool-tip--open-down ">
+        <div id="westest2" data-tool-tip-icon="" class="tool-tip__icon" data-analytics-trigger="cta"
+             type="button" role="button"
+             tabindex="0"
+             aria-label="More Info Tooltip"
+             onfocus="tooltipFocus(this)"
+             onblur="tooltipBlur(this)"
+             onmouseenter="tooltipMouseEnter(this)"
+             onmouseleave="tooltipMouseLeave(this)"
+             onmousedown="tooltipMouseDown(this)"
+             onKeyDown="tooltipKeyDown(event)"
+             aria-expanded="false">
+          <span class="offscreen">Still Available</span>
+        </div>
+        <span class="tool-tip__caret"></span>
+        <div role="status">
+          <div id="tool-tip-flyout_westest2" class="tool-tip__flyout "
+               data-tool-tip-flyout=""
+               data-analytics-container="tooltip-flyout">
+            <p>To simplify outfitting your Mercedes-Benz, complementary features are bundled into distinctive, generously appointed "lines." Please select a line to start your build.</p>
+          </div>
+        </div>
+      </div>
+    </span>
+    <br><br>
+    <button>Add to Cart</button>
+    <br><br>
 
     <span class="model-line-selector__instructional-heading-tool-tip">
       <div data-tool-tip="" class="tool-tip tool-tip--default tool-tip--open-down ">
@@ -214,7 +289,7 @@
           <span class="offscreen">More Info</span>
         </div>
         <span class="tool-tip__caret"></span>
-        <div id="tool-tip-flyout_westest2" data-tool-tip-flyout="" class="tool-tip__flyout "
+        <div id="tool-tip-flyout_westestzzz" data-tool-tip-flyout="" class="tool-tip__flyout "
              data-analytics-container="tooltip-flyout">
           <p>To simplify outfitting your Mercedes-Benz, complementary features are bundled into distinctive, generously appointed "lines." Please select a line to start your build.</p>
         </div>
@@ -223,30 +298,6 @@
     <br><br>
     <button>Add to Cart</button>
     <br><br>
-
-    <h2>Click</h2>
-
-    <span class="model-line-selector__instructional-heading-tool-tip">
-      <div id="westest-wrapper3" data-tool-tip="" class="tool-tip tool-tip--default tool-tip--open-down ">
-        <div id="westest3" data-tool-tip-icon="" class="tool-tip__icon" data-analytics-trigger="cta"
-             type="button" role="button"
-             tabindex="0"
-             aria-label="tooltip (aria-label)"
-             onclick="tooltipClick(this)"
-             aria-expanded="false">
-          <span class="offscreen">Still Available</span>
-        <span class="tool-tip__caret"></span>
-        <div id="tool-tip-flyout_westest3" data-tool-tip-flyout="" class="tool-tip__flyout "
-             data-analytics-container="tooltip-flyout">
-          <p>To simplify outfitting your Mercedes-Benz, complementary features are bundled into distinctive, generously appointed "lines." Please select a line to start your build.</p>
-        </div>
-        </div>
-
-      </div>
-    </span>
-    <br><br><br><br>
-
-
   </div>
 </div>
 </body>
