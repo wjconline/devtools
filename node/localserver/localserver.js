@@ -7,7 +7,8 @@ http.createServer(function (request, response) {
 
     // const rootPath = '.';
     // const rootPath = '../..';
-    const rootPath = '/data/code/098_devtools_github/devtools';
+    // const rootPath = '/data/code/098_devtools_github/devtools';
+    const rootPath = '/Users/Shared/data/code/098_devtools/devtools';
     let filePath = rootPath + request.url.split('?')[0];
     // let filePath = rootPath + request.url;
     const siteIndexPath = rootPath + '/index.html';
