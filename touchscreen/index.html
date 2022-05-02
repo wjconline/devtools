@@ -32,18 +32,24 @@
             // document.getElementById('homecontent').classList.toggle('animate-fadein');
             // document.getElementById('homecontent').classList.toggle('animate-fadeout');
             console.log('transitionclick: thisPage, nextPage', thisPage, nextPage);
-            document.getElementById(thisPage).classList.add('simple-fadeout');
+
             document.getElementById(nextPage).classList.remove('simple-hide');
-            // document.getElementById(thisPage).classList.add('hide');
+            console.log('transitionclick: nextPage - remove simple-hide', nextPage);
+
+            document.getElementById(thisPage).classList.add('simple-fadeout');
+            console.log('transitionclick: thisPage - add simple-fadeout', thisPage);
+
+            // experimental time here
+            document.getElementById(thisPage).classList.add('hide');
+            console.log('transitionclick: thisPage - add hide', thisPage);
 
             document.getElementById(nextPage).classList.remove('simple-fadeout');
+            console.log('transitionclick: nextPage - remove simple-fadeout', nextPage);
 
         }
-
-
     </script>
+    <!-- unused styles -->
     <style>
-
         .transition-fadein {
             transition: opacity 1s;
         }
@@ -51,7 +57,6 @@
             transition: opacity 1s;
             opacity: 0;
         }
-
 
         @keyframes fadein{
             from{opacity:0}
@@ -61,7 +66,6 @@
             from{opacity:1}
             to{opacity:0}
         }
-
 
         .animate-fadein{
             animation:fadein 1s; /* lh-animate-fading infinite */
@@ -104,19 +108,21 @@
             to{opacity:1}
         }
 
-        .hide {
-            opacity: 0;
-            max-height: 0;
-        }
         .hidden {
             visibility: hidden;
         }
     </style>
+
+    <!-- Used Styles -->
     <style>
 
-        .simple-fadein { transition: opacity 1s; }
-        .simple-fadein.simple-fadeout {
+        .hide {
             opacity: 0;
+            max-height: 0;
+        }
+
+        .simple-fadein { transition: opacity 1s; }
+        .simple-fadein.simple-fadeout { opacity: 0;
             transition-duration: 0.5s;
             transition-delay: 0s;
         }
@@ -129,18 +135,12 @@
             padding: 0;
             height:100%;
             width:100%;
-            height:100vh;
-
         }
 
         a {
             text-decoration: none;
         }
-.chewycenter {
-    height:100vh;
 
-    position: relative;
-}
         .container {
             /*height: 100%;*/
             /*position: relative;*/
@@ -149,8 +149,6 @@
             position: absolute;
             /*background-color: blueviolet;*/
             overflow: hidden;
-            top: 0;
-            left: 0;
             font-family: 'Hyundai Sans Head', Arial;
         }
 
@@ -159,8 +157,6 @@
             top: 0;
             left: 0;
             z-index: 100;
-            height:100vh;
-
         }
 
         .homecontenttwo {
@@ -253,8 +249,6 @@
             z-index: 120;
             /*text-align: center;*/
             background: #F8FBFB;
-            height:100vh;
-
 
         }
 
@@ -343,8 +337,6 @@
         }
 
         .threecolumntile {
-            height:100vh;
-
             position: relative;
             top: 0;
             left: 0;
@@ -392,11 +384,7 @@
 </head>
 <body>
 <div id="container" class="container">
-<!--    <div class="animate-fadein">-->
-<!--        <h1>LearningHomeBD Animation !</h1>-->
-<!--        <p>CSS Animation Slide From TOP│Bottom│Left│Right│zoom│spin│fading│opacity </p>-->
-<!--    </div>-->
-    <div id="chewycenter" class="chewycenter">
+    <div id="chewycenter">
         <div id="homecontent" class="homecontent homecontenttwo simple-fadein">
             <div id="homecontent1" class="homecontent1">
                 <a href="#" onclick="transitionclick('homecontent', 'verticalmenu')" data-nextscreen="verticalmenu" class="homelink">
@@ -487,11 +475,9 @@
         console.log('transitionend: homecontent', homecontent.classList);
         if (homecontent.classList.contains('simple-fadeout')) {
             homecontent.classList.add('simple-hide');
-            console.log('transitionend: homecontent add simple-hide');
-            // homecontent.classList.remove('hide');
-        } else {
-
-
+            console.log('transitionend: homecontent - add simple-hide');
+            homecontent.classList.remove('hide');
+            console.log('transitionend: homecontent - remove hide');
         }
     });
 
@@ -501,10 +487,10 @@
         console.log('transitionend: verticalmenu', verticalmenu.classList);
         if (verticalmenu.classList.contains('simple-fadeout')) {
             verticalmenu.classList.add('simple-hide');
-            console.log('transitionend: verticalmenu add simple-hide');
+            console.log('transitionend: verticalmenu - add simple-hide');
 
-            // verticalmenu.classList.remove('hide');
-
+            verticalmenu.classList.remove('hide');
+            console.log('transitionend: verticalmenu - remove hide');
         }
     });
 
@@ -514,10 +500,10 @@
         console.log('transitionend: threecolumntile', threecolumntile.classList);
         if (threecolumntile.classList.contains('simple-fadeout')) {
             threecolumntile.classList.add('simple-hide');
-            console.log('transitionend: threecolumntile add simple-hide');
+            console.log('transitionend: threecolumntile - add simple-hide');
 
-            // threecolumntile.classList.remove('hide');
-
+            threecolumntile.classList.remove('hide');
+            console.log('transitionend: threecolumntile - remove hide');
         }
     });
     //
