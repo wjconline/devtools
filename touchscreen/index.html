@@ -10,9 +10,23 @@
     <meta name="robots" content="all"/>
     <meta name="docref" content="touchscreen testing - index.html"/>
     <title>Touchscreen - Test Page</title>
-    <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
-    <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
+    <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/resources/images/favicon.ico"/>
+    <link type="image/vnd.microsoft.icon" rel="icon" href="/resources/images/favicon.ico"/>
     <script>
+        // window.addEventListener(‘contextmenu’, function (e) {
+        //     e.preventDefault();
+        // }, true);
+
+        // document.addEventListener('contextmenu', event => event.preventDefault());
+
+        document.addEventListener("contextmenu", (event) =>
+        {
+            console.log('contextmenu: ', event);
+            event.preventDefault();
+        });
+
+        // test home page google chrome shortcut icon: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --kiosk http://127.0.0.1:1337/touchscreen/index.html
+
         function homeclick(thisPage, nextPage) {
             // alert(nextPage);
             // document.getElementById('homecontent').classList.toggle('animate-fadein');
@@ -264,12 +278,12 @@
         }
 
         .verticalmenuflex-left {
-            width: 65%;
+            width: 55%;
             height: 100vh;
         }
 
         .verticalmenuflex-right {
-            width: 35%;
+            width: 45%;
         }
 
         .verticalmenuimagecontent {
@@ -281,7 +295,8 @@
         }
 
         .verticalmenubackgroundimage {
-            width: 100%;
+            /*width: 100%;*/
+            height: 100%;
         }
 
         .verticalmenuprimary {
@@ -346,6 +361,7 @@
         }
         .threecolumntilecontent {
 
+            padding: 30px 60px 0px 60px;
         }
         .threecolumntilecolumn {
 
@@ -355,12 +371,17 @@
             font-family: 'Hyundai Sans Head', Arial;
             font-style: normal;
             font-weight: 500;
-            font-size: 158px;
-            line-height: 195px;
+            font-size: 126px;
+            line-height: 156px;
+            /* identical to box height */
+
             letter-spacing: 0.006em;
             text-transform: uppercase;
+
             /* Active Blue Accessible */
+
             color: #0082A2;
+
 
         }
         .threecolumntileflex-left {

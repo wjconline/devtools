@@ -7,8 +7,12 @@ http.createServer(function (request, response) {
 
     // const rootPath = '.';
     // const rootPath = '../..';
+    // Legacy MacOS
     // const rootPath = '/data/code/098_devtools_github/devtools';
-    const rootPath = '/Users/Shared/data/code/098_devtools/devtools';
+    // Windows C Data
+    const rootPath = 'C:\\data\\code\\098_devtools_github\\devtools';
+    // "Modern" MacOS
+    // const rootPath = '/Users/Shared/data/code/098_devtools/devtools';
     let filePath = rootPath + request.url.split('?')[0];
     // let filePath = rootPath + request.url;
     const siteIndexPath = rootPath + '/index.html';
