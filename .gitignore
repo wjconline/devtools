@@ -4,3 +4,4 @@
 # *.iml
 # out
 # gen
+/node/localserver/config/localConfig.js
