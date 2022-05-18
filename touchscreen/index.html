@@ -19,6 +19,8 @@
 
         // document.addEventListener('contextmenu', event => event.preventDefault());
 
+        let currentPage = 'homecontent';
+
         document.addEventListener("contextmenu", (event) =>
         {
             console.log('contextmenu: ', event);
@@ -45,7 +47,7 @@
             // alert(nextPage);
             // document.getElementById('homecontent').classList.toggle('animate-fadein');
             // document.getElementById('homecontent').classList.toggle('animate-fadeout');
-            console.log('transitionclick: thisPage, nextPage', thisPage, nextPage);
+            console.log('transitionclick: thisPage, nextPage, currentPage', thisPage, nextPage, currentPage);
 
             document.getElementById(nextPage).classList.remove('simple-hide');
             console.log('transitionclick: nextPage - remove simple-hide', nextPage);
@@ -59,6 +61,17 @@
 
             document.getElementById(nextPage).classList.remove('simple-fadeout');
             console.log('transitionclick: nextPage - remove simple-fadeout', nextPage);
+
+            if (nextPage === 'screensaver') {
+                console.log('transitionclick: nextPage - play video', nextPage);
+                screensavervideo.play();
+            } else {
+                console.log('transitionclick: nextPage - pause video', nextPage);
+                screensavervideo.pause(); // if (video.paused || video.ended)
+                screensavervideo.currentTime = 0;
+                screensavervideo.value = 0;
+                currentPage = nextPage;
+            }
 
         }
     </script>
@@ -396,6 +409,22 @@
             width: 33.3%;
         }
 
+        .screensaver {
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 220;
+            /*text-align: center;*/
+            background: #F8FBFB;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .screensavervideo {
+            width: 100%;
+            height: 100vh;
+        }
+
         .displayhide {
             display: none;
             opacity: 0;
@@ -441,6 +470,10 @@
                     <a href="#" onclick="transitionclick('verticalmenu', 'threecolumntile')" data-nextscreen="threecolumntile" class="verticalmenulink">
                         Menuitem1
                     </a>
+                    <br>
+                    <a href="#" onclick="transitionclick('verticalmenu', 'screensaver')" data-nextscreen="screensaver" class="verticalmenulink">
+                        screensaver
+                    </a>
                 </div>
                 <div class="verticalmenuimagecontent verticalmenuflex-right">
                     <img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
@@ -484,11 +517,17 @@
 
             </div>
         </div>
+        <div id="screensaver" class="screensaver simple-fadein simple-fadeout simple-hide">
+            <video id="screensavervideo" class="screensavervideo" controls loop preload="auto" src="https://www.hyundaicanada.com/-/media/hyundai/showroom/2022/tucson/videos/ajac-video/cb-2005-tucson_vlp_1920x700-en.mp4" data-player="vlp-video-0">
+                <source src="https://www.hyundaicanada.com/-/media/hyundai/showroom/2022/tucson/videos/ajac-video/cb-2005-tucson_vlp_1920x700-en.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
 </div>
 </body>
 </html>
 <script>
+    const screensavervideo = document.getElementById('screensavervideo');
 
     const homecontent = document.getElementById('homecontent');
     homecontent.addEventListener("transitionend", () =>
@@ -527,31 +566,78 @@
             console.log('transitionend: threecolumntile - remove hide');
         }
     });
-    //
-    // const homecontent = document.getElementById('homecontent');
-    // homecontent.addEventListener("transitionend", () =>
-    // {
-    //     console.log('transitionend: homecontent', homecontent.classList);
-    //     if (homecontent.classList.contains('transition-fadeout')) {
-    //         homecontent.classList.add('hide');
-    //     }
-    // });
-    //
-    // const verticalmenu = document.getElementById('verticalmenu');
-    // homecontent.addEventListener("transitionend", () =>
-    // {
-    //     console.log('transitionend: verticalmenu', verticalmenu.classList);
-    //     if (verticalmenu.classList.contains('transition-fadeout')) {
-    //         verticalmenu.classList.add('hide');
-    //     }
-    // });
 
+    const screensaver = document.getElementById('screensaver');
+    screensaver.addEventListener("transitionend", () =>
+    {
+        console.log('transitionend: screensaver', screensaver.classList);
+        if (screensaver.classList.contains('simple-fadeout')) {
+            screensaver.classList.add('simple-hide');
+            console.log('transitionend: screensaver - add simple-hide');
+
+            screensaver.classList.remove('hide');
+            console.log('transitionend: screensaver - remove hide');
+        }
+    });
+
+
+    // setTimeout for screen saver start
+    let mousetimeout;
+    // track if screen saver is active
+    let screensaver_active = false;
+    // number of seconds to wait until screen saver starts
+    const idletime = 10;
+
+    // display the screen saver
+    function screensaver_display(){
+        console.log('screensaver_display - start');
+
+        if (screensaver_active) {
+            console.log('screensaver_display - screensaver_active', screensaver_active);
+            transitionclick(currentPage, 'screensaver');
+        }
+    }
+
+    // show the screen saver
+    function show_screensaver(){
+        console.log('show_screensaver');
+        screensaver_active = true;
+        screensaver_display();
+    }
+
+    // stop the screen saver, transition back to the page it started from
+    function stop_screensaver(){
+        console.log('stop_screensaver');
+        screensaver_active = false;
+        transitionclick('screensaver', currentPage);
+
+    }
+
+    // add the listener that will reset the screen saver timeout
+    document.addEventListener("mousemove", () =>
+    {
+        console.log('mousemove - start - idletime', idletime);
+
+        clearTimeout(mousetimeout);
+
+        // stop and reset the screen saver video
+        if (screensaver_active) {
+            stop_screensaver();
+        }
+
+        // reset the timeout for the screen saver
+        mousetimeout = setTimeout(function(){
+            show_screensaver();
+        }, 1000 * idletime); // idletime secs
+    });
+
+    // initialize the screen saver, by number of seconds of idle time
+    mousetimeout = setTimeout(function(){
+        show_screensaver();
+    }, 1000 * idletime); // wait for idletime secs before displaying the screen saver
 
     // homeclick("loadtest");
-    // const url = 'https://ca-stage.mbvans.com/en/innovations';
-    // // const url = 'https://www.mbusa.com/en/vehicles/build/gla/suv';
-    // // const url = 'https://int-1-dcps.nonprod.amap.dcp.mbio.zone/en-us/connect/';
-    // // const url = 'https://shop-preprod.mercedes-benz.com/en-us/connect/';
+    // const url = 'https://test.com';
     // const dateNow = Date.now();
     // const queryString = ''; // include '&'
     // const fullUrl = `${url}?testToken=${dateNow}${queryString}`;
