@@ -12,6 +12,11 @@
   <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
   <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
   <script>
+    function noLink (e) {
+      console.log(e);
+      e.preventDefault();
+    }
+
   </script>
 
 
@@ -28,9 +33,9 @@
     <h1>Accessibility Links Test Page</h1>
     <a href="#" id="topAnchor">Top Anchor</a>
     <h2>Links</h2>
-
+    <a href="#" onclick="noLink(event)">Test Link 1</a>
     <div>
-      <a href="http://www.fillmurray.com/">Test Link 1</a> | <a href="http://www.fillmurray.com/200/300">Test Link 2</a>
+      <a href="http://www.fillmurray.com/" onclick="noLink">Test Link 1</a> | <a href="http://www.fillmurray.com/200/300">Test Link 2</a>
     </div>
 
       <ol>
