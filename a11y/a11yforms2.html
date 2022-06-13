@@ -33,13 +33,52 @@
           });
       */
   </script>
+  <style>
+
+    /*
+    In most browsers, the placeholder text is grey. To change this, style the placeholder with the non-standard ::placeholder selector. Note that Firefox adds a lower opacity to the placeholder, so we use opacity: 1 to fix this.
+
+Example */
+.styled-placeholder::placeholder { /* Chrome, Firefox, Modern Edge, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+
+    .mybackground {
+      background-color: #000000;
+    }
+
+    .mycolor {
+      width: 200px;
+      height: 100px;
+      background-color: #FFFFFF;
+      border: 2px;
+    }
+    .myopacity {
+      width: 150px;
+      height: 50px;
+      opacity: 0.3;
+    }
+
+    .myhooverbackground {
+      width: 150px;
+      height: 50px;
+      background-color: #757575;
+    }
+
+  </style>
 </head>
 <body>
 <div id="container">
   <div id="chewycenter">
     <h1>CT.Net Accessibility Form Test 2 Page</h1>
     <a href="a11yindex.html" id="topAnchor">Back to A11y Index</a>
-
+    <div class="mybackground">Background
+      <div class="mycolor">Color</div>
+      <div class="mycolor myopacity">Opacity</div>
+      <div class="mycolor myhooverbackground">Hover Background</div>
+    </div>
     <form>
       <h3 id="stationtitle">Choose your charging station</h3>
       <p aria-labelledby="stationtitle">
@@ -241,6 +280,10 @@
       <p>
         <label for="placeholder">Add a comment here (with placeholder):</label>
         <input type="text" id="placeholder" name="placeholder" placeholder="I'm placeholder text">
+      </p>
+      <p>
+        <label for="styledplaceholder">Add a comment here (with placeholder):</label>
+        <input type="text" id="styledplaceholder" name="styledplaceholder" class="styled-placeholder" placeholder="I'm styled placeholder text">
       </p>
       <p>
         <label for="textfieldDisabled">Add a comment here (with disabled attribute):</label>
