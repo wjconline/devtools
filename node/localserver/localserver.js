@@ -85,15 +85,3 @@ if (existsSync('./config/localConfig.js')) {
     console.log('Local Config does not exist.');
     startServer();
 }
-
-
-/*
-
-// import { existsSync } from 'node:fs';
-// import * as myConfig from 'config/serverConfig.js';
-// var http = require('http');
-// var fs = require('fs');
-// var path = require('path');
-
-
- */

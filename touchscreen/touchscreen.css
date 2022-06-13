@@ -1,0 +1,355 @@
+
+.hide {
+    opacity: 0;
+    max-height: 0;
+}
+
+.simple-fadein { transition: opacity 1s; }
+.simple-fadein.simple-fadeout { opacity: 0;
+    transition-duration: 0.5s;
+    transition-delay: 0s;
+}
+.simple-hide {
+    max-height: 0;
+    max-width: 0;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height:100%;
+    width:100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    /*height: 100%;*/
+    /*position: relative;*/
+    width: 100%;
+    height:100vh;
+    position: absolute;
+    /*background-color: blueviolet;*/
+    overflow: hidden;
+    font-family: 'Hyundai Sans Head', Arial;
+}
+
+.homecontent {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.homecontenttwo {
+
+}
+.homecontent1 {
+    width: 100%;
+    /*height: 50%;*/
+    height:50vh;
+
+    position: relative;
+    background-color: #E4F2F6;
+    /*background: rgba(0, 130, 162, 0.1);*/
+}
+.homecontent2 {
+    position: relative;
+    width: 100%;
+    /*height: 50%;*/
+    height:50vh;
+    background-color: #B2D9E3;
+    /*background: rgba(0, 130, 162, 0.3);*/
+}
+
+.homelink {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    height: 100%;
+}
+
+.homeprimary {
+    /* Single Line Car Header */
+    font-family: 'Hyundai Sans Head', Arial;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 158px;
+    line-height: 195px;
+    text-align: center;
+    letter-spacing: 0.006em;
+    text-transform: uppercase;
+    /* Active Blue Accessible */
+    color: #0082A2;
+
+}
+
+.homesecondary {
+    font-family: 'Hyundai Sans Head', Arial;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 88px;
+    line-height: 85%;
+    text-align: center;
+
+    /* identical to box height, or 75px */
+
+    letter-spacing: 0.006em;
+    text-transform: uppercase;
+
+    /* Active Blue Accessible */
+
+    color: #0082A2;
+}
+
+.homeimage {
+
+}
+
+.breadcrumb {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: 0.006em;
+    text-transform: uppercase;
+    /* Hyundai Blue */
+
+    color: #002C64;
+}
+
+.breadcrumblink {
+    display: inline-block;
+    color: #002C64;
+    /*margin-right: 20px;*/
+}
+
+.verticalmenu {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 120;
+    /*text-align: center;*/
+    background: #F8FBFB;
+
+}
+
+.verticalmenutextcontent {
+
+    padding: 30px 0px 0px 60px;
+
+    /*background-color: red;*/
+}
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.verticalmenuflex-left {
+    width: 55%;
+    height: 100vh;
+}
+
+.verticalmenuflex-right {
+    width: 45%;
+}
+
+.verticalmenuimagecontent {
+    /*background-color: purple;*/
+}
+
+.verticalmenuimagecontent {
+    /*width: 50%;*/
+}
+
+.verticalmenubackgroundimage {
+    /*width: 100%;*/
+    height: 100%;
+}
+
+.verticalmenuprimary {
+    margin-top: 40px;
+    font-family: 'Hyundai Sans Head', Arial;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 126px;
+    line-height: 95%;
+    /* or 120px */
+
+    letter-spacing: 0.006em;
+    text-transform: uppercase;
+
+    /* Active Blue Accessible */
+
+    color: #0082A2;
+
+}
+
+.verticalmenusecondary {
+    font-family: 'Hyundai Sans Head', Arial;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 95%;
+    /* or 120px */
+
+    letter-spacing: 0.006em;
+    text-transform: uppercase;
+
+    /* Active Blue Accessible */
+
+    color: #0082A2;
+}
+
+.verticalmenulink {
+    display: inline-block;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: 0.006em;
+    text-transform: uppercase;
+
+    /* Active Blue Accessible */
+    color: #0082A2;
+    /* Inside auto layout */
+
+    margin: 14px 16px;
+    padding: 20px 28px;
+    background: #E3F1F5;
+}
+
+.threecolumntile {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 120;
+    /*text-align: center;*/
+    background: #F8FBFB;
+}
+.threecolumntilecontent {
+
+    padding: 30px 60px 0px 60px;
+}
+.threecolumntilecolumn {
+
+}
+.threecolumntiletitle {
+    /* Single Line Car Header */
+    font-family: 'Hyundai Sans Head', Arial;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 126px;
+    line-height: 156px;
+    /* identical to box height */
+
+    letter-spacing: 0.006em;
+    text-transform: uppercase;
+
+    /* Active Blue Accessible */
+
+    color: #0082A2;
+
+
+}
+.threecolumntileflex-left {
+    width: 33.3%;
+    height: 100vh;
+}
+.threecolumntileflex-center {
+    width: 33.3%;
+
+}
+.threecolumntileflex-right {
+    width: 33.3%;
+}
+
+.screensaver {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 220;
+    /*text-align: center;*/
+    background: #F8FBFB;
+    width: 100%;
+    height: 100vh;
+}
+
+.screensavervideo {
+    width: 100%;
+    height: 100vh;
+}
+
+.displayhide {
+    display: none;
+    opacity: 0;
+}
+
+
+
+
+
+/* unused styles */
+
+.transition-fadein {
+    transition: opacity 1s;
+}
+.transition-fadeout {
+    transition: opacity 1s;
+    opacity: 0;
+}
+
+@keyframes fadein{
+    from{opacity:0}
+    to{opacity:1}
+}
+@keyframes fadeout{
+    from{opacity:1}
+    to{opacity:0}
+}
+
+.animate-fadein{
+    animation:fadein 1s; /* lh-animate-fading infinite */
+}
+.animate-fadeout{
+    animation:fadeout 1s; /* lh-animate-fading infinite */
+    opacity: 0;
+}
+
+@keyframes fading{
+    0%{opacity:0}
+    50%{opacity:1}
+    100%{opacity:0}
+}
+
+.lh-left{
+    position:relative;
+    animation:animateleft 0.4s;
+}
+
+@keyframes animateleft{
+    from{left:-300px;opacity:0}
+    to{left:0;opacity:1}
+}
+
+.lh-animate-fading{
+    animation:fading 10s infinite;
+}
+@keyframes fading{
+    0%{opacity:0}
+    50%{opacity:1}
+    100%{opacity:0}
+}
+
+.animate-opacity{
+    animation:opac 0.8s;
+}
+@keyframes opac{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+.hidden {
+    visibility: hidden;
+}

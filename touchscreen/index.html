@@ -1,562 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="CorporateTool.Net"/>
-    <meta name="Keywords" content="touch interface touchscreen swipe html"/>
-    <meta name="Description" content="An page for testing touch screen implementations"/>
-    <meta name="robots" content="all"/>
-    <meta name="docref" content="touchscreen testing - index.html"/>
-    <title>Touchscreen - Test Page</title>
-    <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/resources/images/favicon.ico"/>
-    <link type="image/vnd.microsoft.icon" rel="icon" href="/resources/images/favicon.ico"/>
-    <script>
-        // window.addEventListener(‘contextmenu’, function (e) {
-        //     e.preventDefault();
-        // }, true);
-
-        // document.addEventListener('contextmenu', event => event.preventDefault());
-
-        document.addEventListener("contextmenu", (event) =>
-        {
-            console.log('contextmenu: ', event);
-            event.preventDefault();
-        });
-
-        // test home page google chrome shortcut icon: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --kiosk http://127.0.0.1:1337/touchscreen/index.html
-
-        function homeclick(thisPage, nextPage) {
-            // alert(nextPage);
-            // document.getElementById('homecontent').classList.toggle('animate-fadein');
-            // document.getElementById('homecontent').classList.toggle('animate-fadeout');
-            console.log('homeclick: thisPage, nextPage', thisPage, nextPage);
-
-            document.getElementById(thisPage).classList.remove('transition-fadein');
-            document.getElementById(thisPage).classList.add('transition-fadeout');
-            document.getElementById(nextPage).classList.remove('transition-fadeout');
-            document.getElementById(nextPage).classList.remove('hide');
-            document.getElementById(nextPage).classList.add('transition-fadein');
-
-        }
-
-        function transitionclick(thisPage, nextPage) {
-            // alert(nextPage);
-            // document.getElementById('homecontent').classList.toggle('animate-fadein');
-            // document.getElementById('homecontent').classList.toggle('animate-fadeout');
-            console.log('transitionclick: thisPage, nextPage', thisPage, nextPage);
-
-            document.getElementById(nextPage).classList.remove('simple-hide');
-            console.log('transitionclick: nextPage - remove simple-hide', nextPage);
-
-            document.getElementById(thisPage).classList.add('simple-fadeout');
-            console.log('transitionclick: thisPage - add simple-fadeout', thisPage);
-
-            // experimental time here
-            document.getElementById(thisPage).classList.add('hide');
-            console.log('transitionclick: thisPage - add hide', thisPage);
-
-            document.getElementById(nextPage).classList.remove('simple-fadeout');
-            console.log('transitionclick: nextPage - remove simple-fadeout', nextPage);
-
-        }
-    </script>
-    <!-- unused styles -->
-    <style>
-        .transition-fadein {
-            transition: opacity 1s;
-        }
-        .transition-fadeout {
-            transition: opacity 1s;
-            opacity: 0;
-        }
-
-        @keyframes fadein{
-            from{opacity:0}
-            to{opacity:1}
-        }
-        @keyframes fadeout{
-            from{opacity:1}
-            to{opacity:0}
-        }
-
-        .animate-fadein{
-            animation:fadein 1s; /* lh-animate-fading infinite */
-        }
-        .animate-fadeout{
-            animation:fadeout 1s; /* lh-animate-fading infinite */
-            opacity: 0;
-        }
-
-        @keyframes fading{
-            0%{opacity:0}
-            50%{opacity:1}
-            100%{opacity:0}
-        }
-
-        .lh-left{
-            position:relative;
-            animation:animateleft 0.4s;
-        }
-
-        @keyframes animateleft{
-            from{left:-300px;opacity:0}
-            to{left:0;opacity:1}
-        }
-
-        .lh-animate-fading{
-            animation:fading 10s infinite;
-        }
-        @keyframes fading{
-            0%{opacity:0}
-            50%{opacity:1}
-            100%{opacity:0}
-        }
-
-        .animate-opacity{
-            animation:opac 0.8s;
-        }
-        @keyframes opac{
-            from{opacity:0}
-            to{opacity:1}
-        }
-
-        .hidden {
-            visibility: hidden;
-        }
-    </style>
-
-    <!-- Used Styles -->
-    <style>
-
-        .hide {
-            opacity: 0;
-            max-height: 0;
-        }
-
-        .simple-fadein { transition: opacity 1s; }
-        .simple-fadein.simple-fadeout { opacity: 0;
-            transition-duration: 0.5s;
-            transition-delay: 0s;
-        }
-        .simple-hide {
-            max-height: 0;
-            max-width: 0;
-        }
-        html, body {
-            margin: 0;
-            padding: 0;
-            height:100%;
-            width:100%;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .container {
-            /*height: 100%;*/
-            /*position: relative;*/
-            width: 100%;
-            height:100vh;
-            position: absolute;
-            /*background-color: blueviolet;*/
-            overflow: hidden;
-            font-family: 'Hyundai Sans Head', Arial;
-        }
-
-        .homecontent {
-            position: relative;
-            top: 0;
-            left: 0;
-            z-index: 100;
-        }
-
-        .homecontenttwo {
-
-        }
-        .homecontent1 {
-            width: 100%;
-            /*height: 50%;*/
-            height:50vh;
-
-            position: relative;
-            background-color: #E4F2F6;
-            /*background: rgba(0, 130, 162, 0.1);*/
-        }
-        .homecontent2 {
-            position: relative;
-            width: 100%;
-            /*height: 50%;*/
-            height:50vh;
-            background-color: #B2D9E3;
-            /*background: rgba(0, 130, 162, 0.3);*/
-        }
-
-        .homelink {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            height: 100%;
-        }
-
-        .homeprimary {
-            /* Single Line Car Header */
-            font-family: 'Hyundai Sans Head', Arial;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 158px;
-            line-height: 195px;
-            text-align: center;
-            letter-spacing: 0.006em;
-            text-transform: uppercase;
-            /* Active Blue Accessible */
-            color: #0082A2;
-
-        }
-
-        .homesecondary {
-            font-family: 'Hyundai Sans Head', Arial;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 88px;
-            line-height: 85%;
-            text-align: center;
-
-            /* identical to box height, or 75px */
-
-            letter-spacing: 0.006em;
-            text-transform: uppercase;
-
-            /* Active Blue Accessible */
-
-            color: #0082A2;
-        }
-
-        .homeimage {
-
-        }
-
-        .breadcrumb {
-            font-style: normal;
-            font-weight: 500;
-            font-size: 36px;
-            line-height: 44px;
-            letter-spacing: 0.006em;
-            text-transform: uppercase;
-            /* Hyundai Blue */
-
-            color: #002C64;
-        }
-
-        .breadcrumblink {
-            display: inline-block;
-            color: #002C64;
-            /*margin-right: 20px;*/
-        }
-
-        .verticalmenu {
-            position: relative;
-            top: 0;
-            left: 0;
-            z-index: 120;
-            /*text-align: center;*/
-            background: #F8FBFB;
-
-        }
-
-        .verticalmenutextcontent {
-
-            padding: 30px 0px 0px 60px;
-
-            /*background-color: red;*/
-        }
-        .flex-container {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .verticalmenuflex-left {
-            width: 55%;
-            height: 100vh;
-        }
-
-        .verticalmenuflex-right {
-            width: 45%;
-        }
-
-        .verticalmenuimagecontent {
-            /*background-color: purple;*/
-        }
-
-        .verticalmenuimagecontent {
-            /*width: 50%;*/
-        }
-
-        .verticalmenubackgroundimage {
-            /*width: 100%;*/
-            height: 100%;
-        }
-
-        .verticalmenuprimary {
-            margin-top: 40px;
-            font-family: 'Hyundai Sans Head', Arial;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 126px;
-            line-height: 95%;
-            /* or 120px */
-
-            letter-spacing: 0.006em;
-            text-transform: uppercase;
-
-            /* Active Blue Accessible */
-
-            color: #0082A2;
-
-        }
-
-        .verticalmenusecondary {
-            font-family: 'Hyundai Sans Head', Arial;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 96px;
-            line-height: 95%;
-            /* or 120px */
-
-            letter-spacing: 0.006em;
-            text-transform: uppercase;
-
-            /* Active Blue Accessible */
-
-            color: #0082A2;
-        }
-
-        .verticalmenulink {
-            display: inline-block;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 36px;
-            line-height: 44px;
-            letter-spacing: 0.006em;
-            text-transform: uppercase;
-
-            /* Active Blue Accessible */
-            color: #0082A2;
-            /* Inside auto layout */
-
-            margin: 14px 16px;
-            padding: 20px 28px;
-            background: #E3F1F5;
-        }
-
-        .threecolumntile {
-            position: relative;
-            top: 0;
-            left: 0;
-            z-index: 120;
-            /*text-align: center;*/
-            background: #F8FBFB;
-        }
-        .threecolumntilecontent {
-
-            padding: 30px 60px 0px 60px;
-        }
-        .threecolumntilecolumn {
-
-        }
-        .threecolumntiletitle {
-            /* Single Line Car Header */
-            font-family: 'Hyundai Sans Head', Arial;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 126px;
-            line-height: 156px;
-            /* identical to box height */
-
-            letter-spacing: 0.006em;
-            text-transform: uppercase;
-
-            /* Active Blue Accessible */
-
-            color: #0082A2;
-
-
-        }
-        .threecolumntileflex-left {
-            width: 33.3%;
-            height: 100vh;
-        }
-        .threecolumntileflex-center {
-            width: 33.3%;
-
-        }
-        .threecolumntileflex-right {
-            width: 33.3%;
-        }
-
-        .displayhide {
-            display: none;
-            opacity: 0;
-        }
-
-    </style>
+	<!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="CorporateTool.Net"/>
+	<meta name="Keywords" content="touch interface touchscreen swipe html"/>
+	<meta name="Description" content="An page for testing touch screen implementations"/>
+	<meta name="robots" content="all"/>
+	<meta name="docref" content="touchscreen testing - index.html"/>
+	<title>Touchscreen - Test Page</title>
+	<link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/resources/images/favicon.ico"/>
+	<link type="image/vnd.microsoft.icon" rel="icon" href="/resources/images/favicon.ico"/>
+	<link rel="stylesheet" href="touchscreen.css">
+	<script src="touchscreen.js" type="application/javascript"></script>
+	<script>
+
+	</script>
+
+	<style>
+	</style>
 </head>
 <body>
 <div id="container" class="container">
-    <div id="chewycenter">
-        <div id="homecontent" class="homecontent homecontenttwo simple-fadein">
-            <div id="homecontent1" class="homecontent1">
-                <a href="#" onclick="transitionclick('homecontent', 'verticalmenu')" data-nextscreen="verticalmenu" class="homelink">
-                    <div class="homeprimary">PRIM</div>
-                    <div class="homesecondary displayhide">Secondary</div>
-                    <img src="../resources/images/Car1Hybrid.png" class="homeimage" alt="">
-                </a>
-            </div>
-            <div id="homecontent2" class="homecontent2">
-                <a href="#" onclick="transitionclick('homecontent', 'verticalmenu')" data-nextscreen="verticalmenu" class="homelink">
-                    <div class="homeprimary">Primary</div>
-                    <div class="homesecondary">Secon</div>
-                    <img src="../resources/images/Car3Hybrid.png" class="homeimage" alt="">
-                </a>
-            </div>
-        </div>
+	<div id="chewycenter">
+		<div id="homecontent" class="homecontent homecontenttwo simple-fadein">
+			<div id="homecontent1" class="homecontent1">
+				<a href="#" onclick="transitionclick('homecontent', 'verticalmenu')" data-nextscreen="verticalmenu"
+					 class="homelink">
+					<div class="homeprimary">PRIM</div>
+					<div class="homesecondary displayhide">Secondary</div>
+					<img src="../resources/images/Car1Hybrid.png" class="homeimage" alt="">
+				</a>
+			</div>
+			<div id="homecontent2" class="homecontent2">
+				<a href="#" onclick="transitionclick('homecontent', 'verticalmenu')" data-nextscreen="verticalmenu"
+					 class="homelink">
+					<div class="homeprimary">Primary</div>
+					<div class="homesecondary">Secon</div>
+					<img src="../resources/images/Car3Hybrid.png" class="homeimage" alt="">
+				</a>
+			</div>
+		</div>
 
-        <div id="verticalmenu" class="verticalmenu simple-fadein simple-fadeout simple-hide">
-            <div id="verticalmenucontent" class="verticalmenucontent flex-container">
-                <div class="verticalmenutextcontent verticalmenuflex-left">
-                    <div id="breadcrumb" class="breadcrumb">
-                        <a href="#" onclick="transitionclick('verticalmenu', 'homecontent')" data-nextscreen="homecontent" class="breadcrumblink">
-                            Home
-                        </a>
-                        <span> | </span>
-                        <span>
-                            User Journey Home
-                        </span>
+		<div id="verticalmenu" class="verticalmenu simple-fadein simple-fadeout simple-hide">
+			<div id="verticalmenucontent" class="verticalmenucontent flex-container">
+				<div class="verticalmenutextcontent verticalmenuflex-left">
+					<div id="breadcrumb" class="breadcrumb">
+						<a href="#" onclick="transitionclick('verticalmenu', 'homecontent')" data-nextscreen="homecontent" class="breadcrumblink">
+							Home
+						</a>
+						<span> | </span>
+						<span>User Journey Home</span>
+					</div>
+					<div class="verticalmenuprimary">Primary</div>
+					<div class="verticalmenusecondary">Secondary</div>
+					<a href="#" onclick="transitionclick('verticalmenu', 'threecolumntile')" data-nextscreen="threecolumntile"
+						 class="verticalmenulink">
+						Menuitem1
+					</a>
+					<br>
+					<a href="#" onclick="transitionclick('verticalmenu', 'screensaver')" data-nextscreen="screensaver"
+						 class="verticalmenulink">
+						screensaver
+					</a>
+				</div>
+				<div class="verticalmenuimagecontent verticalmenuflex-right">
+					<img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
+				</div>
 
-                    </div>
-                    <div class="verticalmenuprimary">Primary</div>
-                    <div class="verticalmenusecondary">Secondary</div>
-                    <a href="#" onclick="transitionclick('verticalmenu', 'threecolumntile')" data-nextscreen="threecolumntile" class="verticalmenulink">
-                        Menuitem1
-                    </a>
-                </div>
-                <div class="verticalmenuimagecontent verticalmenuflex-right">
-                    <img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
-                </div>
+			</div>
+		</div>
 
-            </div>
-        </div>
+		<div id="threecolumntile" class="threecolumntile simple-fadein simple-fadeout simple-hide">
+			<div id="threecolumntilecontent" class="threecolumntilecontent">
+				<div id="threecolumnbreadcrumb" class="breadcrumb">
+					<a href="#" onclick="transitionclick('threecolumntile', 'homecontent')" data-nextscreen="homecontent"
+						 class="breadcrumblink">
+						Home
+					</a>
+					<span> | </span>
+					<a href="#" onclick="transitionclick('threecolumntile', 'verticalmenu')" data-nextscreen="verticalmenu"
+						 class="breadcrumblink">
+						User Journey Home
+					</a>
 
-        <div id="threecolumntile" class="threecolumntile simple-fadein simple-fadeout simple-hide">
-            <div id="threecolumntilecontent" class="threecolumntilecontent">
-                <div id="threecolumnbreadcrumb" class="breadcrumb">
-                    <a href="#" onclick="transitionclick('threecolumntile', 'homecontent')" data-nextscreen="homecontent" class="breadcrumblink">
-                        Home
-                    </a>
-                    <span> | </span>
-                    <a href="#" onclick="transitionclick('threecolumntile', 'verticalmenu')" data-nextscreen="verticalmenu" class="breadcrumblink">
-                        User Journey Home
-                    </a>
+				</div>
+				<div class="threecolumntiletitle">TITL</div>
 
-                </div>
-                <div class="threecolumntiletitle">TITL</div>
+			</div>
+			<div class="flex-container">
+				<div class="threecolumntilecolumn threecolumntileflex-left">
+					<img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
+					<br>
+					From night to bright in 256 pixels.
 
-            </div>
-            <div class="flex-container">
-                <div class="threecolumntilecolumn threecolumntileflex-left">
-                    <img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
-                    <br>
-                    From night to bright in 256 pixels.
+				</div>
+				<div class="verticalmenuimagecontent threecolumntileflex-center">
+					<img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
+					<br>
+					Bold and bright in the back.
+				</div>
+				<div class="verticalmenuimagecontent threecolumntileflex-right">
+					<img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
+					<br>
+					Exclusive 20” alloy wheels.
+				</div>
 
-                </div>
-                <div class="verticalmenuimagecontent threecolumntileflex-center">
-                    <img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
-                    <br>
-                    Bold and bright in the back.
-                </div>
-                <div class="verticalmenuimagecontent threecolumntileflex-right">
-                    <img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
-                    <br>
-                    Exclusive 20” alloy wheels.
-                </div>
-
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+		<div id="screensaver" class="screensaver simple-fadein simple-fadeout simple-hide">
+			<video id="screensavervideo" class="screensavervideo" controls loop muted preload="auto"
+						 src="https://www.hyundaicanada.com/-/media/hyundai/showroom/2022/tucson/videos/ajac-video/cb-2005-tucson_vlp_1920x700-en.mp4"
+						 data-player="vlp-video-0">
+				<source
+						src="https://www.hyundaicanada.com/-/media/hyundai/showroom/2022/tucson/videos/ajac-video/cb-2005-tucson_vlp_1920x700-en.mp4"
+						type="video/mp4">
+			</video>
+		</div>
+	</div>
 </div>
 </body>
 </html>
 <script>
+	const screensavervideo = document.getElementById('screensavervideo');
 
-    const homecontent = document.getElementById('homecontent');
-    homecontent.addEventListener("transitionend", () =>
-    {
-        console.log('transitionend: homecontent', homecontent.classList);
-        if (homecontent.classList.contains('simple-fadeout')) {
-            homecontent.classList.add('simple-hide');
-            console.log('transitionend: homecontent - add simple-hide');
-            homecontent.classList.remove('hide');
-            console.log('transitionend: homecontent - remove hide');
-        }
-    });
+	initializeTransitioned('homecontent');
+	initializeTransitioned('verticalmenu');
+	initializeTransitioned('threecolumntile');
+	initializeTransitioned('screensaver');
 
-    const verticalmenu = document.getElementById('verticalmenu');
-    verticalmenu.addEventListener("transitionend", () =>
-    {
-        console.log('transitionend: verticalmenu', verticalmenu.classList);
-        if (verticalmenu.classList.contains('simple-fadeout')) {
-            verticalmenu.classList.add('simple-hide');
-            console.log('transitionend: verticalmenu - add simple-hide');
+	// setTimeout for screen saver start
+	let mousetimeout;
+	// track if screen saver is active
+	let screensaver_active = false;
+	// number of seconds to wait until screen saver starts
+	const idletime = 10;
+	console.info(`Screen Saver idle time value set to: ${idletime} seconds`);
 
-            verticalmenu.classList.remove('hide');
-            console.log('transitionend: verticalmenu - remove hide');
-        }
-    });
+	// initialize the screen saver, by number of seconds of idle time
+	mousetimeout = initSetTimeout(idletime);
 
-    const threecolumntile = document.getElementById('threecolumntile');
-    threecolumntile.addEventListener("transitionend", () =>
-    {
-        console.log('transitionend: threecolumntile', threecolumntile.classList);
-        if (threecolumntile.classList.contains('simple-fadeout')) {
-            threecolumntile.classList.add('simple-hide');
-            console.log('transitionend: threecolumntile - add simple-hide');
+	// add the listener that will reset the screen saver timeout
+	document.addEventListener("mousemove", () => {
+		// console.log('mousemove - start - idletime', idletime);
 
-            threecolumntile.classList.remove('hide');
-            console.log('transitionend: threecolumntile - remove hide');
-        }
-    });
-    //
-    // const homecontent = document.getElementById('homecontent');
-    // homecontent.addEventListener("transitionend", () =>
-    // {
-    //     console.log('transitionend: homecontent', homecontent.classList);
-    //     if (homecontent.classList.contains('transition-fadeout')) {
-    //         homecontent.classList.add('hide');
-    //     }
-    // });
-    //
-    // const verticalmenu = document.getElementById('verticalmenu');
-    // homecontent.addEventListener("transitionend", () =>
-    // {
-    //     console.log('transitionend: verticalmenu', verticalmenu.classList);
-    //     if (verticalmenu.classList.contains('transition-fadeout')) {
-    //         verticalmenu.classList.add('hide');
-    //     }
-    // });
+		clearTimeout(mousetimeout);
+
+		// stop and reset the screen saver video
+		if (screensaver_active) {
+			stop_screensaver();
+		}
+
+		// reset the timeout for the screen saver
+		mousetimeout = initSetTimeout(idletime); // idletime secs
+	});
 
 
-    // homeclick("loadtest");
-    // const url = 'https://ca-stage.mbvans.com/en/innovations';
-    // // const url = 'https://www.mbusa.com/en/vehicles/build/gla/suv';
-    // // const url = 'https://int-1-dcps.nonprod.amap.dcp.mbio.zone/en-us/connect/';
-    // // const url = 'https://shop-preprod.mercedes-benz.com/en-us/connect/';
-    // const dateNow = Date.now();
-    // const queryString = ''; // include '&'
-    // const fullUrl = `${url}?testToken=${dateNow}${queryString}`;
-    // document.getElementById('testlink1').href = fullUrl;
-    // document.getElementById('testlink1dateNow').innerHTML = dateNow;
-    // document.getElementById('testlink1Url').innerHTML = fullUrl;
-    // console.log('test URL - dateNow, fullUrl:', dateNow, fullUrl);
+	// homeclick("loadtest");
+	// const url = 'https://test.com';
+	// const dateNow = Date.now();
+	// const queryString = ''; // include '&'
+	// const fullUrl = `${url}?testToken=${dateNow}${queryString}`;
+	// document.getElementById('testlink1').href = fullUrl;
+	// document.getElementById('testlink1dateNow').innerHTML = dateNow;
+	// document.getElementById('testlink1Url').innerHTML = fullUrl;
+	// console.log('test URL - dateNow, fullUrl:', dateNow, fullUrl);
 </script>
