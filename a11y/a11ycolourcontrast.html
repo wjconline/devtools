@@ -73,10 +73,16 @@
 
 
       let fgComputed = calculateColor(bgColor, fgColor, fgOpacity || 1);
+      console.log('fgOpacity', fgOpacity);
+
       let fontComputed = calculateColor(bgColor, fontColor, fgOpacity);
 
+      console.log('fgOpacity', fgOpacity);
+
       document.getElementById('foregroundColorComputed').innerText = '#' + fgComputed.toUpperCase();
-      document.getElementById('fontColorComputed').innerText = '#' + fontComputed.toUpperCase();
+
+      // check if fgOpacity is a number, otherwise is setting to 1 in caclulate Color call
+      document.getElementById('fontColorComputed').innerText = (fgOpacity !== '' && fgOpacity < 1) ? '#' + fontComputed.toUpperCase() : fontColor;
       // backgroundColorComputed  fontTextComputed
 
       // https://webaim.org/resources/contrastchecker/?fcolor=999999&bcolor=FFFFFF&api
@@ -127,8 +133,8 @@
     function getColor(bg, clr, op) {
       // check if <== 1
       console.log('op', op);
-      op = op * 100;
       console.log('op * 100', op * 100);
+      op = op * 100;
       return {
         r: getClr(bg.r, clr.r, op),
         g: getClr(bg.g, clr.g, op),
