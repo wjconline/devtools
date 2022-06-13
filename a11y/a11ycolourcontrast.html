@@ -13,32 +13,42 @@
   <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/resources/images/favicon.ico"/>
   <link type="image/vnd.microsoft.icon" rel="icon" href="/resources/images/favicon.ico"/>
   <script>
+
+    let bgColor = '';
+    let fgColor = '';
+    let fgOpacity = 1;
+    let fontColor = '';
     function updateColors() {
+      const backgroundColorDisplay = document.getElementById('backgroundColorDisplay');
+      const foregroundColorDisplay = document.getElementById('foregroundColorDisplay');
+      const fontTextDisplay = document.getElementById('fontTextDisplay');
+      const fontColorDisplay = document.getElementById('fontColorDisplay');
+
       colorInputs.forEach(function(colorInput) {
         console.log(colorInput);
-        const backgroundColorDisplay = document.getElementById('backgroundColorDisplay');
-        const foregroundColorDisplay = document.getElementById('foregroundColorDisplay');
-        const fontTextDisplay = document.getElementById('fontTextDisplay');
-        const fontColorDisplay = document.getElementById('fontColorDisplay');
         switch (colorInput.id) {
           case 'backgroundColor':
             console.log('backgroundColor', colorInput.value);
             // if (colorInput.value) {
             backgroundColorDisplay.style.backgroundColor = colorInput.value;
+            bgColor = colorInput.value;
             // }
             break;
           case 'foregroundColor':
             console.log('foregroundColor', colorInput.value);
             foregroundColorDisplay.style.backgroundColor = colorInput.value;
+            fgColor = colorInput.value;
             break;
           case 'foregroundOpacity':
             console.log('foregroundOpacity', colorInput.value);
             foregroundColorDisplay.style.opacity = colorInput.value;
+            fgOpacity = colorInput.value;
             break;
           case 'fontColor':
             console.log('foregroundColor', colorInput.value);
             fontTextDisplay.style.color = colorInput.value;
             fontColorDisplay.style.backgroundColor = colorInput.value;
+            fontColor = colorInput.value;
             break;
           case 'fontOpacity':
             console.log('foregroundOpacity', colorInput.value);
@@ -50,6 +60,7 @@
             console.log(`error in switch.`);
         }
       });
+
       let foregroundStyles = window.getComputedStyle(foregroundColorDisplay);
       console.log('foregroundStyles computed color is ', foregroundStyles.getPropertyValue('color'));
       console.log('foregroundStyles computed background color is', foregroundStyles.getPropertyValue('background-color'));
@@ -61,20 +72,40 @@
       // console.log('computed line-height is', foregroundStyles.getPropertyValue('line-height'));
 
 
+      let fgComputed = calculateColor(bgColor, fgColor, fgOpacity || 1);
+      let fontComputed = calculateColor(bgColor, fontColor, fgOpacity);
+
+      document.getElementById('foregroundColorComputed').innerText = '#' + fgComputed.toUpperCase();
+      document.getElementById('fontColorComputed').innerText = '#' + fontComputed.toUpperCase();
+      // backgroundColorComputed  fontTextComputed
 
       // https://webaim.org/resources/contrastchecker/?fcolor=999999&bcolor=FFFFFF&api
 
     }
 
-    function calculate() {
-      var bg = parseColor(background.value);
-      var color = parseColor(document.getElementById('color').value);
-      var resultColor = getColor(bg, color, opacity.value);
+    function calculateColor(backgroundHex, colorHex, opacity = 1) {
+      console.log(backgroundHex, colorHex, opacity);
+      const bg = parseColor(backgroundHex);
+      const color = parseColor(colorHex);
+      const resultColor = getColor(bg, color, opacity);
 
-      result.innerHTML = resultColor.r.toString(16)
+      const computedColor = resultColor.r.toString(16)
               + resultColor.g.toString(16)
               + resultColor.b.toString(16);
+      console.log('background', backgroundHex, 'color', colorHex, 'opacity', opacity, 'computed color', computedColor);
+      return computedColor;
     }
+
+    // function calculate() {
+    //   const bg = parseColor(background.value);
+    //   const color = parseColor(document.getElementById('color').value);
+    //   const resultColor = getColor(bg, color, opacity.value);
+    //
+    //   return resultColor.r.toString(16)
+    //           + resultColor.g.toString(16)
+    //           + resultColor.b.toString(16);
+    // }
+
 
     function parseColor(clr) {
       if (!clr) throw new Error('Color must not be empty!')
@@ -94,6 +125,10 @@
     }
 
     function getColor(bg, clr, op) {
+      // check if <== 1
+      console.log('op', op);
+      op = op * 100;
+      console.log('op * 100', op * 100);
       return {
         r: getClr(bg.r, clr.r, op),
         g: getClr(bg.g, clr.g, op),
@@ -182,17 +217,23 @@
       width: 300px;
       height: 200px;
       border: 1px solid #000000;
+      margin: 5px;
+      padding: 5px;
     }
 
     .foregroundcolor {
       width: 250px;
       height: 150px;
       border: 1px solid #FF0000;
+      margin: 5px;
+      padding: 5px;
+      color: #FF0000;
     }
 
     .fontcolor {
       width: 190px;
       height: 40px;
+      margin: 5px;
       padding: 5px;
       border: 1px solid #FFFF00;
     }
@@ -226,13 +267,12 @@
         <input type="text" id="fontOpacity" name="fontOpacity">
       </div><br>
       <input type="reset">
-      <div id="backgroundColorDisplay" class="backgroundcolor">Background Color
-        <div id="foregroundColorDisplay" class="foregroundcolor">Foreground Color
-          <div id="fontTextDisplay" class="fontcolor">This is the text</div>
-          <div id="fontColorDisplay" class="fontcolor">This is the text color</div>
+      <div id="backgroundColorDisplay" class="backgroundcolor">Background Color <span id="backgroundColorComputed"></span>
+        <div id="foregroundColorDisplay" class="foregroundcolor">Foreground Color <span id="foregroundColorComputed"></span>
+          <div id="fontTextDisplay" class="fontcolor">This is the text <span id="fontTextComputed"></span></div>
+          <div id="fontColorDisplay" class="fontcolor">This is the text color <span id="fontColorComputed"></span></div>
         </div>
       </div>
-
     </form>
     <div class="mybackground">Background
       <div class="mycolor">Color</div>
