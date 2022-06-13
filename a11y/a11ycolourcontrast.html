@@ -18,6 +18,7 @@
         console.log(colorInput);
         const backgroundColorDisplay = document.getElementById('backgroundColorDisplay');
         const foregroundColorDisplay = document.getElementById('foregroundColorDisplay');
+        const fontTextDisplay = document.getElementById('fontTextDisplay');
         const fontColorDisplay = document.getElementById('fontColorDisplay');
         switch (colorInput.id) {
           case 'backgroundColor':
@@ -36,10 +37,12 @@
             break;
           case 'fontColor':
             console.log('foregroundColor', colorInput.value);
-            fontColorDisplay.style.color = colorInput.value;
+            fontTextDisplay.style.color = colorInput.value;
+            fontColorDisplay.style.backgroundColor = colorInput.value;
             break;
           case 'fontOpacity':
             console.log('foregroundOpacity', colorInput.value);
+            fontTextDisplay.style.opacity = colorInput.value;
             fontColorDisplay.style.opacity = colorInput.value;
             break;
           default:
@@ -54,20 +57,15 @@
       //   ${e.target.value.length} character(s) long.`;
       updateColors();
     }
-
-
   </script>
   <style>
-
-    /*
+  /*
     In most browsers, the placeholder text is grey. To change this, style the placeholder with the non-standard ::placeholder selector. Note that Firefox adds a lower opacity to the placeholder, so we use opacity: 1 to fix this.
-
-Example */
+    Example */
     .styled-placeholder::placeholder { /* Chrome, Firefox, Modern Edge, Safari 10.1+ */
       color: red;
       opacity: 1; /* Firefox */
     }
-
 
     .mybackground {
       /*background-color: #000000;*/
@@ -106,18 +104,22 @@ Example */
     }
 
     .backgroundcolor {
-      width: 250px;
-      height: 150px;
+      width: 300px;
+      height: 200px;
       border: 1px solid #000000;
     }
 
     .foregroundcolor {
-      width: 200px;
-      height: 100px;
+      width: 250px;
+      height: 150px;
       border: 1px solid #FF0000;
     }
 
     .fontcolor {
+      width: 190px;
+      height: 40px;
+      padding: 5px;
+      border: 1px solid #FFFF00;
     }
 
   </style>
@@ -150,8 +152,9 @@ Example */
       </div><br>
       <input type="reset">
       <div id="backgroundColorDisplay" class="backgroundcolor">Background Color
-        <div id="foregroundColorDisplay" class="foregroundcolor">Foreground Color<br><br>
-          <div id="fontColorDisplay" class="fontcolor">This is the text</div>
+        <div id="foregroundColorDisplay" class="foregroundcolor">Foreground Color
+          <div id="fontTextDisplay" class="fontcolor">This is the text</div>
+          <div id="fontColorDisplay" class="fontcolor">This is the text color</div>
         </div>
       </div>
 
