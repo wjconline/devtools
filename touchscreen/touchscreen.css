@@ -35,6 +35,25 @@ a {
     font-family: 'Hyundai Sans Head', Arial;
 }
 
+.chargingmapwrapper {
+    width: 100%;
+    height:100vh;
+    position: absolute;
+    /*background-color: blueviolet;*/
+    overflow: hidden;
+    z-index: 400;
+}
+
+.chargingmapclose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 410;
+    width: 100px;
+    height: 100px;
+
+}
+
 .homecontent {
     position: relative;
     top: 0;

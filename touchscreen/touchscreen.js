@@ -108,3 +108,9 @@ function initializeTransitioned (element) {
 		}
 	});
 }
+
+function chargingMap() {
+	console.log('chargingmap: toggle');
+	document.getElementById('chargingmapwrapper').classList.toggle('hide');
+}
+
