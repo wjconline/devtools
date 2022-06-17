@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="CorporateTool.Net"/>
+	<meta name="Keywords" content="touch interface touchscreen swipe html"/>
+	<meta name="Description" content="An page for testing touch screen implementations"/>
+	<meta name="robots" content="all"/>
+	<meta name="docref" content="touchscreen testing - index.html"/>
+	<title>Touchscreen - Test Page</title>
+	<link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/resources/images/favicon.ico"/>
+	<link type="image/vnd.microsoft.icon" rel="icon" href="/resources/images/favicon.ico"/>
+	<link rel="stylesheet" href="touchscreen.css">
+	<script src="touchscreen.js" type="application/javascript"></script>
+	<script>
+
+	</script>
+
+	<style>
+	</style>
+</head>
+<body>
+<div id="container" class="container">
+	<div id="chewycenter">
+		<div id="homecontent" class="homecontent homecontenttwo simple-fadein">
+			<div id="homecontent1" class="homecontent1">
+				<a href="#" onclick="transitionclick('homecontent', 'verticalmenu')" data-nextscreen="verticalmenu"
+					 class="homelink">
+					<div class="homeprimary">PRIM</div>
+					<div class="homesecondary displayhide">Secondary</div>
+					<img src="../resources/images/Car1Hybrid.png" class="homeimage" alt="">
+				</a>
+			</div>
+			<div id="homecontent2" class="homecontent2">
+				<a href="#" onclick="transitionclick('homecontent', 'verticalmenu')" data-nextscreen="verticalmenu"
+					 class="homelink">
+					<div class="homeprimary">Primary</div>
+					<div class="homesecondary">Secon</div>
+					<img src="../resources/images/Car3Hybrid.png" class="homeimage" alt="">
+				</a>
+			</div>
+		</div>
+
+		<div id="verticalmenu" class="verticalmenu simple-fadein simple-fadeout simple-hide">
+			<div id="verticalmenucontent" class="verticalmenucontent flex-container">
+				<div class="verticalmenutextcontent verticalmenuflex-left">
+					<div id="breadcrumb" class="breadcrumb">
+						<a href="#" onclick="transitionclick('verticalmenu', 'homecontent')" data-nextscreen="homecontent" class="breadcrumblink">
+							Home
+						</a>
+						<span> | </span>
+						<span>User Journey Home</span>
+					</div>
+					<div class="verticalmenuprimary">Primary</div>
+					<div class="verticalmenusecondary">Secondary</div>
+					<a href="#" onclick="transitionclick('verticalmenu', 'threecolumntile')" data-nextscreen="threecolumntile"
+						 class="verticalmenulink">
+						Menuitem1
+					</a>
+					<br>
+					<a href="#" onclick="transitionclick('verticalmenu', 'screensaver')" data-nextscreen="screensaver"
+						 class="verticalmenulink">
+						screensaver
+					</a>
+					<br>
+					<a href="#" onclick="chargingMap()" class="verticalmenulink">
+						charging map
+					</a>
+				</div>
+				<div class="verticalmenuimagecontent verticalmenuflex-right">
+					<img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
+				</div>
+				<div id="chargingmapwrapper" class="chargingmapwrapper hide">
+					<iframe name="chargehubmap" src="https://chargehub.com/en/embedwithfilters.html?lat=45.5016889&amp;lon=-73.567256&amp;networks=0,1,2,3,4,5,6,7,8,9,11,12,14,15,16,17,18,19,20,21,22,23,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,50,51,52,53&amp;levels=1,2,3&amp;connectors=0,1,2,3,4,5,6,7&amp;show_pending=1&amp;zoom=3" frameborder="0" height="100%" width="100%"></iframe>
+
+					<button id="chargingmapclose" class="chargingmapclose" onClick="chargingMap()">Close</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="threecolumntile" class="threecolumntile simple-fadein simple-fadeout simple-hide">
+			<div id="threecolumntilecontent" class="threecolumntilecontent">
+				<div id="threecolumnbreadcrumb" class="breadcrumb">
+					<a href="#" onclick="transitionclick('threecolumntile', 'homecontent')" data-nextscreen="homecontent"
+						 class="breadcrumblink">
+						Home
+					</a>
+					<span> | </span>
+					<a href="#" onclick="transitionclick('threecolumntile', 'verticalmenu')" data-nextscreen="verticalmenu"
+						 class="breadcrumblink">
+						User Journey Home
+					</a>
+
+				</div>
+				<div class="threecolumntiletitle">TITL</div>
+
+			</div>
+			<div class="flex-container">
+				<div class="threecolumntilecolumn threecolumntileflex-left">
+					<img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
+					<br>
+					From night to bright in 256 pixels.
+
+				</div>
+				<div class="verticalmenuimagecontent threecolumntileflex-center">
+					<img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
+					<br>
+					Bold and bright in the back.
+				</div>
+				<div class="verticalmenuimagecontent threecolumntileflex-right">
+					<img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
+					<br>
+					Exclusive 20” alloy wheels.
+				</div>
+
+			</div>
+		</div>
+		<div id="screensaver" class="screensaver simple-fadein simple-fadeout simple-hide">
+			<video id="screensavervideo" class="screensavervideo" controls loop muted preload="auto"
+						 src="https://www.hyundaicanada.com/-/media/hyundai/showroom/2022/tucson/videos/ajac-video/cb-2005-tucson_vlp_1920x700-en.mp4"
+						 data-player="vlp-video-0">
+				<source
+						src="https://www.hyundaicanada.com/-/media/hyundai/showroom/2022/tucson/videos/ajac-video/cb-2005-tucson_vlp_1920x700-en.mp4"
+						type="video/mp4">
+			</video>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+<script>
+	const screensavervideo = document.getElementById('screensavervideo');
+
+	initializeTransitioned('homecontent');
+	initializeTransitioned('verticalmenu');
+	initializeTransitioned('threecolumntile');
+	initializeTransitioned('screensaver');
+
+	// setTimeout for screen saver start
+	let mousetimeout;
+	// track if screen saver is active
+	let screensaver_active = false;
+	// number of seconds to wait until screen saver starts
+	const idletime = 1000;
+	console.info(`Screen Saver idle time value set to: ${idletime} seconds`);
+
+	// initialize the screen saver, by number of seconds of idle time
+	mousetimeout = initSetTimeout(idletime);
+
+	// add the listener that will reset the screen saver timeout
+	document.addEventListener("mousemove", () => {
+		// console.log('mousemove - start - idletime', idletime);
+
+		clearTimeout(mousetimeout);
+
+		// stop and reset the screen saver video
+		if (screensaver_active) {
+			stop_screensaver();
+		}
+
+		// reset the timeout for the screen saver
+		mousetimeout = initSetTimeout(idletime); // idletime secs
+	});
+
+	const closeElement = document.getElementById('chargingmapclose');
+	closeElement.addEventListener("transitionend", () => {
+		console.log('close:');
+	});
+
+	// homeclick("loadtest");
+	// const url = 'https://test.com';
+	// const dateNow = Date.now();
+	// const queryString = ''; // include '&'
+	// const fullUrl = `${url}?testToken=${dateNow}${queryString}`;
+	// document.getElementById('testlink1').href = fullUrl;
+	// document.getElementById('testlink1dateNow').innerHTML = dateNow;
+	// document.getElementById('testlink1Url').innerHTML = fullUrl;
+	// console.log('test URL - dateNow, fullUrl:', dateNow, fullUrl);
+</script>

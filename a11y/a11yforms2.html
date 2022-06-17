@@ -10,8 +10,8 @@
   <meta name="docref" content="a11y form test - a11yforms2.html"/>
   <title aria-label="Accessibility Forms Test 2 Page - CorporateTool dot Net">Accessibility Forms Test 2 Page -
     CorporateTool.Net</title>
-  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/devtools-github/favicon.ico"/>
-  <link type="image/vnd.microsoft.icon" rel="icon" href="/devtools-github/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/resources/images/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="icon" href="/resources/images/favicon.ico"/>
   <!--  <link type="text/css" rel="stylesheet" href="resources/css/main.css"/>-->
   <!--	<link type="text/css" rel="stylesheet" href="resources/css/secondary.css" /> -->
   <!--[if IE]>
@@ -23,58 +23,60 @@
   -->
 
   <script>
-      // Menu Set
-      /*
-          $(document).ready(function() {
-            $("#headernav img").hover(
-              function() { $(this).attr("src", $(this).attr("src").replace("0", "1")); },
-              function() { $(this).attr("src", $(this).attr("src").replace("1", "0")); }
-            );
-          });
-      */
   </script>
+  <style>
+
+    /*
+    In most browsers, the placeholder text is grey. To change this, style the placeholder with the non-standard ::placeholder selector. Note that Firefox adds a lower opacity to the placeholder, so we use opacity: 1 to fix this.
+
+Example */
+.styled-placeholder::placeholder { /* Chrome, Firefox, Modern Edge, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+  </style>
 </head>
 <body>
 <div id="container">
   <div id="chewycenter">
     <h1>CT.Net Accessibility Form Test 2 Page</h1>
     <a href="a11yindex.html" id="topAnchor">Back to A11y Index</a>
-
     <form>
       <h3 id="stationtitle">Choose your charging station</h3>
       <p aria-labelledby="stationtitle">
-      <fieldset>
-        <legend>Charging while out and about</legend>
-        <label for="charge1">DC rapid charging station (350 kW)<sup>(2)</sup>
-          <input type="radio" checked id="charge1" name="chargestation" value="charge1">
-        </label>
+        <fieldset>
+          <legend>Charging while out and about</legend>
+          <label for="charge1">DC rapid charging station (350 kW)<sup>(2)</sup>
+            <input type="radio" checked id="charge1" name="chargestation" value="charge1">
+          </label>
 
-        <label for="charge2">DC rapid charging station (50 kW)<sup>(2)</sup>
-          <input type="radio" id="charge2" name="chargestation" value="charge2">
-        </label>
-        <label for="charge3">AC Charging Station</label>
-        <input type="radio" id="charge3" name="chargestation" value="charge3">
-      </fieldset>
-      <fieldset>
-        <legend>Charging at home</legend>
+          <label for="charge2">DC rapid charging station (50 kW)<sup>(2)</sup>
+            <input type="radio" id="charge2" name="chargestation" value="charge2">
+          </label>
+          <label for="charge3">AC Charging Station</label>
+          <input type="radio" id="charge3" name="chargestation" value="charge3">
+        </fieldset>
+        <fieldset>
+          <legend>Charging at home</legend>
 
-        <label for="charge4">bp pulse home charger</label>
-        <input type="radio" id="charge4" name="chargestation" value="charge4">
+          <label for="charge4">bp pulse home charger</label>
+          <input type="radio" id="charge4" name="chargestation" value="charge4">
 
-        <label for="charge5" aria-label="Miscellaneous">Domestic Socket</label>
-        <input type="radio" id="charge5" name="chargestation" value="charge5">
-      </fieldset>
+          <label for="charge5" aria-label="Miscellaneous">Domestic Socket</label>
+          <input type="radio" id="charge5" name="chargestation" value="charge5">
+        </fieldset>
       </p>
       <p>
-      <fieldset>
-        <legend><h2>Charge level</h2></legend>
-        <label for="price">Starting Charge</label>
-        <input type="range" name="price" id="price" min="0" max="100" step="1" value="10">
-        <output class="price-output" for="price"></output>
-        <label for="price2">Desired Charge</label>
-        <input type="range" name="price2" id="price2" min="0" max="100" step="1" value="80">
-        <output class="price-output" for="price2"></output>
-      </fieldset>
+        <fieldset>
+          <legend><h2>Charge level</h2></legend>
+          <label for="price">Starting Charge</label>
+          <input type="range" name="price" id="price" min="0" max="100" step="1" value="10">
+          <output class="price-output" for="price"></output>
+          <label for="price2">Desired Charge</label>
+          <input type="range" name="price2" id="price2" min="0" max="100" step="1" value="80">
+          <output class="price-output" for="price2"></output>
+        </fieldset>
       </p>
       <h2>Drop down content examples</h2>
 
@@ -225,7 +227,6 @@
         <br>
 
         <br>
-        </ul>
       </fieldset>
 
       <h2>Single line text fields</h2>
@@ -234,8 +235,17 @@
         <input type="text" id="comment1" name="comment1" value="I'm a text field">
       </p>
       <p>
+        <label for="commentDoubleLabel">Add a comment here:</label>
+        <input type="text" id="commentDoubleLabel" name="comment1" value="I'm a text field">
+        <label for="commentDoubleLabel">Error: Please enter a valid comment</label>
+      </p>
+      <p>
         <label for="placeholder">Add a comment here (with placeholder):</label>
         <input type="text" id="placeholder" name="placeholder" placeholder="I'm placeholder text">
+      </p>
+      <p>
+        <label for="styledplaceholder">Add a comment here (with placeholder):</label>
+        <input type="text" id="styledplaceholder" name="styledplaceholder" class="styled-placeholder" placeholder="I'm styled placeholder text">
       </p>
       <p>
         <label for="textfieldDisabled">Add a comment here (with disabled attribute):</label>
@@ -355,19 +365,19 @@ I'm a read only text area
   </footer>-->
 
 </div>
-<script>
-    const price = document.querySelector('#price');
-    const output = document.querySelector('.price-output');
-    output.textContent = price.value;
-    price.addEventListener('input', function () {
-        output.textContent = price.value;
-    });
-    const price2 = document.querySelector('#price2');
-    const output2 = document.querySelector('.price-output');
-    output.textContent = price.value;
-    price.addEventListener('input', function () {
-        output.textContent = price.value;
-    });
-</script>
 </body>
+<script>
+  const price = document.querySelector('#price');
+  const output = document.querySelector('.price-output');
+  output.textContent = price.value;
+  price.addEventListener('input', function () {
+    output.textContent = price.value;
+  });
+  const price2 = document.querySelector('#price2');
+  const output2 = document.querySelector('.price-output');
+  output.textContent = price.value;
+  price.addEventListener('input', function () {
+    output.textContent = price.value;
+  });
+</script>
 </html>
