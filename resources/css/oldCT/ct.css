@@ -1,0 +1,235 @@
+.rightnavli {
+	padding: 2px 2px 2px 2px;
+	margin: 0px 0px 0px 15px;
+
+}
+
+.newsimage
+{
+/* padding-left:	17px;
+padding-top: 17px;
+padding-bottom: 10px */
+}	
+
+/*
+.newsbody
+{
+	color: #0000FF;
+	font-weight: bold;
+	font-size: 8pt;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}	*/
+
+
+.newslink:link	{	
+	color: #0000FF;
+	 
+	font-weight: bold;
+	font-size: 8pt;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}	
+		
+.newslink:visited	{	
+	color: #0000FF;
+	font-weight: bold;
+	font-size: 8pt;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}	
+		
+.newslink:active {	
+	color: #dd9900;
+	font-weight: bold;
+	font-size: 8pt;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}	
+		
+.newslink:hover	{	
+	color: #dd9900;
+	font-weight: bold;
+	font-size: 8pt;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}
+
+.contenttext
+{
+	color: #000000;
+	background-color : #ffffff;
+
+	font-weight: bold;
+	font-size: 10px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+ text-align:justify;
+}	
+
+.textbody
+{
+	color: #000000;
+	background-color : #ffffff;
+
+	font-weight: bold;
+	font-size: 10px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+ text-align:justify;
+
+}	
+.textlist
+{
+	color: #000000;
+	background-color : #ffffff;
+
+	font-weight: bold;
+	font-size: 11px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+ text-align:left;
+
+}	
+
+.listlink:link	{	
+	color: #0000FF;
+	 
+	font-weight: bold;
+	font-size: 11px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}	
+		
+.listlink:visited	{	
+	color: #0000FF;
+	font-weight: bold;
+	font-size: 11px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}	
+		
+.listlink:active {	
+	color: #dd9900;
+	font-weight: bold;
+	font-size: 11px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}	
+		
+.listlink:hover	{	
+	color: #dd9900;
+	font-weight: bold;
+	font-size: 11px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}
+
+
+/* FFE88E 
+		border-left: #999999 1px solid;
+padding-right: 3px;
+	padding-left: 3px;
+	padding-bottom: 3px;
+	padding-top: 3px;*/
+.orangehead
+{
+	color: #000000;
+	background-color : #FFCC00;
+
+	font-weight: bold;
+	font-size: 8pt;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+
+	border-top: #006699 3px solid;
+	border-left: #006699 3px solid;
+
+	padding-right: 3px;
+	padding-left: 3px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+
+}	
+
+/* color: #006699; */
+.orangesub
+{
+	color: #000000;
+	background-color : #ffffff;
+
+	border-left: #006699 3px solid;
+
+	padding-right: 3px;
+	padding-left: 3px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+
+	font-weight: bold;
+	font-size: 11px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	text-align:justify;
+}	
+
+
+.orangesublink:link	{	
+	color: #0033BB;
+	 
+	font-weight: bold;
+	font-size: 11px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}	
+		
+.orangesublink:visited	{	
+	color: #0033BB;
+	font-weight: bold;
+	font-size: 11px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}	
+		
+.orangesublink:active {	
+	color: #dd9900;
+	font-weight: bold;
+	font-size: 11px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}	
+		
+.orangesublink:hover	{	
+	color: #dd9900;
+	font-weight: bold;
+	font-size: 11px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	}
+
+/* 99C2D7 */
+.bluehead
+{
+	color: #FFCC00;
+	background-color : #006699;
+	
+	font-weight: bold;
+	font-size: 8pt;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+
+	border-top: #FFCC00 3px solid;
+	border-left: #FFCC00 3px solid;
+
+	padding-right: 3px;
+	padding-left: 3px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+
+}	
+
+.bluesub
+{
+	color: #006699;
+	background-color : #ffffff;
+
+	font-weight: bold;
+	font-size: 8pt;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+
+	border-left: #FFCC00 3px solid;
+
+	padding-right: 3px;
+	padding-left: 3px;
+	padding-bottom: 3px;
+	padding-top: 3px;
+}	
+
+/*		div { position:absolute; margin:0px;}   */
+#maincontent {z-index:3; position:absolute; margin:0px;}
+#content1 {z-index:3; visibility:hidden; position:absolute; margin:0px;}
+#content2 {z-index:3; visibility:hidden; position:absolute; margin:0px;}
+#content3 {z-index:3; visibility:hidden; position:absolute; margin:0px;}
+#content4 {z-index:3; visibility:hidden; position:absolute; margin:0px;}
+#content5 {z-index:3; visibility:hidden; position:absolute; margin:0px;}
+#content6 {z-index:3; visibility:hidden; position:absolute; margin:0px;}

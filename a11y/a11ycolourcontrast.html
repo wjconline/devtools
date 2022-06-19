@@ -18,17 +18,15 @@
     let fgColor = '';
     let fgOpacity = 1;
     let fontColor = '';
+    let fontOpacity = 1;
+
     function updateColors() {
-      const backgroundColorDisplay = document.getElementById('backgroundColorDisplay');
-      const foregroundColorDisplay = document.getElementById('foregroundColorDisplay');
-      const fontTextDisplay = document.getElementById('fontTextDisplay');
-      const fontColorDisplay = document.getElementById('fontColorDisplay');
 
       colorInputs.forEach(function(colorInput) {
         console.log(colorInput);
         switch (colorInput.id) {
           case 'backgroundColor':
-            console.log('backgroundColor', colorInput.value);
+            console.log('backgroundColor', colorInput.value, backgroundColorDisplay);
             // if (colorInput.value) {
             backgroundColorDisplay.style.backgroundColor = colorInput.value;
             bgColor = colorInput.value;
@@ -45,16 +43,16 @@
             fgOpacity = colorInput.value;
             break;
           case 'fontColor':
-            console.log('foregroundColor', colorInput.value);
+            console.log('fontColor', colorInput.value);
             fontTextDisplay.style.color = colorInput.value;
             fontColorDisplay.style.backgroundColor = colorInput.value;
             fontColor = colorInput.value;
             break;
           case 'fontOpacity':
-            console.log('foregroundOpacity', colorInput.value);
+            console.log('fontOpacity', colorInput.value);
             fontTextDisplay.style.opacity = colorInput.value;
             fontColorDisplay.style.opacity = colorInput.value;
-
+            fontOpacity = colorInput.value;
             break;
           default:
             console.log(`error in switch.`);
@@ -72,21 +70,63 @@
       // console.log('computed line-height is', foregroundStyles.getPropertyValue('line-height'));
 
 
-      let fgComputed = calculateColor(bgColor, fgColor, fgOpacity || 1);
+      let fgComputed = calculateColor(bgColor, fgColor, fgOpacity || 1).toUpperCase();
       console.log('fgOpacity', fgOpacity);
 
-      let fontComputed = calculateColor(bgColor, fontColor, fgOpacity);
+      let fontComputed = fontColor;
+
+      let haveFgOpacity = (fgOpacity !== '' && fgOpacity < 1);
+      let haveFontOpacity = (fontOpacity !== '' && fontOpacity < 1);
+
+      let calcBg = bgColor;
+      let calcFg = fontColor;
+      let calcOp = fgOpacity;
+
+      if (haveFgOpacity && haveFontOpacity) {
+        calcFg = calculateColor(fgColor, fontColor, fontOpacity);
+        console.log('We have both:', calcFg);
+        fontComputed = '#' + calculateColor(calcBg, calcFg, calcOp).toUpperCase();
+      } else if (haveFontOpacity) {
+        console.log('bg, f, fontOpacity:', calculateColor(fgComputed, fontColor, fontOpacity));
+        calcBg = fgComputed;
+        calcOp = fontOpacity;
+        fontComputed = '#' + calculateColor(calcBg, calcFg, calcOp).toUpperCase();
+      } else if (haveFgOpacity) {
+        fontComputed = '#' + calculateColor(calcBg, calcFg, calcOp).toUpperCase();
+      }
+      //         fontComputed = '#' + calculateColor(calcBg, calcFg, calcOp).toUpperCase();
+
+      /*
+      Background Color	#FFFFFF	N/A	N/A
+      Foreground Color	#000000	0.4	#999999
+      Font Color	#AAAAAA		#DDDDDD
+      background 000 color #AAAAAA opacity 0.7 computed color 777777
+      #000000	0.4	#999999 | #AAAAAA 0.7 #C9C9C9
+
+       */
 
       console.log('fgOpacity', fgOpacity);
 
-      document.getElementById('foregroundColorComputed').innerText = '#' + fgComputed.toUpperCase();
+      backgroundColorEntered.innerText = bgColor.toUpperCase();
+      foregroundColorEntered.innerText = fgColor.toUpperCase();
+      foregroundColorEnteredSwatch.style.backgroundColor = fgColor;
+      foregroundColorOpacity.innerText = fgOpacity;
+      foregroundColorComputed.innerText = '#' + fgComputed.toUpperCase();
+      foregroundColorComputedSwatch.style.backgroundColor = '#' + fgComputed;
 
-      // check if fgOpacity is a number, otherwise is setting to 1 in caclulate Color call
-      document.getElementById('fontColorComputed').innerText = (fgOpacity !== '' && fgOpacity < 1) ? '#' + fontComputed.toUpperCase() : fontColor;
+      fontColorEntered.innerText = fontColor.toUpperCase();
+      fontColorEnteredSwatch.style.backgroundColor = fontColor;
+      fontColorOpacity.innerText = fontOpacity;
+      fontColorComputed.innerText = fontComputed;
+      fontColorComputedSwatch.style.backgroundColor = fontComputed;
       // backgroundColorComputed  fontTextComputed
 
       // https://webaim.org/resources/contrastchecker/?fcolor=999999&bcolor=FFFFFF&api
 
+    }
+
+    function returnHex(intValue) {
+      return intValue > 0 ? intValue.toString(16) : '00';
     }
 
     function calculateColor(backgroundHex, colorHex, opacity = 1) {
@@ -95,10 +135,14 @@
       const color = parseColor(colorHex);
       const resultColor = getColor(bg, color, opacity);
 
-      const computedColor = resultColor.r.toString(16)
-              + resultColor.g.toString(16)
-              + resultColor.b.toString(16);
-      console.log('background', backgroundHex, 'color', colorHex, 'opacity', opacity, 'computed color', computedColor);
+
+
+      console.log(returnHex(resultColor.r));
+
+      const computedColor = returnHex(resultColor.r)
+              + returnHex(resultColor.g)
+              + returnHex(resultColor.b);
+      console.log('background', backgroundHex, 'color', colorHex, 'opacity', opacity, 'computed color', computedColor, 'resultColor', resultColor);
       return computedColor;
     }
 
@@ -111,7 +155,6 @@
     //           + resultColor.g.toString(16)
     //           + resultColor.b.toString(16);
     // }
-
 
     function parseColor(clr) {
       if (!clr) throw new Error('Color must not be empty!')
@@ -183,32 +226,27 @@
       opacity: 1; /* Firefox */
     }
 
-    .mybackground {
-      /*background-color: #000000;*/
+
+    .results-wrapper {
+      display: flex;
+      align-items: flex-start;
+    }
+    .results-table tr {
+    }
+
+    .results-table th, .results-table td  {
+      padding: 5px;
+      /*vertical-align: top;*/
+    }
+
+  .results-table th[scope="row"] {
+    text-align: right;
+  }
+
+    .layerinfo {
       background-color: #FFFFFF;
-    }
-
-    .mycolor {
-      width: 200px;
-      height: 100px;
-      /*background-color: #FFFFFF;*/
-      background-color: #000000;
-      border: 2px;
-    }
-    .myopacity {
-      width: 150px;
-      height: 50px;
-      /*opacity: 0.3;*/
-      /*opacity: 0.7; */
-      opacity: 0.4;
-      color: #9e9e9e;
-
-    }
-
-    .myhooverbackground {
-      width: 150px;
-      height: 50px;
-      background-color: #757575;
+      color: #000000;
+      opacity: 1;
     }
 
     .colorcontrast {
@@ -223,8 +261,14 @@
       width: 300px;
       height: 200px;
       border: 1px solid #000000;
-      margin: 5px;
+      margin: 25px 5px 5px 5px;
       padding: 5px;
+    }
+
+    .colorswatch {
+      width: 15px;
+      height: 15px;
+      display: inline-block;
     }
 
     .foregroundcolor {
@@ -273,24 +317,82 @@
         <input type="text" id="fontOpacity" name="fontOpacity">
       </div><br>
       <input type="reset">
-      <div id="backgroundColorDisplay" class="backgroundcolor">Background Color <span id="backgroundColorComputed"></span>
-        <div id="foregroundColorDisplay" class="foregroundcolor">Foreground Color <span id="foregroundColorComputed"></span>
-          <div id="fontTextDisplay" class="fontcolor">This is the text <span id="fontTextComputed"></span></div>
-          <div id="fontColorDisplay" class="fontcolor">This is the text color <span id="fontColorComputed"></span></div>
+
+      <!--
+      <div class="layerinfo">Background Color <span id="backgroundColorEntered2"></span></div>
+      <div class="layerinfo">
+        Foreground Color - Entered: <span id="foregroundColorEntered2"></span>
+        - Opacity: <span id="foregroundColorOpacity2"></span>
+        | Computed: <span id="foregroundColorComputed2"></span>
+      </div>
+      <div class="layerinfo">Font Color:
+        Foreground Color - Entered: <span id="fontColorEntered2"></span>
+        - Opacity: <span id="fontColorOpacity2"></span>
+        | Computed: <span id="fontColorComputed2"></span>
+      </div> -->
+
+      <div class="results-wrapper">
+        <table class="results-table">
+          <caption>Color Initial and Computed Values</caption>
+          <tbody>
+          <tr>
+            <th scope="col">Layer</th>
+            <th scope="col">Entered<br>Color</th>
+            <th scope="col">Entered<br>Opacity</th>
+            <th scope="col">Computed<br>Color</th>
+          </tr>
+          <tr>
+            <th scope="row">Background Color</th>
+            <td><code id="backgroundColorEntered"></code></td>
+            <td><code>N/A</code></td>
+            <td><code>N/A</code></td>
+          </tr>
+          <tr>
+            <th scope="row">Foreground Color</th>
+            <td><code id="foregroundColorEntered"></code> <div id="foregroundColorEnteredSwatch" class="colorswatch"></div></td>
+            <td><code id="foregroundColorOpacity"></code></td>
+            <td><code id="foregroundColorComputed"></code> <div id="foregroundColorComputedSwatch" class="colorswatch"></div></td>
+          </tr>
+          <tr>
+            <th scope="row">Font Color</th>
+            <td><code id="fontColorEntered"></code> <div id="fontColorEnteredSwatch" class="colorswatch"></div></td>
+            <td><code id="fontColorOpacity"></code></td>
+            <td><code id="fontColorComputed"></code> <div id="fontColorComputedSwatch" class="colorswatch"></div></td>
+          </tr>
+          </tbody>
+        </table>
+        <div id="backgroundColorDisplay" class="backgroundcolor">Background
+          <div id="foregroundColorDisplay" class="foregroundcolor">Foreground
+            <div id="fontTextDisplay" class="fontcolor">This is the font text</div>
+            <div id="fontColorDisplay" class="fontcolor">This is the text color</div>
+          </div>
         </div>
       </div>
     </form>
-    <div class="mybackground">Background
-      <div class="mycolor">Color</div>
-      <div class="mycolor myopacity">Opacity</div>
-      <div class="myhooverbackground">Hover Background</div>
-    </div>
   </div>
 </div>
 </body>
 <script>
   const colorContrast = document.getElementById('colorContrast');
   const colorInputs = colorContrast.querySelectorAll('input[type="text"]');
+
+  const backgroundColorEntered = document.getElementById('backgroundColorEntered');
+  const foregroundColorEntered = document.getElementById('foregroundColorEntered');
+  const foregroundColorEnteredSwatch = document.getElementById('foregroundColorEnteredSwatch');
+  const foregroundColorOpacity = document.getElementById('foregroundColorOpacity');
+  const foregroundColorComputed = document.getElementById('foregroundColorComputed');
+  const foregroundColorComputedSwatch = document.getElementById('foregroundColorComputedSwatch');
+  const fontColorEntered = document.getElementById('fontColorEntered');
+  const fontColorEnteredSwatch = document.getElementById('fontColorEnteredSwatch');
+  const fontColorOpacity = document.getElementById('fontColorOpacity');
+  const fontColorComputed = document.getElementById('fontColorComputed');
+  const fontColorComputedSwatch = document.getElementById('fontColorComputedSwatch');
+
+  const backgroundColorDisplay = document.getElementById('backgroundColorDisplay');
+  const foregroundColorDisplay = document.getElementById('foregroundColorDisplay');
+  const fontTextDisplay = document.getElementById('fontTextDisplay');
+  const fontColorDisplay = document.getElementById('fontColorDisplay');
+
 
   console.log(colorContrast);
   console.log(colorInputs);
@@ -302,4 +404,42 @@
 
   updateColors();
 </script>
+<!--
+<style>
+
+   .mybackground {
+      /*background-color: #000000;*/
+      background-color: #FFFFFF;
+    }
+
+    .mycolor {
+      width: 200px;
+      height: 100px;
+      /*background-color: #FFFFFF;*/
+      background-color: #000000;
+      border: 2px;
+    }
+    .myopacity {
+      width: 150px;
+      height: 50px;
+      /*opacity: 0.3;*/
+      /*opacity: 0.7; */
+      opacity: 0.4;
+      color: #9e9e9e;
+
+    }
+
+    .myhooverbackground {
+      width: 150px;
+      height: 50px;
+      background-color: #757575;
+    }
+
+</style>>
+
+<div class="mybackground">Background
+      <div class="mycolor">Color</div>
+      <div class="mycolor myopacity">Opacity</div>
+      <div class="myhooverbackground">Hover Background</div>
+    </div>-->
 </html>
