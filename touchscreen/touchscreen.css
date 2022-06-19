@@ -35,25 +35,6 @@ a {
     font-family: 'Hyundai Sans Head', Arial;
 }
 
-.chargingmapwrapper {
-    width: 100%;
-    height:100vh;
-    position: absolute;
-    /*background-color: blueviolet;*/
-    overflow: hidden;
-    z-index: 400;
-}
-
-.chargingmapclose {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 410;
-    width: 100px;
-    height: 100px;
-
-}
-
 .homecontent {
     position: relative;
     top: 0;
@@ -299,6 +280,37 @@ a {
     width: 100%;
     height: 100vh;
 }
+
+
+.chargingmapwrapper {
+    width: 100%;
+    height:100vh;
+    position: absolute;
+    /*background-color: blueviolet;*/
+    overflow: hidden;
+    z-index: 400;
+}
+
+.chargingmapcloseEN {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 410;
+    width: 90%;
+    height: 100px;
+
+}
+
+.chargingmapcloseFR {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    z-index: 410;
+    width: 100px;
+    height: 100px;
+
+}
+
 
 .displayhide {
     display: none;

@@ -109,8 +109,13 @@ function initializeTransitioned (element) {
 	});
 }
 
-function chargingMap() {
-	console.log('chargingmap: toggle');
+function chargingMap(locale) {
+	console.log('chargingmap: toggle', locale);
+	const chargingMap = 'chargingmap' + locale;
+	const chargingMapClose = 'chargingmapclose' + locale;
+	document.getElementById(chargingMap).classList.toggle('hide');
+	document.getElementById(chargingMapClose).classList.toggle('hide');
+
 	document.getElementById('chargingmapwrapper').classList.toggle('hide');
 }
 

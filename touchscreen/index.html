@@ -65,17 +65,24 @@
 						screensaver
 					</a>
 					<br>
-					<a href="#" onclick="chargingMap()" class="verticalmenulink">
-						charging map
+					<a href="#" onclick="chargingMap('EN')" class="verticalmenulink">
+						charging map EN
+					</a>
+					<br>
+					<a href="#" onclick="chargingMap('FR')" class="verticalmenulink">
+						charging map FR
 					</a>
 				</div>
 				<div class="verticalmenuimagecontent verticalmenuflex-right">
 					<img src="../resources/images/background1.png" class="verticalmenubackgroundimage" alt="">
 				</div>
 				<div id="chargingmapwrapper" class="chargingmapwrapper hide">
-					<iframe name="chargehubmap" src="https://chargehub.com/en/embedwithfilters.html?lat=45.5016889&amp;lon=-73.567256&amp;networks=0,1,2,3,4,5,6,7,8,9,11,12,14,15,16,17,18,19,20,21,22,23,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,50,51,52,53&amp;levels=1,2,3&amp;connectors=0,1,2,3,4,5,6,7&amp;show_pending=1&amp;zoom=3" frameborder="0" height="100%" width="100%"></iframe>
-
-					<button id="chargingmapclose" class="chargingmapclose" onClick="chargingMap()">Close</button>
+					<iframe id="chargingmapEN" name="chargehubmapEN" class="hide" src="https://chargehub.com/en/charging-stations-map.html" frameborder="0" height="100%" width="100%"></iframe>
+<!--					<iframe id="chargingmapEN" name="chargehubmapEN" class="hide" src="https://chargehub.com/en/embedwithfilters.html?lat=45.5016889&amp;lon=-73.567256&amp;networks=0,1,2,3,4,5,6,7,8,9,11,12,14,15,16,17,18,19,20,21,22,23,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,50,51,52,53&amp;levels=1,2,3&amp;connectors=0,1,2,3,4,5,6,7&amp;show_pending=1&amp;zoom=12" frameborder="0" height="100%" width="100%"></iframe>-->
+<!--					<iframe id="chargingmapFR" name="chargehubmap" class="hide" src="https://chargehub.com/fr/carte-borne-de-recharge.html" frameborder="0" height="100%" width="100%"></iframe>-->
+					<iframe id="chargingmapFR" name="chargehubmap" class="hide" src="https://chargehub.com/fr/embed.html?lat=45.5016889&amp;lon=-73.567256&amp;networks=0,1,2,3,4,5,6,7,8,9,11,12,14,15,16,17,18,19,20,21,22,23,25,26,27,28,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,50,51,52,53&amp;levels=1,2,3&amp;connectors=0,1,2,3,4,5,6,7&amp;show_pending=1&amp;zoom=10" frameborder="0" height="100%" width="100%"></iframe>
+					<button id="chargingmapcloseEN" class="chargingmapcloseEN hide" onClick="chargingMap('EN')">Close</button>
+					<button id="chargingmapcloseFR" class="chargingmapcloseFR hide" onClick="chargingMap('FR')">Fermer</button>
 				</div>
 			</div>
 		</div>
