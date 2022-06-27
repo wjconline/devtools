@@ -120,14 +120,24 @@
 
       checkContrast(bgColor, fgColor).then (data => {
         /* process your data further */
-        console.log('checkColors: contrastRatioBgFg, data', contrastRatioBgFg, data);
+        console.log('checkColors: bgColor, fgColor, data', bgColor, fgColor, data);
         contrastRatioBgFg.innerText = data.ratio;
         fgNormalAA.innerText = data.AA;
         fgNormalAAA.innerText = data.AAA;
+        fgNormalAA.style.backgroundColor = (data.AA === 'fail') ? '#FF0000' : '#00FF00';
+        fgNormalAAA.style.backgroundColor = (data.AAA === 'fail') ? '#FF0000' : '#00FF00';
+
+        fgNormalExample.style.backgroundColor = bgColor;
+        fgNormalExample.style.color = '#' + fgColor;
         //      fgNormalExample.innerText = bgFgResponse;
         fgLargeAA.innerText = data.AALarge;
         fgLargeAAA.innerText = data.AAALarge;
         //      fgLargeExample.innerText = bgFgResponse;
+        fgLargeAA.style.backgroundColor = (data.AALarge === 'fail') ? '#FF0000' : '#00FF00';
+        fgLargeAAA.style.backgroundColor = (data.AAALarge === 'fail') ? '#FF0000' : '#00FF00';
+
+        fgLargeExamples.style.backgroundColor = bgColor;
+        fgLargeExamples.style.color = '#' + fgColor;
         return data;
       })
 
@@ -154,15 +164,24 @@
         fontColorTested.innerText = fontColor;
         checkContrast(fgColor, fontColor).then (data => {
           /* process your data further */
-          console.log('checkColors: contrastRatioFgFont, data', contrastRatioFgFont, data);
+          console.log('checkColors: bgColor, fgColor, data', fgColor, fontColor, data);
+
           // WoDo: updateForegroundResults display error messages and update / clear as needed
           contrastRatioFgFont.innerText = data.ratio;
           fontNormalAA.innerText = data.AA;
           fontNormalAAA.innerText = data.AAA;
+          fontNormalAA.style.backgroundColor = (data.AA === 'fail') ? '#FF0000' : '#00FF00';
+          fontNormalAAA.style.backgroundColor = (data.AAA === 'fail') ? '#FF0000' : '#00FF00';
+          fontNormalExample.style.backgroundColor = '#' + fgColor;
+          fontNormalExample.style.color = fontColor;          //      fontLargeExample.innerText = data;
           //      fontNormalExample.innerText = data;
           fontLargeAA.innerText = data.AALarge;
           fontLargeAAA.innerText = data.AAALarge;
-          //      fontLargeExample.innerText = data;
+          fontLargeAA.style.backgroundColor = (data.AALarge === 'fail') ? '#FF0000' : '#00FF00';
+          fontLargeAAA.style.backgroundColor = (data.AAALarge === 'fail') ? '#FF0000' : '#00FF00';
+
+          fontLargeExamples.style.backgroundColor = '#' + fgColor;
+          fontLargeExamples.style.color = fontColor;          //      fontLargeExample.innerText = data;
           return data;
         });
 /*
@@ -381,6 +400,18 @@
       border: 1px solid #FFFF00;
     }
 
+    .normalExample {
+      font-size: 18px;
+    }
+
+    .largeExampleBold {
+      font-size: 19px;
+      font-weight: bold;
+    }
+    .largeExample {
+      font-size: 24px;
+    }
+
   </style>
 </head>
 <body>
@@ -464,7 +495,6 @@
       </div>
       <!-- Large text is defined as 14 point (typically 18.66px) and bold or larger, or 18 point (typically 24px) or larger. -->
       <div>
-        18px
         <table class="results-table">
           <caption>Color Contrast Ratios</caption>
           <tbody>
@@ -488,7 +518,10 @@
             <td id="fgNormalExample" class="normalExample">All your base are belong to us</td>
             <td id="fgLargeAA"></td>
             <td id="fgLargeAAA"></td>
-            <td id="fgLargeExample">Main screen turn on; Make your time</td>
+            <td id="fgLargeExamples">
+              <div id="fgLargeExampleBold" class="largeExampleBold">Main screen turn on; Make your time</div>
+              <div id="fgLargeExample" class="largeExample">What happen? We get signal.</div>
+            </td>
           </tr>
           <tr>
             <td><code id="foregroundAsBgTested"></code></td>
@@ -499,7 +532,10 @@
             <td id="fontNormalExample" class="normalExample">All your base are belong to us</td>
             <td id="fontLargeAA"></td>
             <td id="fontLargeAAA"></td>
-            <td id="fontLargeExample" class="largeExample">Main screen turn on; Make your time</td>
+            <td id="fontLargeExamples">
+              <div id="fontLargeExampleBold" class="largeExampleBold">Main screen turn on; Make your time</div>
+              <div id="fontLargeExample" class="largeExample">What happen? We get signal.</div>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -541,6 +577,8 @@
   const fgNormalExample = document.getElementById('fgNormalExample');
   const fgLargeAA = document.getElementById('fgLargeAA');
   const fgLargeAAA = document.getElementById('fgLargeAAA');
+  const fgLargeExamples = document.getElementById('fgLargeExamples');
+  const fgLargeExampleBold = document.getElementById('fgLargeExampleBold');
   const fgLargeExample = document.getElementById('fgLargeExample');
 
   const contrastRatioFgFont = document.getElementById('contrastRatioFgFont');
@@ -549,7 +587,11 @@
   const fontNormalExample = document.getElementById('fontNormalExample');
   const fontLargeAA = document.getElementById('fontLargeAA');
   const fontLargeAAA = document.getElementById('fontLargeAAA');
+  const fontLargeExamples = document.getElementById('fontLargeExamples');
+  const fontLargeExampleBold = document.getElementById('fontLargeExampleBold');
   const fontLargeExample = document.getElementById('fontLargeExample');
+
+
 
 
   console.log(colorContrast);
