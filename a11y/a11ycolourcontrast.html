@@ -21,7 +21,9 @@
     let fontOpacity = 1;
 
     function returnHex(intValue) {
-      return intValue > 0 ? intValue.toString(16) : '00';
+      const hexValue = intValue > 0 ? intValue.toString(16) : '00';
+      console.log('returnHex: intValue, hexValue', intValue, hexValue);
+      return hexValue;
     }
 
     function calculateColor(backgroundHex, colorHex, opacity = 1) {
@@ -30,12 +32,17 @@
       const color = parseColor(colorHex);
       const resultColor = getColor(bg, color, opacity);
 
-      console.log(returnHex(resultColor.r));
+      let hexRed = returnHex(resultColor.r);
+      let hexGreen = returnHex(resultColor.g);
+      let hexBlue = returnHex(resultColor.b);
+      let hexColor = hexRed
+          + hexGreen
+          + hexBlue;
+      const computedColor = hexColor;
 
-      const computedColor = returnHex(resultColor.r)
-              + returnHex(resultColor.g)
-              + returnHex(resultColor.b);
-      console.log('background', backgroundHex, 'color', colorHex, 'opacity', opacity, 'computed color', computedColor, 'resultColor', resultColor);
+      console.log('calculateColor: background', backgroundHex, 'color', colorHex, 'opacity', opacity, 'bg', bg, 'color', color);
+      console.log('calculateColor: resultColor, hexRed, hexGreen, hexBlue, hexColor', resultColor, hexRed, hexGreen, hexBlue, hexColor);
+      console.log('calculateColor: resultColor', resultColor, 'computed color', computedColor);
       return computedColor;
     }
 
@@ -68,19 +75,39 @@
 
     function getColor(bg, clr, op) {
       // check if <== 1
-      console.log('op', op);
-      console.log('op * 100', op * 100);
-      op = op * 100;
+      console.log('getColor: bg, clr, op', bg, clr, op);
+      const opacity = parseFloat(op);
+      console.log('getColor: opacity', opacity);
+      // const afterOpacity = (clr,op,bg=[255,255,255]) => clr.map((colFg,idx)=>op*colFg+(1-op)*bg[idx]);
+      const afterOpacity = (clr,op,bg=[255,255,255]) => clr.map((colFg,idx)=>op*colFg+(1-op)*bg[idx]);
+      console.log('getClr: afterOpacity', afterOpacity([clr.r,clr.g,clr.b],opacity,[bg.r,bg.g,bg.b]));
+
       return {
-        r: getClr(bg.r, clr.r, op),
-        g: getClr(bg.g, clr.g, op),
-        b: getClr(bg.b, clr.b, op)
+        r: getClr(bg.r, clr.r, opacity),
+        g: getClr(bg.g, clr.g, opacity),
+        b: getClr(bg.b, clr.b, opacity)
       }
     }
 
     function getClr(bg, clr, op) {
-      op = op / 100;
-      return Math.round(bg + op * (clr - bg));
+      // op = op / 100;
+      // 255 - P* (255-X)
+      // const afterOpacity = (fg,o,bg=[255,255,255]) => fg.map((colFg,idx)=>o*colFg+(1-o)*bg[idx]) where fg is the foreground colour as [r,g,b], o is the opacity (0...1) and bg is the background colour (defaults to white if omitted) E.g. afterOpacity([255,0,0],0.5) gives [255,127.5,127.5]
+
+      // where fg is the foreground colour as [r,g,b],
+      // o is the opacity (0...1) and bg is the background colour (defaults to white if omitted) E.g. afterOpacity([255,0,0],0.5) gives [255,127.5,127.5]
+
+      const G = 2.2;
+      const Y = (bg^G * (1 - op) + clr^G * op) ^ (1 / G);
+      // where Y — resulting RGB component value, X — overlay RGB component value, P — its opacity, G — a value of a gamma. Most common value of a gamma is 2.2
+      console.log('getClr: Y', Y);
+
+      // const calculatedRaw = bg + op * (clr - bg);
+      const calculatedRaw = bg + op * (clr - bg);
+      let calculatedColor = Math.round(calculatedRaw);
+      console.log('getClr: bg, clr, op, calculatedRaw, calculatedColor', bg, clr, op, calculatedRaw, calculatedColor);
+      console.log('getClr: ', bg, ' + (', op,  ' * (', clr - bg, '))');
+      return calculatedColor;
     }
 
     function checkContrast(bgColor, fgColor) {
@@ -200,7 +227,7 @@
     function updateColors() {
 
       colorInputs.forEach(function(colorInput) {
-        console.log(colorInput);
+        // console.log(colorInput);
         switch (colorInput.id) {
           case 'backgroundColor':
             console.log('backgroundColor', colorInput.value, backgroundColorDisplay);
@@ -236,14 +263,14 @@
         }
       });
 
-      let foregroundStyles = window.getComputedStyle(foregroundColorDisplay);
-      console.log('foregroundStyles computed color is ', foregroundStyles.getPropertyValue('color'));
-      console.log('foregroundStyles computed background color is', foregroundStyles.getPropertyValue('background-color'));
-      let fontTextStyles = window.getComputedStyle(fontTextDisplay);
-      console.log('Font Text computed color is ', foregroundStyles.getPropertyValue('color'));
+      // let foregroundStyles = window.getComputedStyle(foregroundColorDisplay);
+      // console.log('foregroundStyles computed color is ', foregroundStyles.getPropertyValue('color'));
+      // console.log('foregroundStyles computed background color is', foregroundStyles.getPropertyValue('background-color'));
+      // let fontTextStyles = window.getComputedStyle(fontTextDisplay);
+      // console.log('Font Text computed color is ', foregroundStyles.getPropertyValue('color'));
       // console.log('computed line-height is', foregroundStyles.getPropertyValue('line-height'));
-      let fontColorStyles = window.getComputedStyle(fontColorDisplay);
-      console.log('computed background color is ', fontColorStyles.getPropertyValue('background-color'));
+      // let fontColorStyles = window.getComputedStyle(fontColorDisplay);
+      // console.log('computed background color is ', fontColorStyles.getPropertyValue('background-color'));
       // console.log('computed line-height is', foregroundStyles.getPropertyValue('line-height'));
 
 
@@ -441,6 +468,8 @@
         <input type="text" id="fontOpacity" name="fontOpacity">
       </div><br>
       <input type="reset">
+      <button id="recalculate" type="button">Recalculate</button>
+      <label for="relog">Relog <input id="relog" type="checkbox" checked></label>
 
       <!--
       <div class="layerinfo">Background Color <span id="backgroundColorEntered2"></span></div>
@@ -591,16 +620,26 @@
   const fontLargeExampleBold = document.getElementById('fontLargeExampleBold');
   const fontLargeExample = document.getElementById('fontLargeExample');
 
+  const recalculate = document.getElementById('recalculate');
+  const relog = document.getElementById('relog');
 
-
-
-  console.log(colorContrast);
-  console.log(colorInputs);
+  // console.log(colorContrast);
+  // console.log(colorInputs);
 
   colorInputs.forEach(function(colorInput) {
-    console.log(colorInput);
+    // console.log(colorInput);
     colorInput.onchange = handleChange;
   });
+
+    recalculate.onclick = function(event) {
+      // console.log('recalculate: event, relog, relog.checked', event, relog, relog.checked)
+      if (relog.checked) {
+        console.clear();
+      }
+      console.log('recalculate: event, relog, relog.checked', event, relog, relog.checked)
+
+      updateColors();
+    }
 
   updateColors();
 </script>
