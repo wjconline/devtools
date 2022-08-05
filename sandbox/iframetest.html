@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iframe Test Page</title>
+  <style>
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <button id="iframeToggle">Stop</button>
+<!--  <iframe width="100%" height="500" src="https://hyundaicanada.com/en/parts-and-accessories/dealer-accessories" frameborder="0"></iframe> -->
+  <iframe id="iframe" src="https://www.hyundaicanada.com/en/parts-and-accessories/dealer-accessories?province=NB" width="100%" height="900" frameborder="0"></iframe>
+</body>
+<script>
+  const iframe = document.getElementById('iframe');
+  const iframeToggle = document.getElementById('iframeToggle');
+  iframeToggle.addEventListener("click", () => {
+    console.log('iframeToggle - click - toggle');
+    // iframe.classList.toggle('hide');
+    if (iframeToggle.innerText === "Stop") {
+      iframeToggle.innerText = "Start";
+      iframe.setAttribute("src", "http://www.fillmurray.com/200/300");
+    } else {
+      iframeToggle.innerText = "Stop";
+      iframe.setAttribute("src", "https://www.hyundaicanada.com/en/parts-and-accessories/dealer-accessories?province=NB");
+    }
+    // iframeToggle.innerText = "Start";
+  });
+</script>
+</html>
