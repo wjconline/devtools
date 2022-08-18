@@ -3,6 +3,7 @@
 <head>
   <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
   <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="CorporateTool.Net"/>
   <meta name="Keywords" content="accessibility html aria WCAG"/>
   <meta name="Description" content="A test web page for forms accessibility implementations"/>
@@ -43,6 +44,23 @@ Example */
     <h1>CT.Net Accessibility Form Test 2 Page</h1>
     <a href="a11yindex.html" id="topAnchor">Back to A11y Index</a>
     <form>
+
+      <h2>Radio Buttons</h2>
+      <p>In the case of a same named group of radio buttons, if a single radio button in the group has the required attribute, a radio button in that group must be checked, although it doesn't have to be the one with the attribute is applied. So to improve code maintenance, it is recommended to either include the required attribute in every same-named radio button in the group, or else in none.</p>
+      <h3 id="sgwsFeedbackRadioGroup">Feedback</h3>
+<fieldset>
+  <legend>Were you able to complete your primary purpose for today's visit? *</legend>
+  <input type="radio" id="sgwsYes" name="sgwsPurpose" value="yes" required="required">
+  <label for="sgwsYes">Yes</label>
+  <input type="radio" id="sgwsNo" name="sgwsPurpose" value="no" required="required">
+  <label for="sgwsNo">No</label>
+  <input type="radio" id="sgwsNotDone" name="sgwsPurpose" value="notdone" required="required">
+  <label for="sgwsNotDone">I'm not yet done</label>
+</fieldset>
+      <label for="sgwsMoreInfo">Please share any additional feedback:</label>
+      <textarea type="text" id="sgwsMoreInfo" rows="3" placeholder=""></textarea>
+<!--  aria-label="Miscellaneous" -->
+
       <h3 id="stationtitle">Choose your charging station</h3>
       <p aria-labelledby="stationtitle">
         <fieldset>

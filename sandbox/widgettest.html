@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="CorporateTool.Net"/>
+  <meta name="Keywords" content="widget html aria WCAG"/>
+  <meta name="Description" content="A test web page for a React widget implementations"/>
+  <meta name="robots" content="all"/>
+  <meta name="docref" content="react widget test - widgettest.html"/>
+  <title aria-label="React Widget Test- CorporateTool dot Net">React Widget Test Page -
+    CorporateTool.Net</title>
+  <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/resources/images/favicon.ico"/>
+  <link type="image/vnd.microsoft.icon" rel="icon" href="/resources/images/favicon.ico"/>
+  <!--  <link type="text/css" rel="stylesheet" href="resources/css/main.css"/>-->
+  <!--	<link type="text/css" rel="stylesheet" href="resources/css/secondary.css" /> -->
+  <!--[if IE]>
+  <![endif]-->
+  <!--	<link type="text/css" rel="stylesheet" href="resources/css/ie.css" media="screen" /> -->
+
+  <!--
+    <script type="text/javascript" src="resources/js/jquery/jquery.js"></script>
+  -->
+
+  <script>
+  </script>
+  <style>
+
+    /*
+    In most browsers, the placeholder text is grey. To change this, style the placeholder with the non-standard ::placeholder selector. Note that Firefox adds a lower opacity to the placeholder, so we use opacity: 1 to fix this.
+
+Example */
+.styled-placeholder::placeholder { /* Chrome, Firefox, Modern Edge, Safari 10.1+ */
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+  </style>
+</head>
+<body>
+<div id="container">
+  <div id="chewycenter">
+    <h1>CT.Net Accessibility Form Test 2 Page</h1>
+    <a href="../index.html" id="topAnchor">Back to Index</a>
+
+    <div id="widgetTest" data-modelid="1337" data-postalcode="A1A2B2"></div>
+
+<!--    <link href="https://giologist.github.io/article-react-reddit-widget/index.css" rel="stylesheet" />-->
+<!--    <script src="https://giologist.github.io/article-react-reddit-widget/index.js"></script>-->
+<!--    <div class="reddit_widget" data-subreddit="SUBREDDIT_HERE"></div>-->
+
+    <!--
+    function loadError(oError) {
+  throw new URIError(`The script ${oError.target.src} didn't load correctly.`);
+}
+
+function prefixScript(url, onloadFunction) {
+  const newScript = document.createElement("script");
+  newScript.onerror = loadError;
+  if (onloadFunction) { newScript.onload = onloadFunction; }
+  document.currentScript.parentNode.insertBefore(newScript, document.currentScript);
+  newScript.src = url;
+}
+Copy to Clipboard
+This next function, instead of prepending the new scripts immediately before the document.currentScript element, appends them as children of the <head> tag.
+
+function loadError(oError) {
+  throw new URIError(`The script ${oError.target.src} didn't load correctly.`);
+}
+
+function affixScriptToHead(url, onloadFunction) {
+  const newScript = document.createElement("script");
+  newScript.onerror = loadError;
+  if (onloadFunction) { newScript.onload = onloadFunction; }
+  document.head.appendChild(newScript);
+  newScript.src = url;
+}
+Copy to Clipboard
+Sample usage:
+
+affixScriptToHead("myScript1.js");
+affixScriptToHead("myScript2.js", () => { alert("The script \"myScript2.js\" has been correctly loaded."); });
+
+    -->
+
+<!--     <div class="leftcontent left">-->
+    </div>
+    <div id="rightaction" class="right">
+    </div>
+    <br class="clear"/>
+  </div>
+
+  <!--  <footer id="footer">
+    Footer
+  </footer>-->
+
+</div>
+</body>
+<script type="text/javascript" src="js/widgettest.js"></script>
+<script>
+</script>
+</html>
