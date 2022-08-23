@@ -15,15 +15,60 @@
   <link type="image/vnd.microsoft.icon" rel="icon" href="/resources/images/favicon.ico"/>
   <!--  <link type="text/css" rel="stylesheet" href="resources/css/main.css"/>-->
   <!--	<link type="text/css" rel="stylesheet" href="resources/css/secondary.css" /> -->
-  <!--[if IE]>
-  <![endif]-->
-  <!--	<link type="text/css" rel="stylesheet" href="resources/css/ie.css" media="screen" /> -->
+  <!-- BEGIN Hyundai VVA Widget -->
+  <script type="text/javascript">
+    console.log("VVA - In Page - Start Init");
+    window.addEventListener('load', (event) => {
+      console.log('page is fully loaded');
+      (function (d, a, b, f, e) {
+        d[e] = d[e] || [];
+        d[e].push({analytics1: "a1", analyticsProperties: {aP1: "property1", aP2: "property2"}});
+        console.log('window:', d, d.analyticsObj);
+        console.log('hello world - page');
+        const widgetWrapper = document.getElementById('hyundaiVVAWidget');
+        console.log('widgetWrapper', widgetWrapper);
+        const chewyCenter = document.getElementById('chewycenter');
+        console.log('chewyCenter', chewyCenter);
+        const widgetData = (widgetWrapper && widgetWrapper.dataset) || {};
+        const modelId = (widgetData && widgetData.modelid) ? widgetData.modelid : 0;
+        const postalCode = (widgetData && widgetData.postalcode) ? widgetData.postalcode : '';
+        const dealerId = (widgetData && widgetData.dealerId) ? widgetData.dealerId : '';
+        console.log('widgetWrapper.dataset', widgetWrapper.dataset);
+        console.log('widgetData', widgetData);
+        console.log('modelId', modelId);
+        console.log('postalCode', postalCode);
+        console.log('dealerId', dealerId);
 
-  <!--
-    <script type="text/javascript" src="resources/js/jquery/jquery.js"></script>
-  -->
+        let c = a.createElement(b);
+        c.src = f;
+        c.async = !0;
+        c.onload = c.onreadystatechange = function () {
+          // anayltics / onload code
+          var a = this.readyState, c = d[e];
+          if (!a || "complete" == a || "loaded" == a) try {
+            console.log('loaded - :', e, c);
+            // analytics or loaded code here as needed
+          } catch (g) {
+            console.log('loading error:', g);
+          }
+        };
+        console.log('script tag:', c);
+        a = a.getElementsByTagName(b)[0];
+        b = a.parentNode;
+        // console.log('script tag:', c);
+        b.insertBefore(c, a)
+      })(window, document, "iframe", "http://10.0.0.20:1337/sandbox/js/widgetiframetest.js", "analyticsObj");
+    });
+
+    console.log("VVA - In Page - End Init");
+  </script>
+  <!-- END Hyundai VVA Widget -->
 
   <script>
+    // let hc = hc || {};
+    // hc.vva = hc.vva || {};
+    // hc.vva.dealerCode = "1337;"
+
   </script>
   <style>
 
@@ -44,13 +89,20 @@ Example */
     <h1>CT.Net Accessibility Form Test 2 Page</h1>
     <a href="../index.html" id="topAnchor">Back to Index</a>
 
-    <div id="widgetTest" data-modelid="1337" data-postalcode="A1A2B2"></div>
+    <div id="hyundaiVVAWidget" data-modelid="1337" data-postalcode="A1A2B2" data-dealer-id="g33k">
+      <iframe src="" ></iframe>
+    </div>
 
 <!--    <link href="https://giologist.github.io/article-react-reddit-widget/index.css" rel="stylesheet" />-->
 <!--    <script src="https://giologist.github.io/article-react-reddit-widget/index.js"></script>-->
 <!--    <div class="reddit_widget" data-subreddit="SUBREDDIT_HERE"></div>-->
 
     <!--
+
+<script src="https://s.yimg.com/wi/ytc.js" async=""></script>
+
+(function(d,a,b,f,e){d[e]=d[e]||[];d[e].push({projectId:"10000",properties:{pixelId:"10019725"}});var c=a.createElement(b);c.src=f;c.async=!0;c.onload=c.onreadystatechange=function(){var a=this.readyState,c=d[e];if(!a||"complete"==a||"loaded"==a)try{var b=YAHOO.ywa.I13N.fireBeacon;d[e]=[];d[e].push=function(a){b([a])};b(c)}catch(g){}};a=a.getElementsByTagName(b)[0];b=a.parentNode;b.insertBefore(c,a)})(window,document,"script","https://s.yimg.com/wi/ytc.js","dotq");
+
     function loadError(oError) {
   throw new URIError(`The script ${oError.target.src} didn't load correctly.`);
 }
@@ -97,7 +149,6 @@ affixScriptToHead("myScript2.js", () => { alert("The script \"myScript2.js\" has
 
 </div>
 </body>
-<script type="text/javascript" src="js/widgettest.js"></script>
-<script>
-</script>
+<script2 type="text/javascript" src="js/widgettest.js"></script2>
+
 </html>
