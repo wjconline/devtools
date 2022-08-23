@@ -19,7 +19,7 @@
   <script type="text/javascript">
     console.log("VVA - In Page - Start Init");
     window.addEventListener('load', (event) => {
-      console.log('page is fully loaded');
+      console.log('page is fully loaded: event', event);
       (function (d, a, b, f, e) {
         d[e] = d[e] || [];
         d[e].push({analytics1: "a1", analyticsProperties: {aP1: "property1", aP2: "property2"}});
@@ -45,7 +45,7 @@
         c.onload = c.onreadystatechange = function () {
           // anayltics / onload code
           var a = this.readyState, c = d[e];
-          if (!a || "complete" == a || "loaded" == a) try {
+          if (!a || "complete" === a || "loaded" === a) try {
             console.log('loaded - :', e, c);
             // analytics or loaded code here as needed
           } catch (g) {
@@ -57,7 +57,7 @@
         b = a.parentNode;
         // console.log('script tag:', c);
         b.insertBefore(c, a)
-      })(window, document, "iframe", "http://10.0.0.20:1337/sandbox/js/widgettest.js", "analyticsObj");
+      })(window, document, "iframe", "http://10.0.0.20:1337/widget/js/widgettest.js", "analyticsObj");
       // })(window, document, "iframe", "http://10.0.0.20:1337/sandbox/js/widgetiframetest.js", "analyticsObj");
     });
 
@@ -72,16 +72,6 @@
 
   </script>
   <style>
-
-    /*
-    In most browsers, the placeholder text is grey. To change this, style the placeholder with the non-standard ::placeholder selector. Note that Firefox adds a lower opacity to the placeholder, so we use opacity: 1 to fix this.
-
-Example */
-.styled-placeholder::placeholder { /* Chrome, Firefox, Modern Edge, Safari 10.1+ */
-  color: red;
-  opacity: 1; /* Firefox */
-}
-
   </style>
 </head>
 <body>
@@ -94,8 +84,8 @@ Example */
     <div id="hyundaiVVAWidget" data-modelid="1337" data-postalcode="A1A2B2" data-dealer-id="g33k">
       <iframe src="" ></iframe>
     </div>
-    <script type="text/javascript" src="http://10.0.0.20:1337/sandbox/js/widgettest.js"></script>
-<!--    <link href="https://giologist.github.io/article-react-reddit-widget/index.css" rel="stylesheet" />-->
+    <!--    <script type="text/javascript" src="http://10.0.0.20:1337/sandbox/js/widgettest.js"></script> --->
+    <!--    <link href="https://giologist.github.io/article-react-reddit-widget/index.css" rel="stylesheet" />-->
 <!--    <script src="https://giologist.github.io/article-react-reddit-widget/index.js"></script>-->
 <!--    <div class="reddit_widget" data-subreddit="SUBREDDIT_HERE"></div>-->
 
@@ -138,19 +128,17 @@ affixScriptToHead("myScript2.js", () => { alert("The script \"myScript2.js\" has
 
     -->
 
-<!--     <div class="leftcontent left">-->
+    <div class="leftcontent left">
     </div>
     <div id="rightaction" class="right">
     </div>
     <br class="clear"/>
   </div>
-
+  </div>
   <!--  <footer id="footer">
     Footer
   </footer>-->
-
-</div>
 </body>
-<script2 type="text/javascript" src="js/widgettest.js"></script2>
+<!--<script type="text/javascript" src="js/widgettest.js"></script>-->
 
 </html>
