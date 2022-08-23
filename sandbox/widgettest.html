@@ -57,7 +57,8 @@
         b = a.parentNode;
         // console.log('script tag:', c);
         b.insertBefore(c, a)
-      })(window, document, "iframe", "http://10.0.0.20:1337/sandbox/js/widgetiframetest.js", "analyticsObj");
+      })(window, document, "iframe", "http://10.0.0.20:1337/sandbox/js/widgettest.js", "analyticsObj");
+      // })(window, document, "iframe", "http://10.0.0.20:1337/sandbox/js/widgetiframetest.js", "analyticsObj");
     });
 
     console.log("VVA - In Page - End Init");
@@ -89,10 +90,11 @@ Example */
     <h1>CT.Net Accessibility Form Test 2 Page</h1>
     <a href="../index.html" id="topAnchor">Back to Index</a>
 
+    <div id="widgetTest" data-model-code="1337" data-postal-code="A1A2B2"></div>
     <div id="hyundaiVVAWidget" data-modelid="1337" data-postalcode="A1A2B2" data-dealer-id="g33k">
       <iframe src="" ></iframe>
     </div>
-
+    <script type="text/javascript" src="http://10.0.0.20:1337/sandbox/js/widgettest.js"></script>
 <!--    <link href="https://giologist.github.io/article-react-reddit-widget/index.css" rel="stylesheet" />-->
 <!--    <script src="https://giologist.github.io/article-react-reddit-widget/index.js"></script>-->
 <!--    <div class="reddit_widget" data-subreddit="SUBREDDIT_HERE"></div>-->
