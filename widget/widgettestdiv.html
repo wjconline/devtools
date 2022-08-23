@@ -6,26 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="CorporateTool.Net"/>
   <meta name="Keywords" content="widget html aria WCAG"/>
-  <meta name="Description" content="A test web page for a widget implementations"/>
+  <meta name="Description" content="A test web page for a widget implementations using divs"/>
   <meta name="robots" content="all"/>
-  <meta name="docref" content="react widget test - widgettest.html"/>
-  <title aria-label="React Widget Test- CorporateTool dot Net">Widget Test Page -
+  <meta name="docref" content="react widget test - widgettestdiv.html"/>
+  <title aria-label="Widget Test Div - CorporateTool dot Net">Widget Test Div Page -
     CorporateTool.Net</title>
   <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="/resources/images/favicon.ico"/>
   <link type="image/vnd.microsoft.icon" rel="icon" href="/resources/images/favicon.ico"/>
   <!--  <link type="text/css" rel="stylesheet" href="resources/css/main.css"/>-->
   <!--	<link type="text/css" rel="stylesheet" href="resources/css/secondary.css" /> -->
-  <!-- BEGIN Widget Test -->
+  <!-- BEGIN Widget Div Test -->
   <script type="text/javascript">
-    console.log("Widget Test - In Page - Start Init");
+    console.log("Widget Div Test - In Page - Start Init");
     window.addEventListener('load', (event) => {
-      console.log("Widget Test - In Page - On Load - Start: event", event);
+      console.log("Widget Test Div - In Page - On Load - Start: event", event);
       (function (d, a, b, f, e) {
         console.log("Widget Test - In Page - On Load - Enclosed - Start");
         d[e] = d[e] || [];
         d[e].push({analytics1: "a1", analyticsProperties: {aP1: "property1", aP2: "property2"}});
         console.log('window:', d, d.analyticsObj);
-        const widgetWrapper = document.getElementById('widgetTest');
+        const widgetWrapper = document.getElementById('widgetTestDiv');
         console.log('widgetWrapper', widgetWrapper);
         const chewyCenter = document.getElementById('chewycenter');
         console.log('chewyCenter', chewyCenter);
@@ -58,14 +58,14 @@
         // console.log('script tag:', c);
         b.insertBefore(c, a)
         console.log("Widget Test - In Page - On Load - Enclosed - End");
-      })(window, document, "script", "http://10.0.0.20:1337/widget/js/widgettest.js", "analyticsObj");
+      })(window, document, "script", "http://10.0.0.20:1337/widget/js/widgettestdiv.js", "analyticsObj");
       // })(window, document, "iframe", "http://10.0.0.20:1337/sandbox/js/widgetiframetest.js", "analyticsObj");
-      console.log("Widget Test - In Page - On Load - End");
+      console.log("Widget Test Div - In Page - On Load - End");
     });
 
-    console.log("Widget Test - In Page - End Init");
+    console.log("Widget Div Test - In Page - End Init");
   </script>
-  <!-- END Widget Test -->
+  <!-- END Widget Div Test -->
 
   <script>
     // let hc = hc || {};
@@ -79,10 +79,10 @@
 <body>
 <div id="container">
   <div id="chewycenter">
-    <h1>CT.Net Widget Test Page</h1>
+    <h1>CT.Net Widget Div Test Page</h1>
     <a href="../index.html" id="topAnchor">Back to Index</a>
-    <div id="widgetTest" data-model-code="1337" data-postal-code="A1A2B2" data-dealer-id="g33k">
-      <iframe src="" ></iframe>
+
+    <div id="widgetTestDiv" data-model-code="1337" data-postal-code="A1A2B2" data-dealer-id="g33k">
     </div>
     <!--    <script type="text/javascript" src="http://10.0.0.20:1337/sandbox/js/widgettest.js"></script> --->
     <!--    <link href="https://giologist.github.io/article-react-reddit-widget/index.css" rel="stylesheet" />-->

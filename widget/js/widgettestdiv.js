@@ -1,6 +1,6 @@
-console.log('Widget Test JS - Start');
+console.log('Widget Test Div JS - Start');
 
-const widgetWrapper = document.getElementById('widgetTest');
+const widgetWrapper = document.getElementById('widgetTestDiv');
 console.log('widgetWrapper', widgetWrapper);
 const chewyCenter = document.getElementById('chewycenter');
 console.log('chewyCenter', chewyCenter);
@@ -26,7 +26,7 @@ document.body.insertBefore(newDiv, currentDiv);
 // add the text node to the newly created div
 newDiv.appendChild(newContent);
 
-console.log('Widget Test JS - End');
+console.log('Widget Test Div JS - End');
 
 //
 // (function (d, a, b, f, e) {
