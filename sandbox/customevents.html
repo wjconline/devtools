@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Events</title>
+  <style>
+    header {
+      padding: 30px;
+      background-color: #BBBB99;
+    }
+    section {
+      margin: 10px;
+      padding: 30px;
+      background-color: #99BBBB;
+    }
+    footer {
+      padding: 30px;
+      background-color: #BB99BB;
+    }
+
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<h1>Custom Evens</h1>
+<header id="header">
+  <div id="headerLocation">ON</div>
+  <label for="headerChooseLocation">
+    <select id="headerChooseLocation">
+      <option value="AB">Alberta</option>
+      <option value="ON" selected>Ontario</option>
+    </select>
+  </label>
+
+</header>
+<section id="chewyCenter">
+  <dl>
+    <dt>Current Location:</dt>
+    <dd id="chewyCenterCurrentLocation">ON</dd>
+  </dl>
+  <label for="chewyCenterChooseLocation">
+    <select id="chewyCenterChooseLocation">
+      <option value="AB">Alberta</option>
+      <option value="ON" selected>Ontario</option>
+    </select>
+  </label>
+</section>
+<footer id="footer">
+  <div id="footerLocation">ON</div>
+  <ul id="footerLocationLinks_ON">
+    <li><a href="#">Ontario Dealers</a></li>
+    <li><a href="#">Ontario Service</a></li>
+    <li><a href="#">Ontario Suppport</a></li>
+  </ul>
+  <ul id="footerLocationLinks_AB" class="hide">
+    <li><a href="#">Alberta Dealers</a></li>
+    <li><a href="#">Alberta Service</a></li>
+    <li><a href="#">Alberta Suppport</a></li>
+  </ul>
+</footer>
+<script>
+
+  /*
+
+  // Add an event listener
+  document.addEventListener( 'myEvent' , function( e ) {
+    console.log( e.detail );
+    document.getElementById( 'result1').innerHTML = e.detail;
+  } );
+  function fireEvent( ) {
+// create new custom event
+    var event = new CustomEvent( 'myEvent' , {
+      "detail" : "Trigger custom event Example "
+    });
+// Dispatch the custom event
+    document.dispatchEvent( event );
+  }
+  // button to trigger the event
+  document.getElementsByTagName( "button" )[0].onclick = function() {
+    fireEvent();
+  }
+
+*/
+
+
+
+  // Create the event.
+
+  // Location Selector
+  const chewyCenterChooseLocation = document.getElementById('chewyCenterChooseLocation');
+
+  chewyCenterChooseLocation.addEventListener('change', (event) => {
+    console.log('Location Changed', event.target.value);
+    const changeLocationEvent = new CustomEvent('locationChange', {
+      detail: event.target.value,
+      bubbles: true,
+      cancelable: true,
+      composed: false,})
+    console.log('changeLocationEvent: ', changeLocationEvent);
+
+    // target can be any Element or other EventTarget.
+    // Create and dispatch/trigger an event on the fly
+    // Note: Optionally, we've also leveraged the "function expression" (instead of the "arrow function expression") so "this" will represent the element
+    console.log('Location Changed - changeLocationEvent', changeLocationEvent);
+    document.dispatchEvent(changeLocationEvent);
+    //true, detail: { text: () => textarea.value } }))
+
+
+    // const result = document.querySelector('.result');
+    // result.textContent = `You like ${event.target.value}`;
+  });
+
+// ----- Header ------
+  const headerLocation = document.getElementById('headerLocation');
+
+  headerLocation.addEventListener('locationChange', (e) => console.log(e, userLocation));
+
+  // Listen for the event.
+  // form.addEventListener('awesome', (e) => console.log(e.detail.text()));
+  document.addEventListener('locationChange', (e) => {
+    // e.target matches elem
+    console.log('Header Update Required', e, e.detail);
+    const chewyCenterCurrentLocation = document.getElementById('chewyCenterCurrentLocation');
+    const headerLocation = document.getElementById('headerLocation');
+    const headerChooseLocation = document.getElementById('headerChooseLocation');
+    const footerLocation = document.getElementById('footerLocation');
+    const footerLocationLink = document.getElementById('footerLocationLinks_'+e.detail);
+    const footerLocationLinks = document.querySelectorAll("#footer ul");
+    console.log('Header Update Required', chewyCenterCurrentLocation, headerLocation, footerLocationLinks);
+    footerLocationLinks.forEach((footerLocationLinkList) => {
+      console.log('footerLocationLinkList', footerLocationLinkList);
+      footerLocationLinkList.classList.add('hide');
+    })
+    chewyCenterCurrentLocation.innerText = e.detail;
+    headerLocation.innerText = e.detail;
+    headerChooseLocation.value = e.detail;
+    footerLocation.innerText = e.detail;
+    footerLocationLink.classList.remove('hide');
+  }, false);
+
+  // ----- Footer ------
+  const footerLocation = document.getElementById('headerLocation');
+
+  // Listen for the event.
+  footerLocation.addEventListener('locationChange', (e) => {
+    // e.target matches elem
+    console.log('Footer Update Required', e.userLocation);
+  }, false);
+</script>
+</body>
+</html>
