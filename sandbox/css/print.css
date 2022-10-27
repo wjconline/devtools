@@ -1,0 +1,25 @@
+body {
+    background-color: white;
+}
+.three-model {
+    background-color: gray;
+}
+
+article {
+    padding: 10px;
+    margin: 10px;
+    background: aqua;
+}
+
+section {
+    display: flex;
+    margin: 20px;
+}
+
+.functionality {
+    display: none;
+}
+
+.footer {
+    display: none;
+}

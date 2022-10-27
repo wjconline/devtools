@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Events</title>
+  <style>
+    header {
+      padding: 30px;
+      background-color: #BBBB99;
+    }
+    section {
+      margin: 10px;
+      padding: 30px;
+      background-color: #99BBBB;
+    }
+    footer {
+      padding: 30px;
+      background-color: #BB99BB;
+    }
+
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<h1>Custom Evens</h1>
+<header id="header">
+  <div id="headerLocation">ON</div>
+  <label for="headerChooseLocation">
+    <select id="headerChooseLocation">
+      <option value="AB">Alberta</option>
+      <option value="ON" selected>Ontario</option>
+    </select>
+  </label>
+
+</header>
+<section id="chewyCenter">
+  <dl>
+    <dt>Current Location:</dt>
+    <dd id="chewyCenterCurrentLocation">ON</dd>
+  </dl>
+  <label for="chewyCenterChooseLocation">
+    <select id="chewyCenterChooseLocation">
+      <option value="AB">Alberta</option>
+      <option value="ON" selected>Ontario</option>
+    </select>
+  </label>
+</section>
+<footer id="footer">
+  <div id="footerLocation">ON</div>
+  <ul id="footerLocationLinks_ON">
+    <li><a href="#">Ontario Dealers</a></li>
+    <li><a href="#">Ontario Service</a></li>
+    <li><a href="#">Ontario Suppport</a></li>
+  </ul>
+  <ul id="footerLocationLinks_AB" class="hide">
+    <li><a href="#">Alberta Dealers</a></li>
+    <li><a href="#">Alberta Service</a></li>
+    <li><a href="#">Alberta Suppport</a></li>
+  </ul>
+</footer>
+<script>
+  // Main Content Location Selector
+  // this can be in the main content code where the drop down is
+  const chewyCenterChooseLocation = document.getElementById('chewyCenterChooseLocation');
+
+  chewyCenterChooseLocation.addEventListener('change', (event) => {
+    console.log('Content Location Changed', event.target.value);
+    // Create the event.
+    const changeLocationEvent = new CustomEvent('hacc_GNLocationChange', {detail: name: event.target.value});
+    // Raise the event.
+    document.dispatchEvent(changeLocationEvent);
+  });
+
+  // Listen for the event.
+  // This can be in the Global Nav
+  document.addEventListener('hacc_GNLocationChange', (e) => {
+    console.log('Header Update Required', e, e.detail);
+    const chewyCenterCurrentLocation = document.getElementById('chewyCenterCurrentLocation');
+    chewyCenterCurrentLocation.innerText = e.detail;
+
+    // Header
+    const headerLocation = document.getElementById('headerLocation');
+    const headerChooseLocation = document.getElementById('headerChooseLocation');
+    headerLocation.innerText = e.detail;
+    headerChooseLocation.value = e.detail;
+
+    // Footer
+    const footerLocation = document.getElementById('footerLocation');
+    const footerLocationLink = document.getElementById('footerLocationLinks_'+e.detail);
+    const footerLocationLinks = document.querySelectorAll("#footer ul");
+    footerLocation.innerText = e.detail;
+    footerLocationLinks.forEach((footerLocationLinkList) => {
+      console.log('footerLocationLinkList', footerLocationLinkList);
+      footerLocationLinkList.classList.add('hide');
+    })
+    footerLocationLink.classList.remove('hide');
+    console.log('Header Update Required', chewyCenterCurrentLocation, headerLocation, footerLocationLinks);
+  }, false);
+</script>
+</body>
+</html>
