@@ -5,3 +5,4 @@ A sandbox, playground, and cookbook for capturing better practices and patterns 
 - The "node" folder has a tiny http server for serving the project code on local.
 - The "a11y" folder has pages for testing web accessibility. 
 - The "snippets" folder has a page link parser / reporter.
+- The "touchscreen" folder has some touchscreen interface testing.
