@@ -6,3 +6,4 @@ A sandbox, playground, and cookbook for capturing better practices and patterns 
 - The "a11y" folder has pages for testing web accessibility. 
 - The "snippets" folder has a page link parser / reporter.
 - The "touchscreen" folder has some touchscreen interface testing.
+- The "widget" folder has some widget testing action.
