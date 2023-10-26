@@ -50,18 +50,44 @@ function startServer () {
 
         let contentType = mimeTypes[extname] || 'application/octet-stream';
 
-        fs.readFile(filePath, function(error, content) {
+// WoDo: Clean up console logging (incl commented out)
+        fs.readFile(filePath, (error, content) => {
+//            console.log('start initial readFile error ', error);
             if (error) {
-                console.log('error ', error);
-                if(error.code == 'ENOENT') {
-                    fs.readFile('./404.html', function(error, content) {
-                        response.writeHead(404, { 'Content-Type': 'text/html' });
-                        response.end(content, 'utf-8');
-                    });
-                }
-                else {
-                    response.writeHead(500);
-                    response.end('Sorry, check with the site admin for error: '+error.code+' ..\n');
+//                console.log('error obj', error, '\n');
+                console.log('readFile error; message:', error.message, '\n');
+// `${msg}`
+                switch(error.code) {
+                    case 'ENOENT':
+                        fs.readFile('./404.html', function(error, content) {
+                            response.writeHead(404, { 'Content-Type': 'text/html' });
+                            response.end(content, 'utf-8');
+                        });
+                        break;
+                    case 'EISDIR':
+                        let initialError = error;
+                        console.log('Path is a directory: '+error.code);
+
+                        // WoDo: Should try and redirect here instead? look up how to handle default index.html loading
+                        fs.readFile(filePath + '/index.html', (error, content) => {
+                            if (error) {
+                                // console.log('start index.html readFile filePath', filePath);
+                                // console.log('start index.html readFile error ', initialError);
+                                console.log('Path is a directory; no index.html available: ' + initialError.code+'\n');
+                                response.writeHead(404, {'Content-Type': 'text/html'});
+                                response.end('Path is a directory; no index.html available: ' + initialError.code + ' ..\n', 'utf-8');
+                            }  else {
+                                console.log('Path is a directory; index.html found and served.\n');
+                                response.writeHead(200, { 'Content-Type': 'text/html' });
+                                response.end(content, 'utf-8');
+                            }
+                        });
+
+                        break;
+                    default:
+                        response.writeHead(500);
+                        // no such file or directory
+                        response.end('Sorry, check with the site admin for error: '+error.code+' ..\n');
                 }
             }
             else {
